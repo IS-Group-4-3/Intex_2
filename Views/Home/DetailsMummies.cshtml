@@ -15,6 +15,7 @@
     #@Model.location.BurialNumber
 </h4>
 <br />
+
 <div class="row">
     <div class="col-5">
         <button type="button" class="collapsible text-light">Main Mummy Information</button>
@@ -37,7 +38,38 @@
                         <th>Gender</th>
                         <td>@Model.mummy.GenderGe</td>
                     </tr>
-
+                    <tr>
+                        <th>GE Function Total</th>
+                        <td>@Model.mummy.GeFunctionTotal</td>
+                    </tr>
+                    <tr>
+                        <th>Gender Body</th>
+                        <td>@Model.mummy.GenderBodyCol</td>
+                    </tr>
+                    <tr>
+                        <th>Hair Color</th>
+                        <td>@Model.mummy.HairColor</td>
+                    </tr>
+                    <tr>
+                        <th>Artifact Found</th>
+                        <td>@Model.mummy.ArtifactFound</td>
+                    </tr>
+                    <tr>
+                        <th>Artifact Description</th>
+                        <td>@Model.mummy.ArtifactsDescription</td>
+                    </tr>
+                    <tr>
+                        <th>Estimate Age</th>
+                        <td>@Model.mummy.EstimateAge</td>
+                    </tr>
+                    <tr>
+                        <th>Estimate Living Stature</th>
+                        <td>@Model.mummy.EstimateLivingStature</td>
+                    </tr>
+                    <tr>
+                        <th>Date Found</th>
+                        <td>@Model.mummy.DateFound</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -49,18 +81,57 @@
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
                     <tr>
-                        <th>Location NS Low Pair</th>
+                        <th>NS Low Pair</th>
                         <td>@Model.location.LowPairNs</td>
                     </tr>
                     <tr>
-                        <th>Location NS High Pair</th>
+                        <th>NS High Pair</th>
                         <td>@Model.location.HighPairNs</td>
                     </tr>
                     <tr>
-                        <th>Location Burial Direction</th>
+                        <th>Burial Direction N/S</th>
                         <td>@Model.location.BurialLocationNs</td>
                     </tr>
-
+                    <tr>
+                        <th>EW Low Pair</th>
+                        <td>@Model.location.LowPairEw</td>
+                    </tr>
+                    <tr>
+                        <th>EW High Pair</th>
+                        <td>@Model.location.HighPairEw</td>
+                    </tr>
+                    <tr>
+                        <th>Burial Direction E/W</th>
+                        <td>@Model.location.BurialLocationEw</td>
+                    </tr>
+                    <tr>
+                        <th>Burial Subplot</th>
+                        <td>@Model.location.BurialSubplot</td>
+                    </tr>
+                    <tr>
+                        <th>Burial Number</th>
+                        <td>@Model.location.BurialNumber</td>
+                    </tr>
+                    <tr>
+                        <th>South To Head</th>
+                        <td>@Model.location.SouthToHead</td>
+                    </tr>
+                    <tr>
+                        <th>South To Feet</th>
+                        <td>@Model.location.SouthToFeet</td>
+                    </tr>
+                    <tr>
+                        <th>East To Head</th>
+                        <td>@Model.location.EastToHead</td>
+                    </tr>
+                    <tr>
+                        <th>East To Feet</th>
+                        <td>@Model.location.EastToFeet</td>
+                    </tr>
+                    <tr>
+                        <th>Head Direction</th>
+                        <td>@Model.location.HeadDirection</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -75,16 +146,20 @@
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
                     <tr>
-                        <th>Location NS Low Pair</th>
-                        <td>@Model.location.LowPairNs</td>
+                        <th>Tooth Attrition</th>
+                        <td>@Model.dentalInfo.ToothAttrition</td>
                     </tr>
                     <tr>
-                        <th>Location NS High Pair</th>
-                        <td>@Model.location.HighPairNs</td>
+                        <th>Tooth Eruption</th>
+                        <td>@Model.dentalInfo.ToothEruption</td>
                     </tr>
                     <tr>
-                        <th>Location Burial Direction</th>
-                        <td>@Model.location.BurialLocationNs</td>
+                        <th>Pathology Anomalies</th>
+                        <td>@Model.dentalInfo.PathologyAnomalies</td>
+                    </tr>
+                    <tr>
+                        <th>Epiphyseal Union</th>
+                        <td>@Model.dentalInfo.EpiphysealUnion</td>
                     </tr>
 
                 </tbody>
@@ -98,16 +173,20 @@
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
                     <tr>
-                        <th>Location NS Low Pair</th>
-                        <td>@Model.location.LowPairNs</td>
+                        <th>Tooth Attrition</th>
+                        <td>@Model.dentalInfo.ToothAttrition</td>
                     </tr>
                     <tr>
-                        <th>Location NS High Pair</th>
-                        <td>@Model.location.HighPairNs</td>
+                        <th>Tooth Eruption</th>
+                        <td>@Model.dentalInfo.ToothEruption</td>
                     </tr>
                     <tr>
-                        <th>Location Burial Direction</th>
-                        <td>@Model.location.BurialLocationNs</td>
+                        <th>Pathology Anomalies</th>
+                        <td>@Model.dentalInfo.PathologyAnomalies</td>
+                    </tr>
+                    <tr>
+                        <th>Epiphyseal Union</th>
+                        <td>@Model.dentalInfo.EpiphysealUnion</td>
                     </tr>
 
                 </tbody>
@@ -122,21 +201,137 @@
         <button type="button" class="collapsible text-light">Carbon Dating Information</button>
         <div class="content text-dark">
             <table class="table table-bordered table-striped table-hover w-auto">
-                <tbody>
-                    <tr>
-                        <th>Location NS Low Pair</th>
-                        <td>@Model.location.LowPairNs</td>
-                    </tr>
-                    <tr>
-                        <th>Location NS High Pair</th>
-                        <td>@Model.location.HighPairNs</td>
-                    </tr>
-                    <tr>
-                        <th>Location Burial Direction</th>
-                        <td>@Model.location.BurialLocationNs</td>
-                    </tr>
-
-                </tbody>
+                @if (Model.carbonDating != null)
+                {
+                    <tbody>
+                        <tr>
+                            <th>Rack</th>
+                            <td>@Model.carbonDating.Rack</td>
+                        </tr>
+                        <tr>
+                            <th>Tube</th>
+                            <td>@Model.carbonDating.Tube</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>@Model.carbonDating.Description</td>
+                        </tr>
+                        <tr>
+                            <th>Size</th>
+                            <td>@Model.carbonDating.SizeMl</td>
+                        </tr>
+                        <tr>
+                            <th>Foci</th>
+                            <td>@Model.carbonDating.Foci</td>
+                        </tr>
+                        <tr>
+                            <th>C14Sample2017</th>
+                            <td>@Model.carbonDating.C14Sample2017</td>
+                        </tr>
+                        <tr>
+                            <th>Questions</th>
+                            <td>@Model.carbonDating.Questions</td>
+                        </tr>
+                        <tr>
+                            <th>Conventional C14 Age BP</th>
+                            <td>@Model.carbonDating.Conventional14cAgeBp</td>
+                        </tr>
+                        <tr>
+                            <th>C14 Calendar Date</th>
+                            <td>@Model.carbonDating.C14CalendarDate</td>
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date Max</th>
+                            <td>@Model.carbonDating.Calibrated95CalendarDateMax</td>
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date Min</th>
+                            <td>@Model.carbonDating.Calibrated95CalendarDateMin</td>
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date Span</th>
+                            <td>@Model.carbonDating.Calibrated95CalendarDateSpan</td>
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date AVG</th>
+                            <td>@Model.carbonDating.Calibrated95CalendarDateAvg</td>
+                        </tr>
+                        <tr>
+                            <th>Category</th>
+                            <td>@Model.carbonDating.Category</td>
+                        </tr>
+                        <tr>
+                            <th>Notes</th>
+                            <td>@Model.carbonDating.Notes</td>
+                        </tr>
+                    </tbody>
+                }
+                else
+                {
+                    <thead><tr><th>This Information is not available for this Mummy</th></tr></thead>
+                    @*<tbody>
+                        <tr>
+                            <th>Rack</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Tube</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Size</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Foci</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>C14Sample2017</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Questions</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Conventional C14 Age BP</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>C14 Calendar Date</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date Max</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date Min</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date Span</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Calibrated 95 Calendar Date AVG</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Category</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>Notes</th>
+                            
+                        </tr>
+                    </tbody>*@
+    }
             </table>
         </div>
     </div>
