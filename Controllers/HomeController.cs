@@ -1,5 +1,6 @@
 ﻿using Intex_2.Models;
 using Intex_2.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -30,6 +31,7 @@ namespace Intex_2.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult ListMummies(int pageNum = 1)
         {
             return View(new MummyListViewModel
