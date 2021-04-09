@@ -1,5 +1,6 @@
-﻿
-
+﻿@{
+    ViewData["Title"] = "Mummy Details";
+}
 @model MummyDetailsViewModel
 
 <h1>Mummy #@Model.mummy.Gamous</h1>
@@ -13,7 +14,7 @@
     @Model.location.BurialSubplot
     #@Model.location.BurialNumber
 </h4>
-
+<br />
 <div class="row">
     <div class="col-5">
         <button type="button" class="collapsible text-light">Main Mummy Information</button>
@@ -21,24 +22,26 @@
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
                     <tr>
-                        <th>Location NS Low Pair</th>
-                        <td>@Model.location.LowPairNs</td>
+                        <th>Burial Nortes</th>
+                        <td>@Model.mummy.BurialSituationNotes</td>
                     </tr>
                     <tr>
-                        <th>Location NS High Pair</th>
-                        <td>@Model.location.HighPairNs</td>
+                        <th>Length of Remains</th>
+                        <td>@Model.mummy.LengthOfRemains cm</td>
                     </tr>
                     <tr>
-                        <th>Location Burial Direction</th>
-                        <td>@Model.location.BurialLocationNs</td>
+                        <th>Sample Number</th>
+                        <td>@Model.mummy.SampleNumber</td>
+                    </tr>
+                    <tr>
+                        <th>Gender</th>
+                        <td>@Model.mummy.GenderGe</td>
                     </tr>
 
                 </tbody>
             </table>
         </div>
     </div>
-    <br />
-    <br />
 
     <div class="col-5">
         <button type="button" class="collapsible text-light">All Location Information</button>
@@ -63,10 +66,11 @@
         </div>
     </div>
 </div>
-
+<br />
+<br />
 <div class="row">
     <div class="col-5">
-        <button type="button" class="collapsible text-light">Main Mummy Information</button>
+        <button type="button" class="collapsible text-light">Dental Information</button>
         <div class="content text-dark">
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
@@ -87,11 +91,9 @@
             </table>
         </div>
     </div>
-    <br />
-    <br />
 
     <div class="col-5">
-        <button type="button" class="collapsible text-light">All Location Information</button>
+        <button type="button" class="collapsible text-light">Cranial Information</button>
         <div class="content text-dark">
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
@@ -111,6 +113,85 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-5">
+        <button type="button" class="collapsible text-light">Carbon Dating Information</button>
+        <div class="content text-dark">
+            <table class="table table-bordered table-striped table-hover w-auto">
+                <tbody>
+                    <tr>
+                        <th>Location NS Low Pair</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location NS High Pair</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location Burial Direction</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-5">
+        <button type="button" class="collapsible text-light">Bone Information</button>
+        <div class="content text-dark">
+            <table class="table table-bordered table-striped table-hover w-auto">
+                <tbody>
+                    <tr>
+                        <th>Location NS Low Pair</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location NS High Pair</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location Burial Direction</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-5">
+        <button type="button" class="collapsible text-light">Biological Sample</button>
+        <div class="content text-dark">
+            <table class="table table-bordered table-striped table-hover w-auto">
+                <tbody>
+                    <tr>
+                        <th>Location NS Low Pair</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location NS High Pair</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location Burial Direction</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-5">
+
     </div>
 </div>
 
