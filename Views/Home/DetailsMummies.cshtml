@@ -2,21 +2,131 @@
 
 @model MummyDetailsViewModel
 
-@foreach (var x in Model.mummy)
-{
-    if (x.Gamous == null)
-    {
-        <h1>@x.Gamous</h1>
-    }
-    else
-    {
-        <p> Didn't return anything</p>
-    }
-}
+<h1>Mummy #@Model.mummy.Gamous</h1>
 
-@*<h2>
-        Found at Location
-        @Model.location.LowPairNs/@Model.location.HighPairNs
-        @Model.location.BurialLocationNs @Model.location.LowPairEw/@Model.location.HighPairEw
-        @Model.location.BurialLocationEw @Model.location.BurialSubplot @Model.location.BurialNumber
-    </h2>*@
+<h4>
+    Mummy Location:
+    @Model.location.LowPairNs/@Model.location.HighPairNs
+    @Model.location.BurialLocationNs
+    @Model.location.LowPairEw/@Model.location.HighPairEw
+    @Model.location.BurialLocationEw
+    @Model.location.BurialSubplot
+    #@Model.location.BurialNumber
+</h4>
+
+<div class="row">
+    <div class="col-5">
+        <button type="button" class="collapsible text-light">Main Mummy Information</button>
+        <div class="content text-dark">
+            <table class="table table-bordered table-striped table-hover w-auto">
+                <tbody>
+                    <tr>
+                        <th>Location NS Low Pair</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location NS High Pair</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location Burial Direction</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="col-5">
+        <button type="button" class="collapsible text-light">All Location Information</button>
+        <div class="content text-dark">
+            <table class="table table-bordered table-striped table-hover w-auto">
+                <tbody>
+                    <tr>
+                        <th>Location NS Low Pair</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location NS High Pair</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location Burial Direction</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-5">
+        <button type="button" class="collapsible text-light">Main Mummy Information</button>
+        <div class="content text-dark">
+            <table class="table table-bordered table-striped table-hover w-auto">
+                <tbody>
+                    <tr>
+                        <th>Location NS Low Pair</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location NS High Pair</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location Burial Direction</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="col-5">
+        <button type="button" class="collapsible text-light">All Location Information</button>
+        <div class="content text-dark">
+            <table class="table table-bordered table-striped table-hover w-auto">
+                <tbody>
+                    <tr>
+                        <th>Location NS Low Pair</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location NS High Pair</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Location Burial Direction</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>

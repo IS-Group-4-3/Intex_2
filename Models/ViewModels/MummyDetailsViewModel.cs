@@ -7,7 +7,7 @@ namespace Intex_2.Models.ViewModels
 {
     public class MummyDetailsViewModel
     {
-        public IEnumerable<GamousMain> mummy { get; set; }
+        public GamousMain mummy { get; set; }
         public GamousLocation location { get; set; }
         public GamousDental dentalInfo { get; set; }
         public GamousCranial cranialInfo { get; set; }

@@ -2,16 +2,13 @@
 @model GamousMain
 <tr>
     <td>
-        <form asp-controller="Home" asp-action="DetailsMummies" method="get">
-            <input type="hidden" asp-for="@Model.LocationId" />
-            <span class="card-text p-1">
-                <button class="btn btn-primary" type="submit">@Model.Gamous</button>
-            </span>
-        </form>
+      <a class="btn btn-primary" asp-controller="Home" asp-action="DetailsMummies"
+         asp-route-locationID="@Model.LocationId">
+        @Model.Gamous
+      </a>
     </td>
     <td>
         @Model.LocationId
-        
     </td>
     <td>
         @Model.LengthOfRemains
@@ -21,9 +18,6 @@
     </td>
     <td>
         @Model.GenderGe
-    </td>
-    <td>
-        @Model.SampleNumber
     </td>
     <td>
         @Model.HairColor

@@ -10,13 +10,15 @@ using System.Threading.Tasks;
 
 namespace Intex_2.Controllers
 {
+    
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
 
         private readonly postgresContext _con;
         public int PageSize = 10;
-
+        
         public HomeController(ILogger<HomeController> logger, postgresContext con)
         {
             _logger = logger;
@@ -48,14 +50,26 @@ namespace Intex_2.Controllers
             });
         }
 
-        public IActionResult DetailsMummies(string loc)
+        
+        public IActionResult DetailsMummies(string locationID)
         {
-            GamousMain g = _con.GamousMains.FirstOrDefault(p => p.LocationId == loc);
+            GamousMain g = _con.GamousMains.FirstOrDefault(p => p.LocationId == locationID);
+            GamousLocation gl = _con.GamousLocations.FirstOrDefault(p => p.LocationId == locationID);
+            GamousDental gd = _con.GamousDentals.FirstOrDefault(p => p.Gamous == g.Gamous);
+            GamousCranial gc = _con.GamousCranials.FirstOrDefault(p => p.LocationId == locationID);
+            GamousC14 gc14 = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == locationID);
+            GamousBone gb = _con.GamousBones.FirstOrDefault(p => p.Gamous == g.Gamous);
+            GamousBiologicalSample gbs = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == locationID);
 
             return View(new MummyDetailsViewModel
             {
-                mummy = _con.GamousMains
-                    .Where(p => p.LocationId == loc)
+                mummy = g,
+                location = gl,
+                dentalInfo = gd,
+                cranialInfo = gc,
+                carbonDating = gc14,
+                bone = gb,
+                bioSample = gbs
 
             }) ;
         }
