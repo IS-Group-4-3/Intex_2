@@ -1,0 +1,49 @@
+﻿
+@model MummyListViewModel
+<div class="text-center">
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Gamous
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Lenght of Remains
+                </th>
+                <th>
+                    Sample Number
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Sample Number
+                </th>
+                <th>
+                    Hair Color
+                </th>
+                <th>
+                    Estimate Age
+                </th>
+                <th>
+                    Date Found
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Still doesn't print out the movie Independence day*@
+            @foreach (var x in Model.mummies)
+            {
+                <partial name="MummyTableInfo" model="x" />
+            }
+        </tbody>
+    </table>
+
+    <div page-model="@Model.PagingInfo" page-action="ListMummies" class="pagehighlight">
+
+    </div>
+</div>

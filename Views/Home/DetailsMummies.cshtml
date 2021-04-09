@@ -1,0 +1,22 @@
+﻿
+
+@model MummyDetailsViewModel
+
+@foreach (var x in Model.mummy)
+{
+    if (x.Gamous == null)
+    {
+        <h1>@x.Gamous</h1>
+    }
+    else
+    {
+        <p> Didn't return anything</p>
+    }
+}
+
+@*<h2>
+        Found at Location
+        @Model.location.LowPairNs/@Model.location.HighPairNs
+        @Model.location.BurialLocationNs @Model.location.LowPairEw/@Model.location.HighPairEw
+        @Model.location.BurialLocationEw @Model.location.BurialSubplot @Model.location.BurialNumber
+    </h2>*@
