@@ -36,6 +36,8 @@ namespace Intex_2
                options.UseNpgsql(Configuration["ConnectionStrings:DB"]));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddRazorPages()
+                .AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
         }
 
