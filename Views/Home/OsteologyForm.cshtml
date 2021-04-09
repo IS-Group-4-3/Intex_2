@@ -1,0 +1,91 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h3>Body Analysis Chart</h3>
+
+<form>
+    <div>
+        <label>Square: </label>
+        <input />
+    </div>
+
+    <div>
+        <label>Area: </label>
+        <input />
+    </div>
+
+    <div>
+        <label>Burial #: </label>
+        <input />
+    </div>
+
+    <div>
+        <label>Date: </label>
+        <input type="date" />
+    </div>
+
+    <div>
+        <label>Observer: </label>
+        <input />
+    </div>
+
+    <h5>Overall Impression</h5>
+
+    <div>
+        <label>A. Preservation Index: </label>
+        <select>
+            <option value="">Select One</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+        </select>
+    </div>
+
+    <div>
+        <label>B. Hair Color: </label>
+        <input />
+    </div>
+
+    <div>
+        <label>C. Observations (e.g., Artifacts, Burial Situation, Textiles)</label><br />
+        <input />
+    </div>
+    <br />
+    <h5>Skull Analysis</h5>
+
+    <div>
+        <label>A. Skull Features (gender estimation)</label>
+        <input />
+    </div>
+
+    <div>
+        <label>B. Skull Sutures (age estimation)</label>
+
+        <label>Sphenoccipital Synchondrosis [basilar suture]</label>
+        <select>
+            <option value="">Select One</option>
+            <option value="Closed">Closed (>age 18-25)</option>
+            <option value="NotClosed">Not Closed</option>
+        </select>
+
+        <label>Lambdoid Suture [parietal-occipital]</label>
+        <select>
+            <option value="">Select One</option>
+            <option value="Closed">Closed (>age 45-50)</option>
+            <option value="NotClosed">Not Closed</option>
+        </select>
+
+        <label>Squamos Suture [parietal-temporal]</label>
+        <select>
+            <option value="">Select One</option>
+            <option value="Closed">Closed (>age 60-65)</option>
+            <option value="NotClosed">Not Closed</option>
+        </select>
+    </div>
+
+</form>
