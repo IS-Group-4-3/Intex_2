@@ -26,6 +26,8 @@
         <input />
         <br />
 
+        <!--If yes then prompt for burial number(s) that share the same shaft; the uppermost burial in a shaft will have the status of P (pending); Burials
+            with a P status must be resolved to either Y or N-->
         <label>Shared Shaft?: </label>
         <input type="radio" id="sharedShaftYes" name="sharedShaft" value="Y" />
         <label for="sharedShaftYes">Yes</label>
@@ -35,6 +37,8 @@
         <label for="sharedShaftPending">Pending</label>
         <br />
 
+        <!--If yes then prompt for burial number(s)
+            If Yes then prompt for culster number (square, area, cluster number); assign-->
         <label>Cluster</label>
         <input type="radio" id="clusterYes" name="cluster" value="Y" />
         <label for="clusterYes">Yes</label>
