@@ -10,24 +10,20 @@
     <div>
         <label>Square: </label>
         <input />
-    </div>
+        <br />
 
-    <div>
         <label>Area: </label>
         <input />
-    </div>
+        <br />
 
-    <div>
         <label>Burial #: </label>
         <input />
-    </div>
+        <br />
 
-    <div>
         <label>Date: </label>
         <input type="date" />
-    </div>
+        <br />
 
-    <div>
         <label>Observer: </label>
         <input />
     </div>
@@ -158,5 +154,121 @@
 
     </div>
 
+    <h4>III. Pelvis Analysis</h4>
+    <h6 class="formTab">
+        <label>A. Pelvis Features (gender estimation)</label>
+    </h6>
+
+    <div style="margin-left: 80px">
+        <label>Ventral Arc:</label>
+        <input type="radio" id="ventralYes" name="ventral" value="Yes" />
+        <label for="ventralYes">Yes</label>
+        <input type="radio" id="ventralNo" name="ventral" value="No" />
+        <label for="ventralNo">No</label>
+        <br />
+
+        <label>Subpubic Angle:</label>
+        <input type="radio" id="subpubicNarrow" name="subpubic" value="Narrow" />
+        <label for="subpubicNarrow">Narrow</label>
+        <input type="radio" id="subpubicWide" name="subpubic" value="Wide" />
+        <label for="subpubicWide">Wide</label>
+        <br />
+
+        <label>Sciatic Notch:</label>
+        <input type="radio" id="sciaticNotch" name="sciatic" value="Narrow" />
+        <label for="sciaticNarrow">Blunt</label>
+        <input type="radio" id="sciaticWide" name="sciatic" value="Sharp" />
+        <label for="sciaticWide">Wide</label>
+        <br />
+
+        <label>Medial IP Ramus:</label>
+        <input type="radio" id="medialFlat" name="medial" value="medialFlat" />
+        <label for="medialFlat">Flat</label>
+        <input type="radio" id="medialRidged" name="medial" value="medialRidged" />
+        <label for="medialRidged">Ridged</label>
+        <br />
+    </div>
+
+    <h4>IV. Limb Analysis</h4>
+
+    <h6 class="formTab">
+        <label>A. Epiphyseal Union</label>
+    </h6>
+
+    <div style="margin-left: 80px">
+        Femur:
+        <select>
+            <option value="">Select One</option>
+            <option value="Closed">Closed (>age 17)</option>
+            <option value="NotClosed">Not Closed</option>
+        </select>
+        <br /> <br />
+        Humerus:
+        <select>
+            <option value="">Select One</option>
+            <option value="Closed">Closed (>age 14)</option>
+            <option value="NotClosed">Not Closed</option>
+        </select>
+        <br /> <br />
+    </div>
+
+    <h6 class="formTab">
+        <label>B. Head Diameter</label>
+    </h6>
+    <div style="margin-left: 80px">
+        <label>Femur Head Diameter (< 41.5mm=F; > 45.5mm=M): </label>
+        <input />
+        <br />
+
+        <label>Humerus Head Diameter (< 43.5mm=F; > 48mm=M): </label>
+        <input />
+        <br />
+
+        <label>Observers Estimation of Age at Death: </label>
+        <input />
+        <br />
+
+        <label>Observers Estimation of Gender: </label>
+        <select>
+            <option value="">Select One</option>
+            <option value="Male"> Male</option>
+            <option value="Female">Female</option>
+            <option value="Indeterminate">Indeterminate</option>
+        </select>
+    </div>
+
+    <h4>V. Stature Estimation   [M=2.32(femur length) + 65.53; F=2.47(femur length) +54.1]</h4>
+    <h6 class="formTab">
+        <label>A. Femur Length (cm)</label>
+        <input />
+        <br />
+
+        <label>B. Humerus Length (cm)</label>
+        <input />
+        <br />
+
+        <label>C. Estimate of Stature</label>
+        <input />
+        <br />
+    </h6>
+
+    <h4>VI. Pathology</h4>
+    <h6 class="formTab">
+        <label>A. Osteophytosis</label>
+        <select>
+            <option value="">None</option>
+            <option value="Slight"> Slight</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Heavy">Heavy</option>
+        </select>
+        <br />
+
+        <label>B. Caries and Periodontal Disease (noted in Figure 1)</label>
+        <label>C. Notes</label>
+        <input />
+    </h6>
+
+    <h4>VII. Samples</h4>
+    <input />
 
 </form>
