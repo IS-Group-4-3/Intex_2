@@ -31,10 +31,11 @@
         <label>Observer: </label>
         <input />
     </div>
+    <br />
 
-    <h5>Overall Impression</h5>
+    <h4>I. Overall Impression</h4>
 
-    <div>
+    <h6 class="formTab">
         <label>A. Preservation Index: </label>
         <select>
             <option value="">Select One</option>
@@ -44,42 +45,92 @@
             <option value="IV">IV</option>
             <option value="V">V</option>
         </select>
-    </div>
+    </h6>
 
-    <div>
+    <h6 class="formTab">
         <label>B. Hair Color: </label>
         <input />
-    </div>
+    </h6>
 
-    <div>
+    <h6 class="formTab">
         <label>C. Observations (e.g., Artifacts, Burial Situation, Textiles)</label><br />
         <input />
-    </div>
+    </h6>
     <br />
-    <h5>Skull Analysis</h5>
 
-    <div>
+    <h4>II. Skull Analysis</h4>
+    <h6 class="formTab">
         <label>A. Skull Features (gender estimation)</label>
-        <input />
+    </h6>
+
+    <div style="margin-left: 80px">
+        <label>Robust:</label>
+        <input type="radio" id="robustYes" name="robust" value="Yes" />
+        <label for="robustYes">Yes</label>
+        <input type="radio" id="robustNo" name="robust" value="No" />
+        <label for="robustNo">No</label>
+        <br />
+
+        <label>Supraorbital Ridges:</label>
+        <input type="radio" id="ridgesHeavy" name="ridges" value="Heavy" />
+        <label for="ridgesHeavy">Heavy</label>
+        <input type="radio" id="ridgesLight" name="ridges" value="Light" />
+        <label for="ridgesLight">Light</label>
+        <br />
+
+        <label>Orbit Edge:</label>
+        <input type="radio" id="orbitBlunt" name="orbitEdge" value="Blunt" />
+        <label for="orbitBlunt">Blunt</label>
+        <input type="radio" id="orbitSharp" name="orbitEdge" value="Sharp" />
+        <label for="orbitSharp">Sharp</label>
+        <br />
+
+        <label>Parietal Bossing:</label>
+        <input type="radio" id="parietalNo" name="parietalBossing" value="No" />
+        <label for="parietalNo">No</label>
+        <input type="radio" id="parietalYes" name="parietalBossing" value="Yes" />
+        <label for="parietalYes">Yes</label>
+        <br />
+
+        <label> Gonion:</label>
+        <input type="radio" id="gonionFlat" name="gonion" value="Flat" />
+        <label for="gonionFlat">Flat</label>
+        <input type="radio" id="gonionPointed" name="gonion" value="Pointed" />
+        <label for="gonionPointed">Pointed</label>
+        <br />
+
+        <label>Nuchal Crest:</label>
+        <input type="radio" id="nuchalLarger" name="nuchalCrest" value="Larger" />
+        <label for="nuchalLarger">Larger</label>
+        <input type="radio" id="nuchalSmaller" name="nuchalCrest" value="Smaller" />
+        <label for="nuchalSmaller">Smaller</label>
+        <br />
+
+        <label>Zygomatic Crest:</label>
+        <input type="radio" id="zygomaticLonger" name="zygomaticCrest" value="Longer" />
+        <label for="zygomaticLonger">Longer</label>
+        <input type="radio" id="zygomaticShorter" name="zygomaticCrest" value="Shorter" />
+        <label for="zygomaticShorter">Shorter</label>
+        <br />
     </div>
 
-    <div>
-        <label>B. Skull Sutures (age estimation)</label>
+    <h6 class="formTab">B. Skull Sutures (age estimation)</h6>
 
+    <div style="margin-left: 80px">
         <label>Sphenoccipital Synchondrosis [basilar suture]</label>
         <select>
             <option value="">Select One</option>
             <option value="Closed">Closed (>age 18-25)</option>
             <option value="NotClosed">Not Closed</option>
         </select>
-
+        <br />
         <label>Lambdoid Suture [parietal-occipital]</label>
         <select>
             <option value="">Select One</option>
             <option value="Closed">Closed (>age 45-50)</option>
             <option value="NotClosed">Not Closed</option>
         </select>
-
+        <br />
         <label>Squamos Suture [parietal-temporal]</label>
         <select>
             <option value="">Select One</option>
@@ -87,5 +138,25 @@
             <option value="NotClosed">Not Closed</option>
         </select>
     </div>
+
+    <h6 class="formTab">C. Dention (age estimation)</h6>
+
+    <div style="margin-left: 80px">
+        <label>Tooth Attrition</label>
+        <select>
+            <option value="">Select One</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+        </select>
+        <br />
+
+        <label>Tooth Eruption Age Estimate</label>
+        <input />
+
+    </div>
+
 
 </form>
