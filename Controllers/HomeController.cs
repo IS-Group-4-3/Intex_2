@@ -31,7 +31,12 @@ namespace Intex_2.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
         public IActionResult ListMummies(int pageNum = 1)
         {
             return View(new MummyListViewModel
@@ -76,11 +81,13 @@ namespace Intex_2.Controllers
             }) ;
         }
 
+        [Authorize]
         public IActionResult OsteologyForm()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult ExhumationForm()
         {
             return View();

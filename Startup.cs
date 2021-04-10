@@ -31,11 +31,14 @@ namespace Intex_2
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole> //add roles to services 
+                (options => options.SignIn.RequireConfirmedAccount = true)
+                 .AddDefaultUI()
+                 .AddEntityFrameworkStores<ApplicationDbContext>()
+                 .AddDefaultTokenProviders();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDbContext<postgresContext>(options =>
                options.UseNpgsql(Configuration["ConnectionStrings:DB"]));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
