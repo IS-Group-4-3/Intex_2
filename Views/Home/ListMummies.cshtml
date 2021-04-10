@@ -1,7 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Mummy List";
-}
-
+﻿@{ ViewData["Title"] = "Mummy List"; }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @model MummyListViewModel
 <div class="text-center">
 
@@ -9,8 +9,14 @@
         <thead>
             <tr>
                 <th>
-                    Gamous
+
                 </th>
+                @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                {
+                    <th>
+
+                    </th>
+                }
                 <th>
                     Location
                 </th>
