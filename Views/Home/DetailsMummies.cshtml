@@ -1,6 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Mummy Details";
-}
+﻿@{ ViewData["Title"] = "Mummy Details"; }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @model MummyDetailsViewModel
 
 <h1>Mummy #@Model.mummy.Gamous</h1>
@@ -203,135 +204,134 @@
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.carbonDating != null)
                 {
-                    <tbody>
-                        <tr>
-                            <th>Rack</th>
-                            <td>@Model.carbonDating.Rack</td>
-                        </tr>
-                        <tr>
-                            <th>Tube</th>
-                            <td>@Model.carbonDating.Tube</td>
-                        </tr>
-                        <tr>
-                            <th>Description</th>
-                            <td>@Model.carbonDating.Description</td>
-                        </tr>
-                        <tr>
-                            <th>Size</th>
-                            <td>@Model.carbonDating.SizeMl</td>
-                        </tr>
-                        <tr>
-                            <th>Foci</th>
-                            <td>@Model.carbonDating.Foci</td>
-                        </tr>
-                        <tr>
-                            <th>C14Sample2017</th>
-                            <td>@Model.carbonDating.C14Sample2017</td>
-                        </tr>
-                        <tr>
-                            <th>Questions</th>
-                            <td>@Model.carbonDating.Questions</td>
-                        </tr>
-                        <tr>
-                            <th>Conventional C14 Age BP</th>
-                            <td>@Model.carbonDating.Conventional14cAgeBp</td>
-                        </tr>
-                        <tr>
-                            <th>C14 Calendar Date</th>
-                            <td>@Model.carbonDating.C14CalendarDate</td>
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date Max</th>
-                            <td>@Model.carbonDating.Calibrated95CalendarDateMax</td>
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date Min</th>
-                            <td>@Model.carbonDating.Calibrated95CalendarDateMin</td>
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date Span</th>
-                            <td>@Model.carbonDating.Calibrated95CalendarDateSpan</td>
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date AVG</th>
-                            <td>@Model.carbonDating.Calibrated95CalendarDateAvg</td>
-                        </tr>
-                        <tr>
-                            <th>Category</th>
-                            <td>@Model.carbonDating.Category</td>
-                        </tr>
-                        <tr>
-                            <th>Notes</th>
-                            <td>@Model.carbonDating.Notes</td>
-                        </tr>
-                    </tbody>
-                }
-                else
-                {
-                    <thead><tr><th>This Information is not available for this Mummy</th></tr></thead>
-                    @*<tbody>
-                        <tr>
-                            <th>Rack</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Tube</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Description</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Size</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Foci</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>C14Sample2017</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Questions</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Conventional C14 Age BP</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>C14 Calendar Date</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date Max</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date Min</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date Span</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Calibrated 95 Calendar Date AVG</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Category</th>
-                            
-                        </tr>
-                        <tr>
-                            <th>Notes</th>
-                            
-                        </tr>
-                    </tbody>*@
-    }
+    <tbody>
+        <tr>
+            <th>Rack</th>
+            <td>@Model.carbonDating.Rack</td>
+        </tr>
+        <tr>
+            <th>Tube</th>
+            <td>@Model.carbonDating.Tube</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>@Model.carbonDating.Description</td>
+        </tr>
+        <tr>
+            <th>Size</th>
+            <td>@Model.carbonDating.SizeMl</td>
+        </tr>
+        <tr>
+            <th>Foci</th>
+            <td>@Model.carbonDating.Foci</td>
+        </tr>
+        <tr>
+            <th>C14Sample2017</th>
+            <td>@Model.carbonDating.C14Sample2017</td>
+        </tr>
+        <tr>
+            <th>Questions</th>
+            <td>@Model.carbonDating.Questions</td>
+        </tr>
+        <tr>
+            <th>Conventional C14 Age BP</th>
+            <td>@Model.carbonDating.Conventional14cAgeBp</td>
+        </tr>
+        <tr>
+            <th>C14 Calendar Date</th>
+            <td>@Model.carbonDating.C14CalendarDate</td>
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date Max</th>
+            <td>@Model.carbonDating.Calibrated95CalendarDateMax</td>
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date Min</th>
+            <td>@Model.carbonDating.Calibrated95CalendarDateMin</td>
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date Span</th>
+            <td>@Model.carbonDating.Calibrated95CalendarDateSpan</td>
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date AVG</th>
+            <td>@Model.carbonDating.Calibrated95CalendarDateAvg</td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>@Model.carbonDating.Category</td>
+        </tr>
+        <tr>
+            <th>Notes</th>
+            <td>@Model.carbonDating.Notes</td>
+        </tr>
+    </tbody>
+ }
+else
+{
+<thead><tr><th>This Information is not available for this Mummy</th></tr></thead>
+@*<tbody>
+        <tr>
+            <th>Rack</th>
+
+        </tr>
+        <tr>
+            <th>Tube</th>
+
+        </tr>
+        <tr>
+            <th>Description</th>
+
+        </tr>
+        <tr>
+            <th>Size</th>
+
+        </tr>
+        <tr>
+            <th>Foci</th>
+
+        </tr>
+        <tr>
+            <th>C14Sample2017</th>
+
+        </tr>
+        <tr>
+            <th>Questions</th>
+
+        </tr>
+        <tr>
+            <th>Conventional C14 Age BP</th>
+
+        </tr>
+        <tr>
+            <th>C14 Calendar Date</th>
+
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date Max</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date Min</th>
+
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date Span</th>
+
+        </tr>
+        <tr>
+            <th>Calibrated 95 Calendar Date AVG</th>
+
+        </tr>
+        <tr>
+            <th>Category</th>
+
+        </tr>
+        <tr>
+            <th>Notes</th>
+
+        </tr>
+    </tbody>*@}
             </table>
         </div>
     </div>
@@ -386,9 +386,40 @@
     </div>
 
     <div class="col-5">
+        @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+        {
+            <button type="button" class="collapsible text-light">Manage Data</button>
+            <div class="content text-dark">
+                <table class="table table-bordered table-striped table-hover w-auto">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a class="btn btn-dark" asp-controller="Home" asp-action="DetailsMummies"
+                                    asp-route-locationID="@Model.location.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    <div class="col-5">
+                                        <a class="btn btn-danger" asp-controller="Home" asp-action="DetailsMummies"
+                                            asp-route-locationID="@Model.location.LocationId">
+                                        Delete
+                                        </a>
+                                    </div>
+                                </td>
+                             }
 
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+         }
     </div>
 </div>
+
 
 <script>
     var coll = document.getElementsByClassName("collapsible");
