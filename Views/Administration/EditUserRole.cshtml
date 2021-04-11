@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var user_role = ViewBag.user_role;
+}
+
+<form asp-action="EditUserRole" asp-route-id="@user_role.Id" method="post">
+    <select >
+        <option value="">No role</option>
+        <option value="Admin">Admin</option>
+        <option value="Researcher">Researcher</option>
+    </select>
+    <button type="submit" class="btn btn-dark">Edit user permissions</button>
+</form>

@@ -13,7 +13,5 @@ namespace Intex_2.Data
             : base(options)
         {
         }
-
-        DbSet<IdentityUser> identityUser { get; set; }
     }
 }
