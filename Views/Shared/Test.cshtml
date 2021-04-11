@@ -1,0 +1,15 @@
+﻿@model MummyDetailsViewModel 
+
+<form asp-action="" asp-controller="" method="post">
+    <partial name="CreateLocations" model="@Model.location" />
+    <partial name="CreateGamousMains" model="@Model.mummy" />
+    <partial name="CreateGamousBones" model="@Model.bone" />
+    <partial name="CreateGamousDentals" model="@Model.dentalInfo" />
+    <partial name="CreateGamousCranials" model="@Model.cranialInfo" />
+    <partial name="CreateGamousC14" model="@Model.cranialInfo" />
+    <partial name="CreateGamousBiologicalSamples" model="@Model.bioSample" />
+    <partial name="CreateGamousSamples" model="@Model.sample" />
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

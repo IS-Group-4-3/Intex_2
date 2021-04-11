@@ -14,5 +14,8 @@ namespace Intex_2.Models.ViewModels
         public GamousC14 carbonDating { get; set; }
         public GamousBone bone { get; set; }
         public GamousBiologicalSample bioSample { get; set; }
+
+        public GamousSample sample { get; set; }
+        public FieldMain field { get; set; }
     }
 }

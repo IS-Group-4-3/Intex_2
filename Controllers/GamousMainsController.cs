@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousMains/Create
-        public IActionResult Create()
+        public IActionResult CreateGamousMains()
         {
             return View();
         }
@@ -53,7 +53,7 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
+        public async Task<IActionResult> CreateGamousMains([Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
         {
             if (ModelState.IsValid)
             {

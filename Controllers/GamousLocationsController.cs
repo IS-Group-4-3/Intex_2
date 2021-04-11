@@ -43,8 +43,10 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousLocations/Create
-        public IActionResult Create()
+        public IActionResult CreateLocations()
         {
+            
+
             return View();
         }
 
@@ -53,7 +55,7 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,SouthToHead,SouthToFeet,EastToHead,EastToFeet,HeadDirection")] GamousLocation gamousLocation)
+        public async Task<IActionResult> CreateLocations([Bind("LocationId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,SouthToHead,SouthToFeet,EastToHead,EastToFeet,HeadDirection")] GamousLocation gamousLocation)
         {
             if (ModelState.IsValid)
             {

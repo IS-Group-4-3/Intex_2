@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Create</h1>
@@ -13,7 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Gamous" class="control-label"></label>
                 <input asp-for="Gamous" class="form-control" />
                 <span asp-validation-for="Gamous" class="text-danger"></span>
@@ -22,7 +21,7 @@
                 <label asp-for="LocationId" class="control-label"></label>
                 <input asp-for="LocationId" class="form-control" />
                 <span asp-validation-for="LocationId" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="BurialSituationNotes" class="control-label"></label>
                 <input asp-for="BurialSituationNotes" class="form-control" />

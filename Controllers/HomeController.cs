@@ -57,6 +57,10 @@ namespace Intex_2.Controllers
             });
         }
 
+        public IActionResult Test()
+        {
+            return View(new MummyDetailsViewModel { });
+        }
         
         public IActionResult DetailsMummies(string locationID)
         {
@@ -67,6 +71,8 @@ namespace Intex_2.Controllers
             GamousC14 gc14 = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == locationID);
             GamousBone gb = _con.GamousBones.FirstOrDefault(p => p.Gamous == g.Gamous);
             GamousBiologicalSample gbs = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == locationID);
+            FieldMain fm = _con.FieldMains.FirstOrDefault(p => p.LocationId == locationID);
+            GamousSample gs = _con.GamousSamples.FirstOrDefault(p => p.Gamous == g.Gamous);
 
             return View(new MummyDetailsViewModel
             {
@@ -76,7 +82,9 @@ namespace Intex_2.Controllers
                 cranialInfo = gc,
                 carbonDating = gc14,
                 bone = gb,
-                bioSample = gbs
+                bioSample = gbs,
+                field = fm,
+                sample = gs
 
             }) ;
         }

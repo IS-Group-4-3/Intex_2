@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousDentals/Create
-        public IActionResult Create()
+        public IActionResult CreateGamousDentals()
         {
             return View();
         }
@@ -53,7 +53,7 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Gamous,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion")] GamousDental gamousDental)
+        public async Task<IActionResult> CreateGamousDentals([Bind("Gamous,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion")] GamousDental gamousDental)
         {
             if (ModelState.IsValid)
             {

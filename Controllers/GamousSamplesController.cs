@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousSamples/Create
-        public IActionResult Create()
+        public IActionResult CreateGamousSamples()
         {
             return View();
         }
@@ -53,7 +53,7 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Gamous,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken")] GamousSample gamousSample)
+        public async Task<IActionResult> CreateGamousSamples([Bind("Gamous,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken")] GamousSample gamousSample)
         {
             if (ModelState.IsValid)
             {

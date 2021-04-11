@@ -21,7 +21,7 @@
             @if (user.role == "Admin")
             {
                 <td>
-                    <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id" method="post">
+                    <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id"  asp-route-role="" method="post">
                         <select id="select+@count" onchange="RouteRole(this)">
                             <option value="">Guest</option>
                             <option value="Researcher">Researcher</option>
@@ -33,7 +33,7 @@
             }else if (user.role == "Researcher")
             {
                 <td>
-                    <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id" method="post">
+                    <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id" asp-route-role="" method="post">
                         <select id="select+@count" onchange="RouteRole(this)">
                             <option value="">Guest</option>
                             <option value="Researcher" selected>Researcher</option>
@@ -45,7 +45,7 @@
             }else 
             {
                 <td>
-                    <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id" method="post">
+                    <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id" asp-route-role="" method="post">
                         <select id="select+@count" onchange="RouteRole(this)">
                             <option value="" selected>Guest</option>
                             <option value="Researcher">Researcher</option>
