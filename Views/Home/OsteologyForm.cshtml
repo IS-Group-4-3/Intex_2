@@ -9,11 +9,46 @@
 <form>
     <div>
         <label>Square: </label>
+        <br />
+
+        <label>High Pair (North/South): </label>
         <input />
+        <br />
+        <label>Low Pair (North/South): </label>
+        <input />
+        <br />
+        <label>North/South?:</label>
+        <input type="radio" id="north" name="northSouth" value="North" />
+        <label for="north">North</label>
+        <input type="radio" id="south" name="northSouth" value="South" />
+        <label for="south">South</label>
+        <br />
+
+        <label>High Pair (East/West): </label>
+        <input />
+        <br />
+        <label>Low Pair (East/West): </label>
+        <input />
+        <br />
+        <label>East/West?:</label>
+        <input type="radio" id="east" name="eastWest" value="East" />
+        <label for="east">East</label>
+        <input type="radio" id="west" name="eastWest" value="West" />
+        <label for="west">West</label>
+        <br />
+
+
+
         <br />
 
         <label>Area: </label>
-        <input />
+        <select>
+            <option value="">Select One</option>
+            <option value="NE">NE</option>
+            <option value="NW">NW</option>
+            <option value="SE">SE</option>
+            <option value="SW">SW</option>
+        </select>
         <br />
 
         <label>Burial #: </label>
