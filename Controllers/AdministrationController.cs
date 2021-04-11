@@ -16,7 +16,8 @@ namespace Intex_2.Controllers
 
         private readonly RoleManager<IdentityRole> roleManager;
 
-        public AdministrationController(RoleManager<IdentityRole> roleManager, ApplicationDbContext con)
+        public AdministrationController(RoleManager<IdentityRole> roleManager,
+                                        ApplicationDbContext con)
         {
             this.roleManager = roleManager;
             _con = con;
@@ -31,9 +32,16 @@ namespace Intex_2.Controllers
         public IActionResult ManageUsers()
         {
             ViewBag.users = _con.Users;
+            ViewBag.user_roles = _con.UserRoles;
             return View();
         }
 
-
+        public IActionResult DeleteUser(string id)
+        {
+            var user = _con.Users.Where(x => x.Id == id).FirstOrDefault();
+            _con.Users.Remove(user);
+            _con.SaveChanges();
+            return RedirectToAction("ManageUsers");
+        }
     }
 }
