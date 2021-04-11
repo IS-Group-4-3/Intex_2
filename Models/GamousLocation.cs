@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 
 #nullable disable
 
@@ -7,6 +9,7 @@ namespace Intex_2.Models
 {
     public partial class GamousLocation
     {
+        [Key]
         public string LocationId { get; set; }
         public int? LowPairNs { get; set; }
         public int? HighPairNs { get; set; }

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Intex_2.Models.GamousMain>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gamous)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialSituationNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LengthOfRemains)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SampleNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenderGe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GeFunctionTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenderBodyCol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtifactsDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HairColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreservationIndex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtifactFound)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimateAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimateLivingStature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateFound)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LengthOfRemainsM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimateLivingStatureM)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gamous)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialSituationNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LengthOfRemains)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SampleNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenderGe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GeFunctionTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenderBodyCol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtifactsDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HairColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreservationIndex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtifactFound)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimateAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimateLivingStature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFound)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LengthOfRemainsM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimateLivingStatureM)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LocationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -17,9 +17,16 @@ namespace Intex_2.Models
         {
         }
 
+        public virtual DbSet<Apr2018> Apr2018s { get; set; }
         public virtual DbSet<BiologicalSample> BiologicalSamples { get; set; }
         public virtual DbSet<C14Datum> C14Data { get; set; }
         public virtual DbSet<Cranial2002> Cranial2002s { get; set; }
+        public virtual DbSet<FieldAdultChild> FieldAdultChildren { get; set; }
+        public virtual DbSet<FieldAgeCode> FieldAgeCodes { get; set; }
+        public virtual DbSet<FieldBurialWrapping> FieldBurialWrappings { get; set; }
+        public virtual DbSet<FieldGenderCode> FieldGenderCodes { get; set; }
+        public virtual DbSet<FieldHairColor> FieldHairColors { get; set; }
+        public virtual DbSet<FieldMain> FieldMains { get; set; }
         public virtual DbSet<GamousBiologicalSample> GamousBiologicalSamples { get; set; }
         public virtual DbSet<GamousBone> GamousBones { get; set; }
         public virtual DbSet<GamousC14> GamousC14s { get; set; }
@@ -34,7 +41,7 @@ namespace Intex_2.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseNpgsql("Host=el-gamous.chg4orpssig1.us-east-2.rds.amazonaws.com;Database=postgres;Username=postgres;Password=Intex2group4-3;");
             }
         }
@@ -42,6 +49,171 @@ namespace Intex_2.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "en_US.UTF-8");
+
+            modelBuilder.Entity<Apr2018>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("apr2018");
+
+                entity.Property(e => e.AgeCodeSingle).HasColumnName("age_code_single");
+
+                entity.Property(e => e.AgeSkull2018).HasColumnName("age_skull_2018");
+
+                entity.Property(e => e.AreaHillBurials).HasColumnName("area_hill_burials");
+
+                entity.Property(e => e.BodyAnalysis).HasColumnName("body_analysis");
+
+                entity.Property(e => e.BurialAdultChild).HasColumnName("burial_adult_child");
+
+                entity.Property(e => e.BurialAreaEastOrWest).HasColumnName("burial_area_east_or_west");
+
+                entity.Property(e => e.BurialAreaNorthOrSouth).HasColumnName("burial_area_north_or_south");
+
+                entity.Property(e => e.BurialDepth).HasColumnName("burial_depth");
+
+                entity.Property(e => e.BurialDirection).HasColumnName("burial_direction");
+
+                entity.Property(e => e.BurialDirection1).HasColumnName("burial_direction_1");
+
+                entity.Property(e => e.BurialNumber).HasColumnName("burial_number");
+
+                entity.Property(e => e.BurialPreservation).HasColumnName("burial_preservation");
+
+                entity.Property(e => e.BurialSouthToFeet).HasColumnName("burial_south_to_feet");
+
+                entity.Property(e => e.BurialSouthToHead).HasColumnName("burial_south_to_head");
+
+                entity.Property(e => e.BurialWestToFeet).HasColumnName("burial_west_to_feet");
+
+                entity.Property(e => e.BurialWestToHead).HasColumnName("burial_west_to_head");
+
+                entity.Property(e => e.BurialWrapping).HasColumnName("burial_wrapping");
+
+                entity.Property(e => e.Burialageatdeath).HasColumnName("burialageatdeath");
+
+                entity.Property(e => e.Burialagemethod).HasColumnName("burialagemethod");
+
+                entity.Property(e => e.Burialgendermethod).HasColumnName("burialgendermethod");
+
+                entity.Property(e => e.Burialhaircolor).HasColumnName("burialhaircolor");
+
+                entity.Property(e => e.Burialnors).HasColumnName("burialnors");
+
+                entity.Property(e => e.Burialsampletaken).HasColumnName("burialsampletaken");
+
+                entity.Property(e => e.Burialxeorw).HasColumnName("burialxeorw");
+
+                entity.Property(e => e.ButtonOsteoma).HasColumnName("button_osteoma");
+
+                entity.Property(e => e.ByuSample).HasColumnName("byu_sample");
+
+                entity.Property(e => e.ClusterNum).HasColumnName("cluster_num");
+
+                entity.Property(e => e.CribraOrbitala).HasColumnName("cribra_orbitala");
+
+                entity.Property(e => e.DateExcavated).HasColumnName("date_excavated");
+
+                entity.Property(e => e.DateOnSkull).HasColumnName("date_on_skull");
+
+                entity.Property(e => e.FaceBundle).HasColumnName("face_bundle");
+
+                entity.Property(e => e.FieldBook).HasColumnName("field_book");
+
+                entity.Property(e => e.FieldBookPageNumber).HasColumnName("field_book_page_number");
+
+                entity.Property(e => e.FieldNotes).HasColumnName("field_notes");
+
+                entity.Property(e => e.FieldNotes1).HasColumnName("field_notes_1");
+
+                entity.Property(e => e.FieldNotes10).HasColumnName("field_notes_10");
+
+                entity.Property(e => e.FieldNotes11).HasColumnName("field_notes_11");
+
+                entity.Property(e => e.FieldNotes12).HasColumnName("field_notes_12");
+
+                entity.Property(e => e.FieldNotes13).HasColumnName("field_notes_13");
+
+                entity.Property(e => e.FieldNotes2).HasColumnName("field_notes_2");
+
+                entity.Property(e => e.FieldNotes3).HasColumnName("field_notes_3");
+
+                entity.Property(e => e.FieldNotes4).HasColumnName("field_notes_4");
+
+                entity.Property(e => e.FieldNotes5).HasColumnName("field_notes_5");
+
+                entity.Property(e => e.FieldNotes6).HasColumnName("field_notes_6");
+
+                entity.Property(e => e.FieldNotes7).HasColumnName("field_notes_7");
+
+                entity.Property(e => e.FieldNotes8).HasColumnName("field_notes_8");
+
+                entity.Property(e => e.FieldNotes9).HasColumnName("field_notes_9");
+
+                entity.Property(e => e.GenderCode).HasColumnName("gender_code");
+
+                entity.Property(e => e.Goods).HasColumnName("goods");
+
+                entity.Property(e => e.HairColorCode).HasColumnName("hair_color_code");
+
+                entity.Property(e => e.InitialsOfDataEntryChecker).HasColumnName("initials_of_data_entry_checker");
+
+                entity.Property(e => e.InitialsOfDataEntryExpert).HasColumnName("initials_of_data_entry_expert");
+
+                entity.Property(e => e.LengthCm).HasColumnName("length_cm");
+
+                entity.Property(e => e.LengthM).HasColumnName("length_m");
+
+                entity.Property(e => e.LengthOfRemains).HasColumnName("length_of_remains");
+
+                entity.Property(e => e.LinearHypoplasiaEnamel).HasColumnName("linear_hypoplasia_enamel");
+
+                entity.Property(e => e.LocationId).HasColumnName("location_id");
+
+                entity.Property(e => e.MetopicSuture).HasColumnName("metopic_suture");
+
+                entity.Property(e => e.MonthExcavated).HasColumnName("month_excavated");
+
+                entity.Property(e => e.MonthOnSkull).HasColumnName("month_on_skull");
+
+                entity.Property(e => e.OsteologyNotes).HasColumnName("osteology_notes");
+
+                entity.Property(e => e.OsteologyUnknownComment).HasColumnName("osteology_unknown_comment");
+
+                entity.Property(e => e.PoroticHyperostosis).HasColumnName("porotic_hyperostosis");
+
+                entity.Property(e => e.PoroticHyperostosisLocations).HasColumnName("porotic_hyperostosis_locations");
+
+                entity.Property(e => e.PostcraniaAtMagazine).HasColumnName("postcrania_at_magazine");
+
+                entity.Property(e => e.PostcraniaTrauma).HasColumnName("postcrania_trauma");
+
+                entity.Property(e => e.PostcraniaTrauma1).HasColumnName("postcrania_trauma_1");
+
+                entity.Property(e => e.Rack).HasColumnName("rack");
+
+                entity.Property(e => e.RackAndShelf).HasColumnName("rack_and_shelf");
+
+                entity.Property(e => e.SexSkull2018).HasColumnName("sex_skull_2018");
+
+                entity.Property(e => e.Shelf).HasColumnName("shelf");
+
+                entity.Property(e => e.SkullAtMagazine).HasColumnName("skull_at_magazine");
+
+                entity.Property(e => e.SkullTrauma).HasColumnName("skull_trauma");
+
+                entity.Property(e => e.Square).HasColumnName("square");
+
+                entity.Property(e => e.TemporalMandibularJointOsteoarthritisTmjOa).HasColumnName("temporal_mandibular_joint_osteoarthritis_tmj_oa");
+
+                entity.Property(e => e.ToBeConfirmed).HasColumnName("to_be_confirmed");
+
+                entity.Property(e => e.Tomb).HasColumnName("tomb");
+
+                entity.Property(e => e.YearExcav).HasColumnName("year_excav");
+
+                entity.Property(e => e.YearOnSkull).HasColumnName("year_on_skull");
+            });
 
             modelBuilder.Entity<BiologicalSample>(entity =>
             {
@@ -283,9 +455,190 @@ namespace Intex_2.Models
                     .HasColumnName("nasionprosthion");
             });
 
+            modelBuilder.Entity<FieldAdultChild>(entity =>
+            {
+                entity.HasKey(e => e.Pk)
+                    .HasName("field_adult_child_pkey");
+
+                entity.ToTable("field_adult_child");
+
+                entity.Property(e => e.Pk)
+                    .HasColumnType("character varying")
+                    .HasColumnName("pk");
+
+                entity.Property(e => e.Text).HasColumnName("text");
+            });
+
+            modelBuilder.Entity<FieldAgeCode>(entity =>
+            {
+                entity.HasKey(e => e.Pk)
+                    .HasName("field_age_code_pkey");
+
+                entity.ToTable("field_age_code");
+
+                entity.Property(e => e.Pk)
+                    .HasColumnType("character varying")
+                    .HasColumnName("pk");
+
+                entity.Property(e => e.Text).HasColumnName("text");
+            });
+
+            modelBuilder.Entity<FieldBurialWrapping>(entity =>
+            {
+                entity.HasKey(e => e.Pk)
+                    .HasName("field_burial_wrapping_pkey");
+
+                entity.ToTable("field_burial_wrapping");
+
+                entity.Property(e => e.Pk)
+                    .HasColumnType("character varying")
+                    .HasColumnName("pk");
+
+                entity.Property(e => e.Text).HasColumnName("text");
+            });
+
+            modelBuilder.Entity<FieldGenderCode>(entity =>
+            {
+                entity.HasKey(e => e.Pk)
+                    .HasName("field_gender_code_pkey");
+
+                entity.ToTable("field_gender_code");
+
+                entity.Property(e => e.Pk)
+                    .HasColumnType("character varying")
+                    .HasColumnName("pk");
+
+                entity.Property(e => e.Text).HasColumnName("text");
+            });
+
+            modelBuilder.Entity<FieldHairColor>(entity =>
+            {
+                entity.HasKey(e => e.Pk)
+                    .HasName("field_hair_color_pkey");
+
+                entity.ToTable("field_hair_color");
+
+                entity.Property(e => e.Pk)
+                    .HasColumnType("character varying")
+                    .HasColumnName("pk");
+
+                entity.Property(e => e.Text).HasColumnName("text");
+            });
+
+            modelBuilder.Entity<FieldMain>(entity =>
+            {
+
+                entity.ToTable("field_main");
+
+                entity.Property(e => e.AgeCode).HasColumnName("age_code");
+
+                entity.Property(e => e.AgeSkull2018).HasColumnName("age_skull_2018");
+
+                entity.Property(e => e.AreaHillBurials).HasColumnName("area_hill_burials");
+
+                entity.Property(e => e.BodyAnalysisYear).HasColumnName("body_analysis_year");
+
+                entity.Property(e => e.BurialAdultChild).HasColumnName("burial_adult_child");
+
+                entity.Property(e => e.BurialAgeAtDeath).HasColumnName("burial_age_at_death");
+
+                entity.Property(e => e.BurialAgeMethod).HasColumnName("burial_age_method");
+
+                entity.Property(e => e.BurialDepth).HasColumnName("burial_depth");
+
+                entity.Property(e => e.BurialGenderMethod).HasColumnName("burial_gender_method");
+
+                entity.Property(e => e.BurialHairColorText).HasColumnName("burial_hair_color_text");
+
+                entity.Property(e => e.BurialPreservation).HasColumnName("burial_preservation");
+
+                entity.Property(e => e.BurialSampleTaken).HasColumnName("burial_sample_taken");
+
+                entity.Property(e => e.BurialWrapping).HasColumnName("burial_wrapping");
+
+                entity.Property(e => e.ButtonOsteoma).HasColumnName("button_osteoma");
+
+                entity.Property(e => e.ByuSample).HasColumnName("byu_sample");
+
+                entity.Property(e => e.ClusterNum).HasColumnName("cluster_num");
+
+                entity.Property(e => e.CribraOrbitala).HasColumnName("cribra_orbitala");
+
+                entity.Property(e => e.DateExcavated).HasColumnName("date_excavated");
+
+                entity.Property(e => e.DateOnSkull).HasColumnName("date_on_skull");
+
+                entity.Property(e => e.FaceBundle).HasColumnName("face_bundle");
+
+                entity.Property(e => e.FieldBook).HasColumnName("field_book");
+
+                entity.Property(e => e.FieldBookPageNumber).HasColumnName("field_book_page_number");
+
+                entity.Property(e => e.FieldNotes).HasColumnName("field_notes");
+
+                entity.Property(e => e.GenderCode).HasColumnName("gender_code");
+
+                entity.Property(e => e.Goods).HasColumnName("goods");
+
+                entity.Property(e => e.HairColorCode).HasColumnName("hair_color_code");
+
+                entity.Property(e => e.InitialsOfDataEntryChecker).HasColumnName("initials_of_data_entry_checker");
+
+                entity.Property(e => e.InitialsOfDataEntryExpert).HasColumnName("initials_of_data_entry_expert");
+
+                entity.Property(e => e.LengthM).HasColumnName("length_m");
+
+                entity.Property(e => e.LengthOfRemains).HasColumnName("length_of_remains");
+
+                entity.Property(e => e.LinearHypoplasiaEnamel).HasColumnName("linear_hypoplasia_enamel");
+
+                entity.Property(e => e.LocationId).HasColumnName("location_id");
+
+                entity.Property(e => e.MetopicSuture).HasColumnName("metopic_suture");
+
+                entity.Property(e => e.MonthExcavated).HasColumnName("month_excavated");
+
+                entity.Property(e => e.MonthOnSkull).HasColumnName("month_on_skull");
+
+                entity.Property(e => e.OsteologyNotes).HasColumnName("osteology_notes");
+
+                entity.Property(e => e.OsteologyUnknownComment).HasColumnName("osteology_unknown_comment");
+
+                entity.Property(e => e.PoroticHyperostosis).HasColumnName("porotic_hyperostosis");
+
+                entity.Property(e => e.PoroticHyperostosisLocations).HasColumnName("porotic_hyperostosis_locations");
+
+                entity.Property(e => e.PostcraniaAtMagazine).HasColumnName("postcrania_at_magazine");
+
+                entity.Property(e => e.PostcraniaTrauma).HasColumnName("postcrania_trauma");
+
+                entity.Property(e => e.PostcraniaTrauma1).HasColumnName("postcrania_trauma_1");
+
+                entity.Property(e => e.Rack).HasColumnName("rack");
+
+                entity.Property(e => e.RackAndShelf).HasColumnName("rack_and_shelf");
+
+                entity.Property(e => e.SexSkull2018).HasColumnName("sex_skull_2018");
+
+                entity.Property(e => e.Shelf).HasColumnName("shelf");
+
+                entity.Property(e => e.SkullAtMagazine).HasColumnName("skull_at_magazine");
+
+                entity.Property(e => e.SkullTrauma).HasColumnName("skull_trauma");
+
+                entity.Property(e => e.TemporalMandibularJointOsteoarthritisTmjOa).HasColumnName("temporal_mandibular_joint_osteoarthritis_tmj_oa");
+
+                entity.Property(e => e.ToBeConfirmed).HasColumnName("to_be_confirmed");
+
+                entity.Property(e => e.Tomb).HasColumnName("tomb");
+
+                entity.Property(e => e.YearExcavated).HasColumnName("year_excavated");
+
+                entity.Property(e => e.YearOnSkull).HasColumnName("year_on_skull");
+            });
+
             modelBuilder.Entity<GamousBiologicalSample>(entity =>
             {
-                entity.HasNoKey();
 
                 entity.ToTable("gamous_biological_samples");
 
@@ -488,7 +841,6 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousC14>(entity =>
             {
-                entity.HasNoKey();
 
                 entity.ToTable("gamous_c14");
 
@@ -565,7 +917,6 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousCranial>(entity =>
             {
-                entity.HasNoKey();
 
                 entity.ToTable("gamous_cranial");
 
@@ -757,6 +1108,8 @@ namespace Intex_2.Models
                     .HasPrecision(7, 3)
                     .HasColumnName("estimate_living_stature");
 
+                entity.Property(e => e.EstimateLivingStatureM).HasColumnName("estimate_living_stature_m");
+
                 entity.Property(e => e.Gamous).HasColumnName("gamous");
 
                 entity.Property(e => e.GeFunctionTotal)
@@ -776,6 +1129,8 @@ namespace Intex_2.Models
                     .HasColumnName("hair_color");
 
                 entity.Property(e => e.LengthOfRemains).HasColumnName("length_of_remains");
+
+                entity.Property(e => e.LengthOfRemainsM).HasColumnName("length_of_remains_m");
 
                 entity.Property(e => e.PreservationIndex)
                     .HasMaxLength(3)

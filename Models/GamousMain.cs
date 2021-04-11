@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 
 #nullable disable
 
@@ -8,6 +10,7 @@ namespace Intex_2.Models
     public partial class GamousMain
     {
         public int? Gamous { get; set; }
+        [Key]
         public string LocationId { get; set; }
         public string BurialSituationNotes { get; set; }
         public int? LengthOfRemains { get; set; }
@@ -22,5 +25,7 @@ namespace Intex_2.Models
         public decimal? EstimateAge { get; set; }
         public decimal? EstimateLivingStature { get; set; }
         public DateTime? DateFound { get; set; }
+        public decimal? LengthOfRemainsM { get; set; }
+        public decimal? EstimateLivingStatureM { get; set; }
     }
 }

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Intex_2.Models.GamousLocation>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LowPairNs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HighPairNs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialLocationNs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LowPairEw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HighPairEw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialLocationEw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialSubplot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SouthToHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SouthToFeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EastToHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EastToFeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadDirection)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LowPairNs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighPairNs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialLocationNs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LowPairEw)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighPairEw)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialLocationEw)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialSubplot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SouthToHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SouthToFeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EastToHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EastToFeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadDirection)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LocationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,258 @@
+﻿@model IEnumerable<Intex_2.Models.GamousBone>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BasilarSuture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VentralArc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubpubicAngle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SciaticNotch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PubicBone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreaurSulcus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedialIpRamus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DorsalPitting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ForemanMagnum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FemurHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HumerusHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Osteophytosis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PubicSymphysis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BoneLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedialClavicle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IliacCrest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FemurDiameter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Humerus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FemurLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HumerusLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TibiaLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Robust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupraorbitalRidges)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrbitEdge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParietalBossing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gonian)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NuchalCrest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZygomaticCrest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CranialSuture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaximumCranialLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaximumCranialBreadth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BasionBregmaHeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BasionNasion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BasionProsthionLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BizygomaticDiameter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NasionProsthion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaximumNasalBreadth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterorbitalBreadth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasilarSuture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VentralArc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubpubicAngle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SciaticNotch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PubicBone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreaurSulcus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedialIpRamus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DorsalPitting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForemanMagnum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FemurHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HumerusHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Osteophytosis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PubicSymphysis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoneLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedialClavicle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IliacCrest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FemurDiameter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Humerus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FemurLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HumerusLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TibiaLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Robust)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupraorbitalRidges)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrbitEdge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParietalBossing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gonian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NuchalCrest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZygomaticCrest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CranialSuture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumCranialLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumCranialBreadth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasionBregmaHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasionNasion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasionProsthionLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BizygomaticDiameter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NasionProsthion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumNasalBreadth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterorbitalBreadth)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Gamous">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Gamous">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Gamous">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

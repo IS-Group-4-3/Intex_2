@@ -1,0 +1,43 @@
+﻿@model Intex_2.Models.GamousDental
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GamousDental</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ToothAttrition)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ToothAttrition)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ToothEruption)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ToothEruption)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PathologyAnomalies)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PathologyAnomalies)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EpiphysealUnion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EpiphysealUnion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Gamous">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
