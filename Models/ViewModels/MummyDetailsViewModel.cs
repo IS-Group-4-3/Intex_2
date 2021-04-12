@@ -16,5 +16,6 @@ namespace Intex_2.Models.ViewModels
         public GamousBiologicalSample bioSample { get; set; }
         public GamousSample sample { get; set; }
         public FieldMain field { get; set; }
+        public FieldLocation fieldLocation { get; set; }
     }
 }

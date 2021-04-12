@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: FieldMains/Create
-        public IActionResult Create()
+        public IActionResult CreateFieldMains()
         {
             return View();
         }

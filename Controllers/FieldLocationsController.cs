@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: FieldLocations/Create
-        public IActionResult Create()
+        public IActionResult CreateFieldLocations()
         {
             return View();
         }

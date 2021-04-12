@@ -62,6 +62,11 @@ namespace Intex_2.Controllers
             return View(new MummyDetailsViewModel { });
         }
 
+        public IActionResult Test2()
+        {
+            return View(new MummyDetailsViewModel { });
+        }
+
         public IActionResult Map()
         {
             return View();
@@ -77,6 +82,7 @@ namespace Intex_2.Controllers
             GamousBone gb = _con.GamousBones.FirstOrDefault(p => p.Gamous == g.Gamous);
             GamousBiologicalSample gbs = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == locationID);
             FieldMain fm = _con.FieldMains.FirstOrDefault(p => p.LocationId == locationID);
+            FieldLocation fl = _con.FieldLocations.FirstOrDefault(p => p.LocationId == locationID);
             GamousSample gs = _con.GamousSamples.FirstOrDefault(p => p.Gamous == g.Gamous);
 
             return View(new MummyDetailsViewModel
@@ -89,6 +95,7 @@ namespace Intex_2.Controllers
                 bone = gb,
                 bioSample = gbs,
                 field = fm,
+                fieldLocation = fl,
                 sample = gs
 
             }) ;

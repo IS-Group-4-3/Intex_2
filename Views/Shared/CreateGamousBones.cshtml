@@ -145,7 +145,7 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="MedialIpRamus" class="control-label"></label>
+                <label asp-for="MedialIpRamus" class="control-label">Medial IP Ramus (Scale 0-3)</label>
                 <select asp-for="MedialIpRamus" class="form-control">
                     <option value="0" class="form-control">0</option>
                     <option value="1" class="form-control">1</option>
@@ -193,12 +193,6 @@
             <div class="form-group">
                 <input asp-for="FemurLength" class="form-control" />
                 <span asp-validation-for="FemurLength" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="HumerusLength" class="control-label"></label>
-                <input asp-for="HumerusLength" class="form-control" />
-                <span asp-validation-for="HumerusLength" class="text-danger"></span>
             </div>
 
             <h6>B. Humerus Length (mm) </h6>
