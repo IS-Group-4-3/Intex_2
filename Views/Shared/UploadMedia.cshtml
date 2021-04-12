@@ -1,0 +1,16 @@
+﻿
+@model UploadFileViewModel
+
+<div class="container-fluid">
+    <div class="row">
+        <form method="post" asp-controller="Home"
+              asp-action="UploadMedia" enctype="multipart/form-data">
+
+                <label asp-for="photo">Upload File</label>
+                <input type="file" asp-for="photo" class="form-control" />
+                <span class="text-danger" asp-validation-for="photo"></span>
+           
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
