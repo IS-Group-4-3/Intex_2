@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousC14/Create
-        public IActionResult Create()
+        public IActionResult CreateGamousC14()
         {
             return View();
         }
