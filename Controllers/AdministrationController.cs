@@ -47,7 +47,7 @@ namespace Intex_2.Controllers
                                id = u.Id,
                                email = u.Email,
                                role = rs.Name
-                           }).OrderBy(x => x.role).ToList();
+                           }).OrderByDescending(x => x.role).ToList();
 
             ViewBag.joined_users = results; 
 
@@ -66,24 +66,33 @@ namespace Intex_2.Controllers
         [HttpPost]
         public IActionResult EditUserRole(string id, string role)
         {
-            var role_id = (from c in _con.Roles.Where(x => x.Name == role) select new {id = c.Id });
-            //role_id = role_id.ToList().FirstOrDefault();
+            if (role != null)
+            {
+                var role_id = _con.Roles.Where(x => x.Name == role).FirstOrDefault().Id.ToString();
+   
+                var user_role = _con.UserRoles.Where(x => x.UserId == id).FirstOrDefault();
 
+                if (user_role != null)
+                {
+                    _con.UserRoles.Remove(user_role);
+                    _con.SaveChanges();
+                }
 
-            var user_role = _con.UserRoles.Where(x => x.UserId == id).FirstOrDefault();
+                Microsoft.AspNetCore.Identity.IdentityUserRole<string> userRole = new Microsoft.AspNetCore.Identity.IdentityUserRole<string>();
 
+                userRole.UserId = id;
+                userRole.RoleId = role_id;
+                _con.UserRoles.Add(userRole);
 
-            user_role.RoleId = role_id;
-            //_con.UserRoles.Remove(user_role);
-            _con.SaveChanges();
+                _con.SaveChanges();
+            }
+            else
+            {
+                var user_role = _con.UserRoles.Where(x => x.UserId == id).FirstOrDefault();
 
-            //Microsoft.AspNetCore.Identity.IdentityUserRole<string> userRole = new Microsoft.AspNetCore.Identity.IdentityUserRole<string>();
-
-            //userRole.UserId = id;
-            //userRole.RoleId = _con.Roles.Where(x => x.Id == role_id).ToString();
-            //_con.UserRoles.Add(userRole);
-
-            //_con.SaveChanges();
+                _con.UserRoles.Remove(user_role);
+                _con.SaveChanges();
+            }
 
             return RedirectToAction("ManageUsers");
         }
