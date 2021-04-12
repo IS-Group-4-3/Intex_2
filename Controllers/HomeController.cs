@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 
 namespace Intex_2.Controllers
 {
-    
+
     public class HomeController : Controller
     {
-        
+
         private readonly ILogger<HomeController> _logger;
 
         private readonly postgresContext _con;
         private readonly IS3Service _s3;
         public int PageSize = 10;
-        
+
         public HomeController(ILogger<HomeController> logger, postgresContext con, IS3Service s3)
         {
             _logger = logger;
@@ -40,10 +40,20 @@ namespace Intex_2.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult ListMummies(int pageNum = 1)
         {
+            ViewBag.gender_filter = _con.GamousMains.Select(x => x.GenderGe).Distinct().ToList();
+            ViewBag.hair_filter = _con.GamousMains.Select(x => x.HairColor).Distinct().ToList();
+            ViewBag.date_min = _con.GamousMains.Select(x => x.DateFound).Min();
+            ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
+
+
+
+
+
             return View(new MummyListViewModel
-            { 
+            {
                 mummies = _con.GamousMains
                     .OrderBy(b => b.Gamous)
                     .Skip((pageNum - 1) * PageSize)
@@ -53,11 +63,69 @@ namespace Intex_2.Controllers
                     CurrentPage = pageNum,
                     ItemsPerPage = PageSize,
                     TotalNumItems = _con.GamousMains.Count()
-                    //TotalNumItems = teamId == null ? _context.Bowlers.Count() :
-                    //    _context.Bowlers.Where(x => x.TeamId == teamId).Count()
+
+
+
                 },
 
+
+
             });
+        }
+
+
+
+        [HttpPost]
+        public IActionResult ListMummies(List<string> gender_filter, List<string> hair_filter, string artifact, int pageNum = 1)
+        {
+            ViewBag.gender_filter = _con.GamousMains.Select(x => x.GenderGe).Distinct().ToList();
+            ViewBag.hair_filter = _con.GamousMains.Select(x => x.HairColor).Distinct().ToList();
+            ViewBag.date_min = _con.GamousMains.Select(x => x.DateFound).Min();
+            ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
+
+
+
+            var query = from b in _con.GamousMains select b;
+
+
+
+            if (gender_filter.Count() > 0)
+            {
+                //gender_query = "gender_filter.Contains(b.GenderGe)";
+                query = query.Where(b => gender_filter.Contains(b.GenderGe));
+            }
+            if (hair_filter.Count() > 0)
+            {
+                query = query.Where(b => hair_filter.Contains(b.HairColor));
+            }
+            if (artifact != null)
+            {
+                query = query.Where(b => b.ArtifactFound == artifact);
+            }
+
+
+
+            query = query
+                .OrderBy(b => b.Gamous)
+                .Skip((pageNum - 1) * PageSize)
+                .Take(PageSize);
+
+
+
+            return View(new MummyListViewModel
+            {
+                mummies = query,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = PageSize,
+                    //TotalNumItems = _con.GamousMains.Count()
+                    TotalNumItems = query.Count()
+                },
+
+
+
+            }); ;
         }
 
         public IActionResult Test()
@@ -78,15 +146,21 @@ namespace Intex_2.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadMedia(UploadFileViewModel upload)
         {
+            string url = null;
             if (ModelState.IsValid)
             {
-                string url = await _s3.AddItem(upload.photo, "test");
+                url = await _s3.AddItem(upload.photo, "test");
             }
             else
             {
-
+                return View("UploadMedia");
             }
 
+            return View("MediaLibrary", url);
+        }
+
+        public IActionResult MediaLibrary(string url)
+        {
             return View();
         }
 
@@ -114,7 +188,7 @@ namespace Intex_2.Controllers
                 field = fm,
                 sample = gs
 
-            }) ;
+            });
         }
         public IActionResult RedirectToEditMummies(MummyDetailsViewModel m)
         {
@@ -159,7 +233,7 @@ namespace Intex_2.Controllers
 
         public IActionResult ConfirmEdit(MummyDetailsViewModel eM)
         {
-            
+
 
             return View();
         }
