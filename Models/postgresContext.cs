@@ -528,8 +528,6 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<FieldLocation>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("field_location");
 
                 entity.Property(e => e.BurialAreaEastOrWest).HasColumnName("burial_area_east_or_west");

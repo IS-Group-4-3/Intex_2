@@ -1,0 +1,94 @@
+@model Intex_2.Models.FieldLocation
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>FieldLocation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label"></label>
+                <input asp-for="LocationId" class="form-control" />
+                <span asp-validation-for="LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialAreaNorthOrSouth" class="control-label"></label>
+                <input asp-for="BurialAreaNorthOrSouth" class="form-control" />
+                <span asp-validation-for="BurialAreaNorthOrSouth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Burialnors" class="control-label"></label>
+                <input asp-for="Burialnors" class="form-control" />
+                <span asp-validation-for="Burialnors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialAreaEastOrWest" class="control-label"></label>
+                <input asp-for="BurialAreaEastOrWest" class="form-control" />
+                <span asp-validation-for="BurialAreaEastOrWest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Burialxeorw" class="control-label"></label>
+                <input asp-for="Burialxeorw" class="form-control" />
+                <span asp-validation-for="Burialxeorw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Square" class="control-label"></label>
+                <input asp-for="Square" class="form-control" />
+                <span asp-validation-for="Square" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialNumber" class="control-label"></label>
+                <input asp-for="BurialNumber" class="form-control" />
+                <span asp-validation-for="BurialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialWestToHead" class="control-label"></label>
+                <input asp-for="BurialWestToHead" class="form-control" />
+                <span asp-validation-for="BurialWestToHead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialWestToFeet" class="control-label"></label>
+                <input asp-for="BurialWestToFeet" class="form-control" />
+                <span asp-validation-for="BurialWestToFeet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialSouthToHead" class="control-label"></label>
+                <input asp-for="BurialSouthToHead" class="form-control" />
+                <span asp-validation-for="BurialSouthToHead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialSouthToFeet" class="control-label"></label>
+                <input asp-for="BurialSouthToFeet" class="form-control" />
+                <span asp-validation-for="BurialSouthToFeet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialDepth" class="control-label"></label>
+                <input asp-for="BurialDepth" class="form-control" />
+                <span asp-validation-for="BurialDepth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialDirection" class="control-label"></label>
+                <input asp-for="BurialDirection" class="form-control" />
+                <span asp-validation-for="BurialDirection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

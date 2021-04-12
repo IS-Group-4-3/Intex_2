@@ -1,0 +1,102 @@
+@model IEnumerable<Intex_2.Models.FieldLocation>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialAreaNorthOrSouth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Burialnors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialAreaEastOrWest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Burialxeorw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Square)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialWestToHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialWestToFeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialSouthToHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialSouthToFeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialDepth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialDirection)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialAreaNorthOrSouth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Burialnors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialAreaEastOrWest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Burialxeorw)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Square)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialWestToHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialWestToFeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialSouthToHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialSouthToFeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialDepth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialDirection)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LocationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
