@@ -38,14 +38,16 @@ namespace Intex_2.Controllers
 
 
             var results = (from u in _con.Users
-                           join ur in _con.UserRoles on u.Id equals ur.UserId
-                           join r in _con.Roles on ur.RoleId equals r.Id
+                           from urs in _con.UserRoles
+                           .Where(ur => u.Id == ur.UserId).DefaultIfEmpty()
+                           from rs in _con.Roles
+                           .Where(r => r.Id == urs.RoleId).DefaultIfEmpty()
                            select new UserViewModel()
                            {
                                id = u.Id,
                                email = u.Email,
-                               role = r.Name
-                           }).ToList();
+                               role = rs.Name
+                           }).OrderBy(x => x.role).ToList();
 
             ViewBag.joined_users = results; 
 
@@ -64,20 +66,24 @@ namespace Intex_2.Controllers
         [HttpPost]
         public IActionResult EditUserRole(string id, string role)
         {
-            var role_id = _con.Roles
-                .FromSqlInterpolated($"SELECT Id FROM Roles WHERE Name = {role}").ToString();
+            var role_id = (from c in _con.Roles.Where(x => x.Name == role) select new {id = c.Id });
+            //role_id = role_id.ToList().FirstOrDefault();
+
 
             var user_role = _con.UserRoles.Where(x => x.UserId == id).FirstOrDefault();
 
-            //_con.UserRoles.Remove(user_role);
-            //_con.SaveChanges();
-
-
-
-            //_con.UserRoles.Add()
 
             user_role.RoleId = role_id;
+            //_con.UserRoles.Remove(user_role);
             _con.SaveChanges();
+
+            //Microsoft.AspNetCore.Identity.IdentityUserRole<string> userRole = new Microsoft.AspNetCore.Identity.IdentityUserRole<string>();
+
+            //userRole.UserId = id;
+            //userRole.RoleId = _con.Roles.Where(x => x.Id == role_id).ToString();
+            //_con.UserRoles.Add(userRole);
+
+            //_con.SaveChanges();
 
             return RedirectToAction("ManageUsers");
         }

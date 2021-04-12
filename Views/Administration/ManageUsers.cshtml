@@ -45,7 +45,7 @@
         }else
         {
             <td>
-                <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id" method="post">
+                <form id="submit+@count" asp-controller="Administration" asp-action="EditUserRole"  asp-route-id="@user.id" asp-route-role="" method="post">
                     <select id="select+@count" onchange="RouteRole(this,  '@user.id')">
                         <option value="" selected>Guest</option>
                         <option value="Researcher">Researcher</option>
@@ -71,24 +71,6 @@
 
 <script>
 
-    function makeForm() {
-        
-
-        my_tb = document.createElement('INPUT');
-        my_tb.type = 'TEXT';
-        my_tb.name = 'myInput';
-        my_tb.value = 'Values of my Input';
-        my_form.appendChild(my_tb);
-
-        my_tb = document.createElement('INPUT');
-        my_tb.type = 'HIDDEN';
-        my_tb.name = 'hidden1';
-        my_tb.value = 'Values of my hidden1';
-        my_form.appendChild(my_tb);
-        document.body.appendChild(my_form);
-        my_form.submit();
-    }
-
     function RouteRole(id, userid)
     {
         var route_id = "submit+" + id.id.substring(7, 8);
@@ -97,9 +79,6 @@
         var selected = e.options[e.selectedIndex].value;
 
         document.getElementById(route_id).action = "/Administration/EditUserRole/" + userid + "?role=" + selected;
-        
-
-
     }
 
 </script>
