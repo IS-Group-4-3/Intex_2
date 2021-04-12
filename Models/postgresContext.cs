@@ -26,6 +26,7 @@ namespace Intex_2.Models
         public virtual DbSet<FieldBurialWrapping> FieldBurialWrappings { get; set; }
         public virtual DbSet<FieldGenderCode> FieldGenderCodes { get; set; }
         public virtual DbSet<FieldHairColor> FieldHairColors { get; set; }
+        public virtual DbSet<FieldLocation> FieldLocations { get; set; }
         public virtual DbSet<FieldMain> FieldMains { get; set; }
         public virtual DbSet<GamousBiologicalSample> GamousBiologicalSamples { get; set; }
         public virtual DbSet<GamousBone> GamousBones { get; set; }
@@ -41,7 +42,7 @@ namespace Intex_2.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseNpgsql("Host=el-gamous.chg4orpssig1.us-east-2.rds.amazonaws.com;Database=postgres;Username=postgres;Password=Intex2group4-3;");
             }
         }
@@ -525,8 +526,42 @@ namespace Intex_2.Models
                 entity.Property(e => e.Text).HasColumnName("text");
             });
 
+            modelBuilder.Entity<FieldLocation>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("field_location");
+
+                entity.Property(e => e.BurialAreaEastOrWest).HasColumnName("burial_area_east_or_west");
+
+                entity.Property(e => e.BurialAreaNorthOrSouth).HasColumnName("burial_area_north_or_south");
+
+                entity.Property(e => e.BurialDepth).HasColumnName("burial_depth");
+
+                entity.Property(e => e.BurialDirection).HasColumnName("burial_direction");
+
+                entity.Property(e => e.BurialNumber).HasColumnName("burial_number");
+
+                entity.Property(e => e.BurialSouthToFeet).HasColumnName("burial_south_to_feet");
+
+                entity.Property(e => e.BurialSouthToHead).HasColumnName("burial_south_to_head");
+
+                entity.Property(e => e.BurialWestToFeet).HasColumnName("burial_west_to_feet");
+
+                entity.Property(e => e.BurialWestToHead).HasColumnName("burial_west_to_head");
+
+                entity.Property(e => e.Burialnors).HasColumnName("burialnors");
+
+                entity.Property(e => e.Burialxeorw).HasColumnName("burialxeorw");
+
+                entity.Property(e => e.LocationId).HasColumnName("location_id");
+
+                entity.Property(e => e.Square).HasColumnName("square");
+            });
+
             modelBuilder.Entity<FieldMain>(entity =>
             {
+                
 
                 entity.ToTable("field_main");
 
@@ -639,6 +674,7 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousBiologicalSample>(entity =>
             {
+                
 
                 entity.ToTable("gamous_biological_samples");
 
@@ -841,6 +877,7 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousC14>(entity =>
             {
+                
 
                 entity.ToTable("gamous_c14");
 
@@ -917,6 +954,7 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousCranial>(entity =>
             {
+                
 
                 entity.ToTable("gamous_cranial");
 
