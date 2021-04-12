@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Intex_2.Data;
 using Intex_2.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,17 +26,10 @@ namespace Intex_2.Controllers
             _con = con;
         }
 
-        public IActionResult Admin()
-        {
-            var roles = roleManager.Roles;
-            return View(roles);
-        }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult ManageUsers()
         {
             ViewBag.users = _con.Users;
-
-
 
             var results = (from u in _con.Users
                            from urs in _con.UserRoles
@@ -54,6 +48,7 @@ namespace Intex_2.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeleteUser(string id)
         {
@@ -63,6 +58,7 @@ namespace Intex_2.Controllers
             return RedirectToAction("ManageUsers");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult EditUserRole(string id, string role)
         {

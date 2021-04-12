@@ -61,7 +61,12 @@ namespace Intex_2.Controllers
         {
             return View(new MummyDetailsViewModel { });
         }
-        
+
+        public IActionResult Map()
+        {
+            return View();
+        }
+
         public IActionResult DetailsMummies(string locationID)
         {
             GamousMain g = _con.GamousMains.FirstOrDefault(p => p.LocationId == locationID);
