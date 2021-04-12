@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousBiologicalSamples/Create
-        public IActionResult Create()
+        public IActionResult CreateBiologicalSamples()
         {
             return View();
         }

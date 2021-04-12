@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousCranials/Create
-        public IActionResult Create()
+        public IActionResult CreateGamousCranials()
         {
             return View();
         }
