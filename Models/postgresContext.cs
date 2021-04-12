@@ -559,8 +559,6 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<FieldMain>(entity =>
             {
-                
-
                 entity.ToTable("field_main");
 
                 entity.Property(e => e.AgeCode).HasColumnName("age_code");
@@ -637,6 +635,8 @@ namespace Intex_2.Models
 
                 entity.Property(e => e.OsteologyUnknownComment).HasColumnName("osteology_unknown_comment");
 
+                entity.Property(e => e.Picture).HasColumnName("picture");
+
                 entity.Property(e => e.PoroticHyperostosis).HasColumnName("porotic_hyperostosis");
 
                 entity.Property(e => e.PoroticHyperostosisLocations).HasColumnName("porotic_hyperostosis_locations");
@@ -672,7 +672,7 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousBiologicalSample>(entity =>
             {
-                
+
 
                 entity.ToTable("gamous_biological_samples");
 
@@ -875,7 +875,6 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousC14>(entity =>
             {
-                
 
                 entity.ToTable("gamous_c14");
 
@@ -952,7 +951,7 @@ namespace Intex_2.Models
 
             modelBuilder.Entity<GamousCranial>(entity =>
             {
-                
+
 
                 entity.ToTable("gamous_cranial");
 

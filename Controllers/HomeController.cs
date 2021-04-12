@@ -1,5 +1,6 @@
 ﻿using Intex_2.Models;
 using Intex_2.Models.ViewModels;
+using Intex_2.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -18,12 +19,14 @@ namespace Intex_2.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly postgresContext _con;
+        private readonly IS3Service _s3;
         public int PageSize = 10;
         
-        public HomeController(ILogger<HomeController> logger, postgresContext con)
+        public HomeController(ILogger<HomeController> logger, postgresContext con, IS3Service s3)
         {
             _logger = logger;
             _con = con;
+            _s3 = s3;
         }
 
         public IActionResult Index()
@@ -72,6 +75,26 @@ namespace Intex_2.Controllers
             return View();
         }
 
+        public IActionResult UploadMedia()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadMedia(UploadFileViewModel upload)
+        {
+            if (ModelState.IsValid)
+            {
+                string url = await _s3.AddItem(upload.photo, "test");
+            }
+            else
+            {
+
+            }
+
+            return View();
+        }
+
         public IActionResult DetailsMummies(string locationID)
         {
             GamousMain g = _con.GamousMains.FirstOrDefault(p => p.LocationId == locationID);
@@ -99,6 +122,81 @@ namespace Intex_2.Controllers
                 sample = gs
 
             }) ;
+        }
+        public IActionResult RedirectToEditMummies(MummyDetailsViewModel m)
+        {
+            return View("EditMummy", m);
+        }
+
+        [HttpPost]
+        public IActionResult EditMummy(MummyDetailsViewModel eM)
+        {
+            MummyDetailsViewModel m = new MummyDetailsViewModel { };
+
+            m.mummy = _con.GamousMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.location = _con.GamousLocations.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.dentalInfo = _con.GamousDentals.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
+            m.cranialInfo = _con.GamousCranials.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.carbonDating = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == eM.mummy.LocationId);
+            m.bone = _con.GamousBones.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
+            m.bioSample = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.field = _con.FieldMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.sample = _con.GamousSamples.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
+
+            if (ModelState.IsValid)
+            {
+                m.mummy = eM.mummy;
+                m.location = eM.location;
+                m.dentalInfo = eM.dentalInfo;
+                m.cranialInfo = eM.cranialInfo;
+                m.carbonDating = eM.carbonDating;
+                m.bone = eM.bone;
+                m.bioSample = eM.bioSample;
+                m.field = eM.field;
+                m.sample = eM.sample;
+                _con.SaveChanges();
+            }
+            else
+            {
+                return View(m);
+            }
+
+            return View("ConfirmEdit", m);
+        }
+
+        public IActionResult ConfirmEdit(MummyDetailsViewModel eM)
+        {
+            
+
+            return View();
+        }
+
+        public IActionResult DeleteMummy(MummyDetailsViewModel eM)
+        {
+            MummyDetailsViewModel m = new MummyDetailsViewModel { };
+
+            m.mummy = _con.GamousMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.location = _con.GamousLocations.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.dentalInfo = _con.GamousDentals.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
+            m.cranialInfo = _con.GamousCranials.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.carbonDating = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == eM.mummy.LocationId);
+            m.bone = _con.GamousBones.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
+            m.bioSample = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.field = _con.FieldMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
+            m.sample = _con.GamousSamples.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
+
+            _con.Remove(m.mummy);
+            _con.Remove(m.location);
+            _con.Remove(m.dentalInfo);
+            _con.Remove(m.cranialInfo);
+            _con.Remove(m.cranialInfo);
+            _con.Remove(m.bone);
+            _con.Remove(m.bioSample);
+            _con.Remove(m.field);
+            _con.Remove(m.sample);
+            _con.SaveChanges();
+
+            return View();
         }
 
         [Authorize]

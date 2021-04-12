@@ -1,5 +1,7 @@
+using Amazon.S3;
 using Intex_2.Data;
 using Intex_2.Models;
+using Intex_2.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,10 @@ namespace Intex_2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSingleton<IS3Service, S3Service>();
+            services.AddAWSService<IAmazonS3>();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
