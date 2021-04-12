@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -7,6 +8,7 @@ namespace Intex_2.Models
 {
     public partial class FieldLocation
     {
+        [Key]
         public string LocationId { get; set; }
         public string BurialAreaNorthOrSouth { get; set; }
         public string Burialnors { get; set; }
