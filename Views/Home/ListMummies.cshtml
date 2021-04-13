@@ -4,54 +4,111 @@
 @inject UserManager<IdentityUser> UserManager
 @model MummyListViewModel
 
-<h1>Mummies List</h1>
-<div class="text-center">
 
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
-            <tr>
-                <th>
 
-                </th>
-                @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
-                {
-                    <th>
+<h1 class="text-center">Mummies List</h1>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <section>
+                <section>
 
-                    </th>
-                }
-                <th>
-                    Location
-                </th>
-                <th>
-                    Lenght of Remains
-                </th>
-                <th>
-                    Sample Number
-                </th>
-                <th>
-                    Gender
-                </th>
-                <th>
-                    Hair Color
-                </th>
-                <th>
-                    Estimate Age
-                </th>
-                <th>
-                    Date Found
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @* Still doesn't print out the movie Independence day*@
-            @foreach (var x in Model.mummies)
-            {
-                <partial name="MummyTableInfo" model="x" />
-            }
-        </tbody>
-    </table>
 
-    <div page-model="@Model.PagingInfo" page-action="ListMummies" class="pagehighlight">
 
+                    <h5>Filters</h5>
+
+
+
+                    <section class="mb-4">
+
+
+
+                        <form name="filters" id="filters" asp-controller="Home" asp-action="ListMummies" method="post"></form>
+
+
+
+                        @*<h6 class="font-weight-bold mb-3">Conditions</h6>*@
+
+
+
+                        <div class="form-group">
+                            <label for="gender_filter">Gender</label>
+                            <select form="filters" class="form-control" name="gender_filter" id="gender_filter" multiple>
+                                <option value="">- - - - -</option>
+                                @foreach (var x in ViewBag.gender_filter)
+                                {
+                    <option value="@x">@x</option>}
+                            </select>
+                            <br />
+                            <label for="hair_filter">Hair Color</label>
+                            <select form="filters" class="form-control" name="hair_filter" id="hair_filter" multiple>
+                                <option value="">- - - - -</option>
+                                @foreach (var x in ViewBag.hair_filter)
+                                {
+                    <option value="@x">@x</option>}
+                            </select>
+                            <br />
+                            @*<label for="date_filter_min">Date found</label>
+                                <input form="filters" class="form-control" type="datetime-local" name="date_filter_min" id="date_filter_min" min="@ViewBag.date_min" max="@ViewBag.date_max">
+                                <input form="filters" class="form-control" type="datetime-local" name="date_filter_max" id="date_filter_max" min="@ViewBag.date_min" max="@ViewBag.date_max">
+                                <br />*@
+                            <div class="form-check">
+                                <input form="filters" class="form-check-input" type="radio" name="artifact" id="artifacts_true" value="TRUE">
+                                <label class="form-check-label" for="artifacts_true">Found with artifacts</label>
+                            </div>
+                            <div class="form-check">
+                                <input form="filters" class="form-check-input" type="radio" name="artifact" id="artifacts_false" value="FALSE">
+                                <label class="form-check-label" for="artifacts_false">Found without artifacts</label>
+                            </div>
+                            <br />
+
+
+
+                            <button class="btn btn-dark" form="filters" type="submit">Filter results</button>
+                        </div>
+
+
+
+                    </section>
+                </section>
+            </section>
+        </div>
+        <div class="col-10">
+            <div class="text-center">
+
+
+
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                            {
+                <th></th>}
+                            <th>Location</th>
+                            <th>Length of Remains</th>
+                            <th>Sample Number</th>
+                            <th>Gender</th>
+                            <th>Hair Color</th>
+                            <th>Estimated Age</th>
+                            <th>Date Found</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.mummies)
+                        {
+            <partial name="MummyTableInfo" model="x" />}
+                    </tbody>
+                </table>
+
+
+
+                <div page-model="@Model.PagingInfo" page-action="ListMummies" class="pagehighlight"></div>
+            </div>
+        </div>
     </div>
+
+
+
 </div>
