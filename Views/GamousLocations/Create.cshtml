@@ -5,89 +5,73 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>GamousLocation</h4>
+<h1>Osteology Form</h1>
+<br />
+<h4>Body Analysis Chart</h4>
 <hr />
+<h6>Square:</h6>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" name="ost-form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="LowPairNs" class="control-label"></label>
+                <label asp-for="LowPairNs" class="control-label">Low Pair (North/South):</label>
                 <input asp-for="LowPairNs" class="form-control" />
                 <span asp-validation-for="LowPairNs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HighPairNs" class="control-label"></label>
+                <label asp-for="HighPairNs" class="control-label">High Pair (North/South):</label>
                 <input asp-for="HighPairNs" class="form-control" />
                 <span asp-validation-for="HighPairNs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BurialLocationNs" class="control-label"></label>
-                <input asp-for="BurialLocationNs" class="form-control" />
+                <label asp-for="BurialLocationNs" class="control-label">North or South?:</label>
+                <select asp-for="BurialLocationNs" class="form-control">
+                    <option value="N" class="form-control">North</option>
+                    <option value="S" class="form-control">South</option>
+                </select>
                 <span asp-validation-for="BurialLocationNs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LowPairEw" class="control-label"></label>
+                <label asp-for="LowPairEw" class="control-label">Low Pair (East/West)</label>
                 <input asp-for="LowPairEw" class="form-control" />
                 <span asp-validation-for="LowPairEw" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HighPairEw" class="control-label"></label>
+                <label asp-for="HighPairEw" class="control-label">High Pair (East/West)</label>
                 <input asp-for="HighPairEw" class="form-control" />
                 <span asp-validation-for="HighPairEw" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BurialLocationEw" class="control-label"></label>
-                <input asp-for="BurialLocationEw" class="form-control" />
+                <label asp-for="BurialLocationEw" class="control-label">East or West?</label>
+                <select asp-for="BurialLocationEw" class="form-control">
+                    <option value="E" class="form-control">East</option>
+                    <option value="W" class="form-control">West</option>
+                </select>
                 <span asp-validation-for="BurialLocationEw" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BurialSubplot" class="control-label"></label>
-                <input asp-for="BurialSubplot" class="form-control" />
+                <label asp-for="BurialSubplot" class="control-label">Area</label>
+                <select asp-for="BurialSubplot" class="form-control">
+                    <option value="NE" class="form-control">NE</option>
+                    <option value="NW" class="form-control">NW</option>
+                    <option value="SE" class="form-control">SE</option>
+                    <option value="SW" class="form-control">SW</option>
+                </select>
                 <span asp-validation-for="BurialSubplot" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BurialNumber" class="control-label"></label>
+                <label asp-for="BurialNumber" class="control-label">Burial #</label>
                 <input asp-for="BurialNumber" class="form-control" />
                 <span asp-validation-for="BurialNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SouthToHead" class="control-label"></label>
-                <input asp-for="SouthToHead" class="form-control" />
-                <span asp-validation-for="SouthToHead" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SouthToFeet" class="control-label"></label>
-                <input asp-for="SouthToFeet" class="form-control" />
-                <span asp-validation-for="SouthToFeet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EastToHead" class="control-label"></label>
-                <input asp-for="EastToHead" class="form-control" />
-                <span asp-validation-for="EastToHead" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EastToFeet" class="control-label"></label>
-                <input asp-for="EastToFeet" class="form-control" />
-                <span asp-validation-for="EastToFeet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HeadDirection" class="control-label"></label>
-                <input asp-for="HeadDirection" class="form-control" />
-                <span asp-validation-for="HeadDirection" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Continue" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

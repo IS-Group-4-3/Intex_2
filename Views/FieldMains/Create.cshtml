@@ -1,0 +1,130 @@
+@model Intex_2.Models.FieldMain
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Exhumation Form Continuted.</h1>
+
+<!--<h4>FieldMain</h4>-->
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+
+            <input asp-for="LocationId" type="hidden" class="form-control" value="@TempData["loc"]" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LengthM" class="control-label">Burial Length (meters)</label>
+                <input asp-for="LengthM" class="form-control" />
+                <span asp-validation-for="LengthM" class="text-danger"></span>
+            </div>
+
+            <h6>Observation</h6>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label">Photos?</label>
+                <select asp-for="Picture" class="form-control">
+                    <option value="True" class="form-control">Yes</option>
+                    <option value="False" class="form-control">No</option>
+                </select>
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Goods" class="control-label">Burial Goods</label>
+                <input asp-for="Goods" class="form-control" />
+                <span asp-validation-for="Goods" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Cluster</label>
+                <select class="form-control">
+                    <option value="Y" class="form-control">Yes</option>
+                    <option value="N" class="form-control">No</option>
+                </select>
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Shaft Number</label>
+                <input />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Shared Shaft?</label>
+                <select class="form-control">
+                    <option value="Y" class="form-control">Yes</option>
+                    <option value="N" class="form-control">No</option>
+                </select>
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label"> Preservation Index</label>
+                <select class="form-control">
+                    <option value="I" class="form-control">I</option>
+                    <option value="II" class="form-control">II</option>
+                    <option value="III" class="form-control">III</option>
+                    <option value="IV" class="form-control">IV</option>
+                    <option value="V" class="form-control">V</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Burial Materials</label>
+                <select class="form-control">
+                    <option value="Y" class="form-control">Yes</option>
+                    <option value="N" class="form-control">No</option>
+                    <option value="P" class="form-control">Pending</option>
+                </select>
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AgeCode" class="control-label">Age</label>
+                <select asp-for="AgeCode" class="form-control">
+                    <option value="A" class="form-control">Adult</option>
+                    <option value="C" class="form-control">Child</option>
+                    <option value="U" class="form-control">Neonate/Infant</option>
+                </select>
+                <span asp-validation-for="AgeCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Burial Materials</label>
+                <select class="form-control">
+                    <option value="Y" class="form-control">Yes</option>
+                    <option value="N" class="form-control">No</option>
+                </select>
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Excavation Recorder</label>
+                <input />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Date</label>
+                <input type="date" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Time</label>
+                <input type="time" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
