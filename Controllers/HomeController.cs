@@ -123,8 +123,6 @@ namespace Intex_2.Controllers
                     TotalNumItems = query.Count()
                 },
 
-
-
             }); ;
         }
 
@@ -146,22 +144,32 @@ namespace Intex_2.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadMedia(UploadFileViewModel upload)
         {
-            string url = null;
+            string url;
             if (ModelState.IsValid)
             {
                 url = await _s3.AddItem(upload.photo, "test");
+
+                FileRecord File = new FileRecord
+                {
+                    Url = url,
+                    Type = upload.type,
+                    LocationId = upload.LowPairNs + upload.BurialLocationNs + upload.LowPairEw + upload.BurialLocationEw + upload.BurialSubplot + upload.BurialNumber
+                };
+
+                _con.FileRecords.Add(File);
+                _con.SaveChanges();
+                return View("MediaLibrary");
             }
             else
             {
                 return View("UploadMedia");
             }
-
-            return View("MediaLibrary", url);
         }
-
-        public IActionResult MediaLibrary(string url)
+     
+        public IActionResult MediaLibrary()
         {
-            ViewBag.url = url;
+            
+
             return View();
         }
 

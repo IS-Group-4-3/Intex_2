@@ -28,6 +28,7 @@ namespace Intex_2.Models
         public virtual DbSet<FieldHairColor> FieldHairColors { get; set; }
         public virtual DbSet<FieldLocation> FieldLocations { get; set; }
         public virtual DbSet<FieldMain> FieldMains { get; set; }
+        public virtual DbSet<FileRecord> FileRecords { get; set; }
         public virtual DbSet<GamousBiologicalSample> GamousBiologicalSamples { get; set; }
         public virtual DbSet<GamousBone> GamousBones { get; set; }
         public virtual DbSet<GamousC14> GamousC14s { get; set; }
@@ -668,6 +669,19 @@ namespace Intex_2.Models
                 entity.Property(e => e.YearExcavated).HasColumnName("year_excavated");
 
                 entity.Property(e => e.YearOnSkull).HasColumnName("year_on_skull");
+            });
+
+            modelBuilder.Entity<FileRecord>(entity =>
+            {
+                entity.ToTable("file_records");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.LocationId).HasColumnName("location_id");
+
+                entity.Property(e => e.Type).HasColumnName("type");
+
+                entity.Property(e => e.Url).HasColumnName("URL");
             });
 
             modelBuilder.Entity<GamousBiologicalSample>(entity =>

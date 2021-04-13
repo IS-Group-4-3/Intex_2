@@ -6,10 +6,71 @@
         <form method="post" asp-controller="Home"
               asp-action="UploadMedia" enctype="multipart/form-data">
 
-                <label asp-for="photo">Upload File</label>
-                <input type="file" asp-for="photo" class="form-control" />
-                <span class="text-danger" asp-validation-for="photo"></span>
-           
+            <label asp-for="photo">Upload File</label>
+            <input type="file" asp-for="photo" class="form-control" />
+            <span class="text-danger" asp-validation-for="photo"></span>
+
+
+            <label asp-for="type">File Type</label>
+            <select asp-for="type" class="form-control">
+                <option value="Photo" selected class="form-control">Photo</option>
+                <option value="Bone Book" class="form-control">Bone Book</option>
+                <option value="Field Notes" class="form-control">Field Notes</option>
+            </select>
+            <span class="text-danger" asp-validation-for="photo"></span>
+
+            <div class="form-group">
+                <label asp-for="LowPairNs" class="control-label">Low Pair (North/South):</label>
+                <input asp-for="LowPairNs" class="form-control" />
+                <span asp-validation-for="LowPairNs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HighPairNs" class="control-label">High Pair (North/South):</label>
+                <input asp-for="HighPairNs" class="form-control" />
+                <span asp-validation-for="HighPairNs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialLocationNs" class="control-label">North or South?:</label>
+                <select asp-for="BurialLocationNs" class="form-control">
+                    <option value="N" class="form-control">North</option>
+                    <option value="S" class="form-control">South</option>
+                </select>
+                <span asp-validation-for="BurialLocationNs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LowPairEw" class="control-label">Low Pair (East/West)</label>
+                <input asp-for="LowPairEw" class="form-control" />
+                <span asp-validation-for="LowPairEw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HighPairEw" class="control-label">Low Pair (North/South)</label>
+                <input asp-for="HighPairEw" class="form-control" />
+                <span asp-validation-for="HighPairEw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialLocationEw" class="control-label">East or West?</label>
+                <select asp-for="BurialLocationEw" class="form-control">
+                    <option value="E" class="form-control">East</option>
+                    <option value="W" class="form-control">West</option>
+                </select>
+                <span asp-validation-for="BurialLocationEw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialSubplot" class="control-label">Area</label>
+                <select asp-for="BurialSubplot" class="form-control">
+                    <option value="NE" class="form-control">NE</option>
+                    <option value="NW" class="form-control">NW</option>
+                    <option value="SE" class="form-control">SE</option>
+                    <option value="SW" class="form-control">SW</option>
+                </select>
+                <span asp-validation-for="BurialSubplot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialNumber" class="control-label">Burial #</label>
+                <input asp-for="BurialNumber" class="form-control" />
+                <span asp-validation-for="BurialNumber" class="text-danger"></span>
+            </div>
+
             <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
