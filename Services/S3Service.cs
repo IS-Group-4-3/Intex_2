@@ -1,4 +1,5 @@
 ﻿using Amazon;
+using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Microsoft.AspNetCore.Http;
@@ -18,8 +19,14 @@ namespace Intex_2.Services
         private const double DURATION = 24;
         public S3Service()
         {
-            s3Client = new AmazonS3Client(RegionEndpoint.USEast2);
-
+            //s3Client = new AmazonS3Client(RegionEndpoint.USEast2);
+            var amazonS3Config = new AmazonS3Config
+            {
+                RegionEndpoint = RegionEndpoint.USEast2
+            };
+            var credentials = new BasicAWSCredentials("AKIAUOWDHQLJLA7BNGFS", "4YXhHi/X+/MlTcIUjj2KXObvEVI1/eSmEgC5p6T4");
+            AmazonS3Client client = new AmazonS3Client(credentials, amazonS3Config);
+            s3Client = client;
         }
         private string GeneratePreSignedURL(string objectKey)
         {
