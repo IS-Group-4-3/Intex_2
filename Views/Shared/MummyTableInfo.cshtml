@@ -9,15 +9,6 @@
             View
         </a>
     </td>
-    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
-    {
-    <td>
-        <a class="btn btn-dark" asp-controller="Home" asp-action="DetailsMummies"
-            asp-route-locationID="@Model.LocationId">
-            Edit
-        </a>
-    </td>
-    }
     <td>
         @Model.LocationId
     </td>

@@ -1,0 +1,108 @@
+﻿@model Intex_2.Models.GamousMain
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @TempData["loc"]
+}
+
+<h1></h1>
+
+<h4>GamousMain</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="LocationId" type="hidden" class="form-control" value="@TempData["loc"]"/>
+          
+            <div class="form-group">
+                <label asp-for="BurialSituationNotes" class="control-label"></label>
+                <input asp-for="BurialSituationNotes" class="form-control" />
+                <span asp-validation-for="BurialSituationNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LengthOfRemains" class="control-label"></label>
+                <input asp-for="LengthOfRemains" class="form-control" />
+                <span asp-validation-for="LengthOfRemains" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SampleNumber" class="control-label"></label>
+                <input asp-for="SampleNumber" class="form-control" />
+                <span asp-validation-for="SampleNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenderGe" class="control-label"></label>
+                <input asp-for="GenderGe" class="form-control" />
+                <span asp-validation-for="GenderGe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GeFunctionTotal" class="control-label"></label>
+                <input asp-for="GeFunctionTotal" class="form-control" />
+                <span asp-validation-for="GeFunctionTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenderBodyCol" class="control-label"></label>
+                <input asp-for="GenderBodyCol" class="form-control" />
+                <span asp-validation-for="GenderBodyCol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtifactsDescription" class="control-label"></label>
+                <input asp-for="ArtifactsDescription" class="form-control" />
+                <span asp-validation-for="ArtifactsDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HairColor" class="control-label"></label>
+                <input asp-for="HairColor" class="form-control" />
+                <span asp-validation-for="HairColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PreservationIndex" class="control-label"></label>
+                <input asp-for="PreservationIndex" class="form-control" />
+                <span asp-validation-for="PreservationIndex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtifactFound" class="control-label"></label>
+                <input asp-for="ArtifactFound" class="form-control" />
+                <span asp-validation-for="ArtifactFound" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimateAge" class="control-label"></label>
+                <input asp-for="EstimateAge" class="form-control" />
+                <span asp-validation-for="EstimateAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimateLivingStature" class="control-label"></label>
+                <input asp-for="EstimateLivingStature" class="form-control" />
+                <span asp-validation-for="EstimateLivingStature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateFound" class="control-label"></label>
+                <input asp-for="DateFound" class="form-control" />
+                <span asp-validation-for="DateFound" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LengthOfRemainsM" class="control-label"></label>
+                <input asp-for="LengthOfRemainsM" class="form-control" />
+                <span asp-validation-for="LengthOfRemainsM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimateLivingStatureM" class="control-label"></label>
+                <input asp-for="EstimateLivingStatureM" class="form-control" />
+                <span asp-validation-for="EstimateLivingStatureM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -43,7 +43,7 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousMains/Create
-        public IActionResult CreateGamousMains()
+        public IActionResult Create()
         {
             return View();
         }
@@ -53,13 +53,15 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateGamousMains([Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
+        public async Task<IActionResult> Create([Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
         {
             if (ModelState.IsValid)
             {
+                gamousMain.Gamous = _context.GamousMains.Select(x => x.Gamous).Max() + 1;
                 _context.Add(gamousMain);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                TempData["gamous"] = gamousMain.Gamous;
+                return RedirectToAction("Create", "GamousBones");
             }
             return View(gamousMain);
         }

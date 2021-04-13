@@ -43,10 +43,8 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousLocations/Create
-        public IActionResult CreateLocations()
+        public IActionResult Create()
         {
-            
-
             return View();
         }
 
@@ -55,13 +53,15 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateLocations([Bind("LocationId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,SouthToHead,SouthToFeet,EastToHead,EastToFeet,HeadDirection")] GamousLocation gamousLocation)
+        public async Task<IActionResult> Create([Bind("LocationId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,SouthToHead,SouthToFeet,EastToHead,EastToFeet,HeadDirection")] GamousLocation gamousLocation)
         {
             if (ModelState.IsValid)
             {
+                gamousLocation.LocationId = gamousLocation.LowPairNs + gamousLocation.BurialLocationNs + gamousLocation.LowPairEw + gamousLocation.BurialLocationEw + gamousLocation.BurialSubplot + gamousLocation.BurialNumber;
                 _context.Add(gamousLocation);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                TempData["loc"] = gamousLocation.LocationId;
+                return RedirectToAction("Create", "GamousMains");
             }
             return View(gamousLocation);
         }

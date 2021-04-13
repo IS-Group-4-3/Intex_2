@@ -1,0 +1,60 @@
+﻿@model Intex_2.Models.GamousSample
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>GamousSample</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Gamous" type="hidden" class="form-control" value="@TempData["gamous"]" />
+            <div class="form-group">
+                <label asp-for="HairTaken" class="control-label"></label>
+                <input asp-for="HairTaken" class="form-control" />
+                <span asp-validation-for="HairTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoftTissueTaken" class="control-label"></label>
+                <input asp-for="SoftTissueTaken" class="form-control" />
+                <span asp-validation-for="SoftTissueTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoneTaken" class="control-label"></label>
+                <input asp-for="BoneTaken" class="form-control" />
+                <span asp-validation-for="BoneTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToothTaken" class="control-label"></label>
+                <input asp-for="ToothTaken" class="form-control" />
+                <span asp-validation-for="ToothTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextileTaken" class="control-label"></label>
+                <input asp-for="TextileTaken" class="form-control" />
+                <span asp-validation-for="TextileTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionOfTaken" class="control-label"></label>
+                <input asp-for="DescriptionOfTaken" class="form-control" />
+                <span asp-validation-for="DescriptionOfTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

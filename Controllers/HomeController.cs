@@ -209,54 +209,7 @@ namespace Intex_2.Controllers
                 fieldLocation = fl,
                 sample = gs,
                 files = fr
-
             });
-        }
-        public IActionResult RedirectToEditMummies(MummyDetailsViewModel m)
-        {
-            return View("EditMummy", m);
-        }
-
-        [HttpPost]
-        public IActionResult EditMummy(MummyDetailsViewModel eM)
-        {
-
-            m.mummy = _con.GamousMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.location = _con.GamousLocations.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.dentalInfo = _con.GamousDentals.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
-            m.cranialInfo = _con.GamousCranials.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.carbonDating = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == eM.mummy.LocationId);
-            m.bone = _con.GamousBones.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
-            m.bioSample = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.field = _con.FieldMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.sample = _con.GamousSamples.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
-
-            if (ModelState.IsValid)
-            {
-                m.mummy = eM.mummy;
-                m.location = eM.location;
-                m.dentalInfo = eM.dentalInfo;
-                m.cranialInfo = eM.cranialInfo;
-                m.carbonDating = eM.carbonDating;
-                m.bone = eM.bone;
-                m.bioSample = eM.bioSample;
-                m.field = eM.field;
-                m.sample = eM.sample;
-                _con.SaveChanges();
-            }
-            else
-            {
-                return View(m);
-            }
-
-            return View("ConfirmEdit", m);
-        }
-
-        public IActionResult ConfirmEdit(MummyDetailsViewModel eM)
-        {
-
-
-            return View();
         }
 
         public IActionResult DeleteMummy(string locationID)
