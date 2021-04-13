@@ -26,7 +26,7 @@ namespace Intex_2.Controllers
             _con = con;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult ManageUsers()
         {
             ViewBag.users = _con.Users;
@@ -50,7 +50,7 @@ namespace Intex_2.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeleteUser(string id)
         {
@@ -77,6 +77,24 @@ namespace Intex_2.Controllers
             ViewBag.alert = "User successfully deleted";
 
             return View("ManageUsers");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public IActionResult AddRole(string role)
+        {
+            var new_role = new IdentityRole(role);
+            _con.Roles.Add(new_role);
+            _con.SaveChanges();
+
+            return RedirectToAction("ManageUsers");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult AddRole()
+        {
+            return View();
         }
 
         [Authorize(Roles = "Admin")]

@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<br />
+<h2 class="text-center">Create a new user role</h2>
+<br />
+<div class="col-4">
+    <form asp-action="AddRole" asp-controller="Administration">
+        <div class="form-group">
+            <label for="role">Role name</label>
+            <input type="text" class="form-control" id="role" name="role" aria-describedby="emailHelp" placeholder="Enter role">
+            <small id="emailHelp" class="form-text text-muted">After adding a role, you'll be able to assign it to users</small>
+        </div>
+
+        <button class="btn btn-outline-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+
+
