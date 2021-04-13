@@ -40,54 +40,52 @@ namespace Intex_2.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult ListMummies(int pageNum = 1)
-        {
-            ViewBag.gender_filter = _con.GamousMains.Select(x => x.GenderGe).Distinct().ToList();
-            ViewBag.hair_filter = _con.GamousMains.Select(x => x.HairColor).Distinct().ToList();
-            ViewBag.date_min = _con.GamousMains.Select(x => x.DateFound).Min();
-            ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
-
-
-
-
-
-            return View(new MummyListViewModel
-            {
-                mummies = _con.GamousMains
-                    .OrderBy(b => b.Gamous)
-                    .Skip((pageNum - 1) * PageSize)
-                    .Take(PageSize),
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = pageNum,
-                    ItemsPerPage = PageSize,
-                    TotalNumItems = _con.GamousMains.Count()
-
-
-
-                },
-
-
-
-            });
-        }
-
-
-
-        [HttpPost]
         public IActionResult ListMummies(List<string> gender_filter, List<string> hair_filter, string artifact, int pageNum = 1)
         {
-            ViewBag.gender_filter = _con.GamousMains.Select(x => x.GenderGe).Distinct().ToList();
+            ViewBag.gender_filter = _con.GamousMains.Select(x => x.GenderGe).Distinct().ToList(); //populates ViewBag with values for form filtering in the view
             ViewBag.hair_filter = _con.GamousMains.Select(x => x.HairColor).Distinct().ToList();
             ViewBag.date_min = _con.GamousMains.Select(x => x.DateFound).Min();
             ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
 
+            string[] parameter_list = null;
 
+            string referer = Request.Headers["Referer"].ToString(); //retrieves the referring url so we can keep our filters
+            if (referer.Length > 39)
+            {
+                referer = referer.Remove(0, 40); //substring of just the key/value pairs
 
-            var query = from b in _con.GamousMains select b;
+                parameter_list = referer.Split('&'); //split into an array of key/value pairs 
+            }
 
+            var count = 0;
+            var query = from b in _con.GamousMains select b; //declare an essentially empty query
 
+            if (parameter_list != null) //if we have parameters to add to the query...
+            {
+                foreach (var pair in parameter_list)
+                {
+                    int position = pair.IndexOf("=");
+                    if (position < 0)
+                        continue;
+                    string key = pair.Substring(0, position);
+                    string value = pair.Substring(position + 1);
+                    if (key == "pageNum")
+                        continue;
+                    if (key == "gender_filter")
+                    {
+                        query = query.Where(b => value.Contains(b.GenderGe));
+                    }
+                    if (key == "hair_filter")
+                    {
+                        query = query.Where(b => value.Contains(b.HairColor));
+                    }
+                    if (key == "artifact")
+                    {
+                        query = query.Where(b => b.ArtifactFound == value);
+                    }
+
+                }
+            }
 
             if (gender_filter.Count() > 0)
             {
@@ -103,14 +101,19 @@ namespace Intex_2.Controllers
                 query = query.Where(b => b.ArtifactFound == artifact);
             }
 
-
+            if (parameter_list != null)
+            {
+                count = query.Count();
+            }
+            else
+            {
+                count = _con.GamousMains.Count();
+            }
 
             query = query
                 .OrderBy(b => b.Gamous)
                 .Skip((pageNum - 1) * PageSize)
                 .Take(PageSize);
-
-
 
             return View(new MummyListViewModel
             {
@@ -120,11 +123,64 @@ namespace Intex_2.Controllers
                     CurrentPage = pageNum,
                     ItemsPerPage = PageSize,
                     //TotalNumItems = _con.GamousMains.Count()
-                    TotalNumItems = query.Count()
+                    TotalNumItems = count
                 },
-
-            }); ;
+            });
         }
+
+
+
+
+        //[HttpPost]
+        //public IActionResult ListMummies(List<string> gender_filter, List<string> hair_filter, string artifact, int pageNum = 1)
+        //{
+        //    ViewBag.gender_filter = _con.GamousMains.Select(x => x.GenderGe).Distinct().ToList();
+        //    ViewBag.hair_filter = _con.GamousMains.Select(x => x.HairColor).Distinct().ToList();
+        //    ViewBag.date_min = _con.GamousMains.Select(x => x.DateFound).Min();
+        //    ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
+
+
+
+        //    var query = from b in _con.GamousMains select b;
+
+
+
+        //    if (gender_filter.Count() > 0)
+        //    {
+        //        //gender_query = "gender_filter.Contains(b.GenderGe)";
+        //        query = query.Where(b => gender_filter.Contains(b.GenderGe));
+        //    }
+        //    if (hair_filter.Count() > 0)
+        //    {
+        //        query = query.Where(b => hair_filter.Contains(b.HairColor));
+        //    }
+        //    if (artifact != null)
+        //    {
+        //        query = query.Where(b => b.ArtifactFound == artifact);
+        //    }
+
+
+
+        //    query = query
+        //        .OrderBy(b => b.Gamous)
+        //        .Skip((pageNum - 1) * PageSize)
+        //        .Take(PageSize);
+
+
+
+        //    return View(new MummyListViewModel
+        //    {
+        //        mummies = query,
+        //        PagingInfo = new PagingInfo
+        //        {
+        //            CurrentPage = pageNum,
+        //            ItemsPerPage = PageSize,
+        //            //TotalNumItems = _con.GamousMains.Count()
+        //            TotalNumItems = query.Count()
+        //        },
+
+        //    }); ;
+        //}
 
         public IActionResult Test()
         {
