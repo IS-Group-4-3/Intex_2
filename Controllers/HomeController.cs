@@ -287,7 +287,16 @@ namespace Intex_2.Controllers
         [HttpPost]
         public IActionResult OsteologyForm(GamousLocation location, GamousMain mummy, GamousBone bones, GamousDental dental, GamousSample sample)
         {
+           string id = location.LowPairNs + location.BurialLocationNs + location.LowPairEw + location.BurialLocationEw + location.BurialSubplot + location.BurialNumber;
+            int gid = (int)(_con.GamousMains.Select(x => x.Gamous).Max() + 1);
 
+            location.LocationId = id;
+            mummy.LocationId = id;
+            mummy.Gamous = gid;
+            bones.Gamous = gid;
+            dental.Gamous = gid;
+            sample.Gamous = gid;
+            
 
             _con.GamousLocations.Add(location);
             _con.GamousMains.Add(mummy);
