@@ -67,6 +67,7 @@ button.bg-blue:focus {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
@@ -75,6 +76,8 @@ button.bg-blue:focus {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
+
+
 
 /* The Close Button */
 .close {
@@ -90,6 +93,7 @@ button.bg-blue:focus {
         text-decoration: none;
         cursor: pointer;
     }
+
 
     /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 /*.active, .collapsible:hover {

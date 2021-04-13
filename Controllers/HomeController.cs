@@ -48,10 +48,6 @@ namespace Intex_2.Controllers
             ViewBag.date_min = _con.GamousMains.Select(x => x.DateFound).Min();
             ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
 
-
-
-
-
             return View(new MummyListViewModel
             {
                 mummies = _con.GamousMains
@@ -168,10 +164,12 @@ namespace Intex_2.Controllers
      
         public IActionResult MediaLibrary()
         {
-            return View(new MediaViewModel
-            {
-                files = _con.FileRecords
-            });
+            var files = _con.FileRecords;
+           
+                return View(new MediaViewModel
+                {
+                    files = files
+                });
         }
 
         public IActionResult DeleteMedia(string url)
@@ -181,7 +179,7 @@ namespace Intex_2.Controllers
             _con.Remove(image);
             _con.SaveChanges();
 
-            return View("MediaLibrary");
+            return Redirect("MediaLibrary");
         }
 
         public IActionResult DetailsMummies(string locationID)
@@ -196,6 +194,7 @@ namespace Intex_2.Controllers
             FieldMain fm = _con.FieldMains.FirstOrDefault(p => p.LocationId == locationID);
             FieldLocation fl = _con.FieldLocations.FirstOrDefault(p => p.LocationId == locationID);
             GamousSample gs = _con.GamousSamples.FirstOrDefault(p => p.Gamous == g.Gamous);
+            IEnumerable<FileRecord> fr = _con.FileRecords.Where(p => p.LocationId == locationID);
 
             return View(new MummyDetailsViewModel
             {
@@ -208,7 +207,8 @@ namespace Intex_2.Controllers
                 bioSample = gbs,
                 field = fm,
                 fieldLocation = fl,
-                sample = gs
+                sample = gs,
+                files = fr
 
             });
         }
@@ -220,7 +220,6 @@ namespace Intex_2.Controllers
         [HttpPost]
         public IActionResult EditMummy(MummyDetailsViewModel eM)
         {
-            MummyDetailsViewModel m = new MummyDetailsViewModel { };
 
             m.mummy = _con.GamousMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
             m.location = _con.GamousLocations.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
@@ -260,32 +259,50 @@ namespace Intex_2.Controllers
             return View();
         }
 
-        public IActionResult DeleteMummy(MummyDetailsViewModel eM)
+        public IActionResult DeleteMummy(string locationID)
         {
-            MummyDetailsViewModel m = new MummyDetailsViewModel { };
+            GamousMain g = _con.GamousMains.FirstOrDefault(p => p.LocationId == locationID);
+            GamousLocation gl = _con.GamousLocations.FirstOrDefault(p => p.LocationId == locationID);
+            GamousDental gd = _con.GamousDentals.FirstOrDefault(p => p.Gamous == g.Gamous);
+            GamousCranial gc = _con.GamousCranials.FirstOrDefault(p => p.LocationId == locationID);
+            GamousC14 gc14 = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == locationID);
+            GamousBone gb = _con.GamousBones.FirstOrDefault(p => p.Gamous == g.Gamous);
+            GamousBiologicalSample gbs = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == locationID);
+            FieldMain fm = _con.FieldMains.FirstOrDefault(p => p.LocationId == locationID);
+            FieldLocation fl = _con.FieldLocations.FirstOrDefault(p => p.LocationId == locationID);
+            GamousSample gs = _con.GamousSamples.FirstOrDefault(p => p.Gamous == g.Gamous);
+            IEnumerable<FileRecord> fr = _con.FileRecords.Where(p => p.LocationId == locationID);
 
-            m.mummy = _con.GamousMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.location = _con.GamousLocations.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.dentalInfo = _con.GamousDentals.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
-            m.cranialInfo = _con.GamousCranials.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.carbonDating = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == eM.mummy.LocationId);
-            m.bone = _con.GamousBones.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
-            m.bioSample = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.field = _con.FieldMains.FirstOrDefault(p => p.LocationId == eM.mummy.LocationId);
-            m.sample = _con.GamousSamples.FirstOrDefault(p => p.Gamous == eM.mummy.Gamous);
-
-            _con.Remove(m.mummy);
-            _con.Remove(m.location);
-            _con.Remove(m.dentalInfo);
-            _con.Remove(m.cranialInfo);
-            _con.Remove(m.cranialInfo);
-            _con.Remove(m.bone);
-            _con.Remove(m.bioSample);
-            _con.Remove(m.field);
-            _con.Remove(m.sample);
+            if (g != null)
+            { _con.Remove(g); }
+            if (gl != null)
+            { _con.Remove(gl); }
+            if (gd != null)
+            { _con.Remove(gd); }
+            if (gc != null)
+            { _con.Remove(gc); }
+            if (gc14 != null)
+            { _con.Remove(gc14); }
+            if (gb != null)
+            { _con.Remove(gb); }
+            if (gbs != null)
+            { _con.Remove(gbs); }
+            if (fm != null)
+            { _con.Remove(fm); }
+            if (fl != null)
+            { _con.Remove(fl); }
+            if (gs != null)
+            { _con.Remove(gs); }
+            if (fr != null)
+            {
+                foreach (var file in fr)
+                {
+                    _con.Remove(file);
+                }
+            }
             _con.SaveChanges();
 
-            return View();
+            return Redirect("ListMummies");
         }
 
         [Authorize]

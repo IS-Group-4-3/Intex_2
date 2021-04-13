@@ -1,12 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @model MediaViewModel
 
 <div class="container">
+
+    <h1>Media Library</h1>
+    <br />
+    @if (!Model.files.Any())
+    {
+        <h5>No Media Currently Available</h5>
+       
+    }
+    <a asp-controller="Home" asp-action="UploadMedia" class="btn btn-primary">Upload Media</a>
+    <br />
+    <br />
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
@@ -19,43 +28,43 @@
                 <th>
                     LocationID
                 </th>
-                <th>
-                    
-                </th>
+                @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                {
+                    <th></th>
+                }
             </tr>
         </thead>
         <tbody>
-            @foreach (var x in Model.files)
+            @if (Model.files.Any())
             {
-                if (Model.files != null)
+                @foreach (var x in Model.files)
                 {
-            <tr>
-                <td>
-                    @x.Type
-                </td>
-                <td>
-                    <img src="@x.Url" style="width:150px" />
-                </td>
-                <td>
-                    @x.LocationId
-                </td>
-                <td>
-                    <div>
-                        <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteMedia"
-                           asp-route-url="@x.Url">Delete</a>
-                    </div>
-                </td>
-            </tr>
-                }
-                else
-                {
+
                     <tr>
-                        <th>
-                            No Media Available
-                        </th>
+                        <td>
+                            @x.Type
+                        </td>
+                        <td>
+                                <img src="@x.Url" style="width:150px" />
+                        </td>
+                        <td>
+                            <a asp-controller="Home" asp-action="DetailsMummies"
+                               asp-route-locationID="@x.LocationId">@x.LocationId</a>
+                        </td>
+                        @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                        {
+                            <td>
+                                <div>
+                                    <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteMedia"
+                                       asp-route-url="@x.Url">Delete</a>
+                                </div>
+                            </td>
+                        }
                     </tr>
                 }
             }
+
         </tbody>
     </table>
 </div>
+

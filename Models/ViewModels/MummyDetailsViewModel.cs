@@ -17,5 +17,6 @@ namespace Intex_2.Models.ViewModels
         public GamousSample sample { get; set; }
         public FieldMain field { get; set; }
         public FieldLocation fieldLocation { get; set; }
+        public IEnumerable<FileRecord> files { get; set; }
     }
 }
