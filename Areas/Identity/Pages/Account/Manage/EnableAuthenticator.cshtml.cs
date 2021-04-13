@@ -148,7 +148,7 @@ namespace Intex_2.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("Intex_2"),
+                _urlEncoder.Encode("Fag el-Gamous"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }
