@@ -5,8 +5,8 @@
 @model MummyListViewModel
 
 
-
-<h1 class="text-center">Burial List</h1>
+<br />
+<h2 class="text-center">Burial database</h2>
 <br />
 <div class="container">
     <div class="row">
@@ -32,41 +32,45 @@
 
 
 
-                        <div class="form-group">
-                            <label for="gender_filter">Gender</label>
-                            <select form="filters" class="form-control" name="gender_filter" id="gender_filter" multiple>
-                                <option value="">- - - - -</option>
-                                @foreach (var x in ViewBag.gender_filter)
-                                {
-                    <option value="@x">@x</option>}
-                            </select>
-                            <br />
-                            <label for="hair_filter">Hair Color</label>
-                            <select form="filters" class="form-control" name="hair_filter" id="hair_filter" multiple>
-                                <option value="">- - - - -</option>
-                                @foreach (var x in ViewBag.hair_filter)
-                                {
-                    <option value="@x">@x</option>}
-                            </select>
-                            <br />
-                            @*<label for="date_filter_min">Date found</label>
-                                <input form="filters" class="form-control" type="datetime-local" name="date_filter_min" id="date_filter_min" min="@ViewBag.date_min" max="@ViewBag.date_max">
-                                <input form="filters" class="form-control" type="datetime-local" name="date_filter_max" id="date_filter_max" min="@ViewBag.date_min" max="@ViewBag.date_max">
-                                <br />*@
-                            <div class="form-check">
-                                <input form="filters" class="form-check-input" type="radio" name="artifact" id="artifacts_true" value="TRUE">
-                                <label class="form-check-label" for="artifacts_true">Found with artifacts</label>
-                            </div>
-                            <div class="form-check">
-                                <input form="filters" class="form-check-input" type="radio" name="artifact" id="artifacts_false" value="FALSE">
-                                <label class="form-check-label" for="artifacts_false">Found without artifacts</label>
-                            </div>
-                            <br />
-
-
-
-                            <button class="btn btn-dark" form="filters" type="submit">Filter results</button>
+                    <div class="form-group">
+                        <label for="gender_filter">Gender</label>
+                        <select form="filters" class="form-control" name="gender_filter" id="gender_filter" multiple>
+                            <option value="">- - - - -</option>
+                            @foreach (var x in ViewBag.gender_filter)
+                            {
+                                <option value="@x">@x</option>
+}
+                        </select>
+                        <br />
+                        <label for="hair_filter">Hair Color</label>
+                        <select form="filters" class="form-control" name="hair_filter" id="hair_filter" multiple>
+                            <option value="">- - - - -</option>
+                            @foreach (var x in ViewBag.hair_filter)
+                            {
+                                <option value="@x">@x</option>
+}
+                        </select>
+                        <br />
+                        @*<label for="date_filter_min">Date found</label>
+        <input form="filters" class="form-control" type="datetime-local" name="date_filter_min" id="date_filter_min" min="@ViewBag.date_min" max="@ViewBag.date_max">
+        <input form="filters" class="form-control" type="datetime-local" name="date_filter_max" id="date_filter_max" min="@ViewBag.date_min" max="@ViewBag.date_max">
+        <br />*@
+                        <div class="form-check">
+                            <input form="filters" class="form-check-input" type="radio" name="artifact" id="artifacts_true" value="TRUE">
+                            <label class="form-check-label" for="artifacts_true">Found with artifacts</label>
                         </div>
+                        <div class="form-check">
+                            <input form="filters" class="form-check-input" type="radio" name="artifact" id="artifacts_false" value="FALSE">
+                            <label class="form-check-label" for="artifacts_false">Found without artifacts</label>
+                        </div>
+                        <br />
+
+
+
+                        <button class="btn btn-outline-dark" form="filters" type="submit">Filter results</button>
+                        <br /><br />
+                        <a class="btn btn-outline-dark" asp-action="ListMummies" asp-controller="Home">Reset filters</a>
+                    </div>
 
 
 

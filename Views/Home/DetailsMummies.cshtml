@@ -24,7 +24,7 @@
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
                     <tr>
-                        <th>Burial Nortes</th>
+                        <th>Burial Notes</th>
                         <td>@Model.mummy.BurialSituationNotes</td>
                     </tr>
                     <tr>
@@ -969,7 +969,7 @@ else
                         <tbody>
                             <tr>
                                 <td>
-                                    <a class="btn btn-dark" asp-controller="Home" asp-action="RedirectToEditMummy"
+                                    <a class="btn btn-outline-dark" asp-controller="Home" asp-action="RedirectToEditMummy"
                                        asp-route-locationID="@Model">
                                         Edit
                                     </a>
@@ -978,7 +978,7 @@ else
                                 {
                 <td>
                     <div class="col-5">
-                        <button id="myBtn" class="btn btn-danger">
+                        <button id="myBtn" class="btn btn-outline-danger">
                             Delete
                         </button>
                         <div id="myModal" class="modal">

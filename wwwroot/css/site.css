@@ -196,6 +196,14 @@ body {
     width: 100vw;
 }
 
+.bg-layout {
+    background-image: url("../img/bg2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+}
+
 .fade-in-text-2 {
     animation: fadeIn linear 1.5s;
     -webkit-animation: fadeIn linear 1.5s;
@@ -205,10 +213,10 @@ body {
 }
 
 .fade-in-text-3 {
-    animation: fadeIn linear 4s;
-    -webkit-animation: fadeIn linear 4s;
-    -moz-animation: fadeIn linear 4s;
-    -o-animation: fadeIn linear 4s;
+    animation: fadeIn linear 3s;
+    -webkit-animation: fadeIn linear 3s;
+    -moz-animation: fadeIn linear 3s;
+    -o-animation: fadeIn linear 3s;
     text-align: center;
 }
 
