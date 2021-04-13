@@ -148,7 +148,7 @@ namespace Intex_2.Controllers
 
                 _con.FileRecords.Add(File);
                 _con.SaveChanges();
-                return View("MediaLibrary");
+                return Redirect("MediaLibrary");
             }
             else
             {
@@ -294,6 +294,18 @@ namespace Intex_2.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        public IActionResult CreateDental (int gamous)
+        {
+
+            GamousDental g = new GamousDental() { };
+            g.Gamous = gamous;
+            _con.GamousDentals.Add(g);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousDentals", new { gamous = gamous });
+
         }
 
         public IActionResult CreateCranial(string locationID)
