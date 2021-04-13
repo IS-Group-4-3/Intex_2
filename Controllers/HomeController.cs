@@ -276,10 +276,28 @@ namespace Intex_2.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public IActionResult OsteologyForm(GamousLocation location, GamousMain mummy, GamousBone bones, GamousDental dental, GamousSample sample)
+        {
+
+
+            _con.GamousLocations.Add(location);
+            _con.GamousMains.Add(mummy);
+            _con.GamousBones.Add(bones);
+            _con.GamousDentals.Add(dental);
+            _con.GamousSamples.Add(sample);
+            _con.SaveChanges();
+
+            return RedirectToAction("OsteologyForm");
+        }
+
+        [Authorize]
         public IActionResult ExhumationForm()
         {
             return View(new MummyDetailsViewModel { });
         }
+
+
 
         public IActionResult About()
         {
