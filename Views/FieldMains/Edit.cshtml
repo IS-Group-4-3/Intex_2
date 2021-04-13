@@ -274,6 +274,11 @@
                 <input asp-for="FieldNotes" class="form-control" />
                 <span asp-validation-for="FieldNotes" class="text-danger"></span>
             </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Picture" /> @Html.DisplayNameFor(model => model.Picture)
+                </label>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

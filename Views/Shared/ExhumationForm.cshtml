@@ -1,0 +1,11 @@
+﻿@model MummyDetailsViewModel
+
+<form asp-action="" asp-controller="" method="post">
+
+    <partial name="CreateFieldLocations" model="@Model.fieldLocation" />
+    <partial name="CreateFieldMains" model="@Model.field" />
+
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+</form>

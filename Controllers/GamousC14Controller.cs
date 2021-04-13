@@ -53,7 +53,7 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LoctionId,Rack,Ns,LocationNs,Ew,LocationEw,Square,Area,Burial,Tube,Description,SizeMl,Foci,C14Sample2017,Location,Questions,SomeNumber,Conventional14cAgeBp,C14CalendarDate,Calibrated95CalendarDateMax,Calibrated95CalendarDateMin,Calibrated95CalendarDateSpan,Calibrated95CalendarDateAvg,Category,Notes")] GamousC14 gamousC14)
+        public async Task<IActionResult> CreateGamousC14([Bind("LoctionId,Rack,Ns,LocationNs,Ew,LocationEw,Square,Area,Burial,Tube,Description,SizeMl,Foci,C14Sample2017,Location,Questions,SomeNumber,Conventional14cAgeBp,C14CalendarDate,Calibrated95CalendarDateMax,Calibrated95CalendarDateMin,Calibrated95CalendarDateSpan,Calibrated95CalendarDateAvg,Category,Notes")] GamousC14 gamousC14)
         {
             if (ModelState.IsValid)
             {

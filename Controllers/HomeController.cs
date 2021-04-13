@@ -175,6 +175,7 @@ namespace Intex_2.Controllers
             GamousBone gb = _con.GamousBones.FirstOrDefault(p => p.Gamous == g.Gamous);
             GamousBiologicalSample gbs = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == locationID);
             FieldMain fm = _con.FieldMains.FirstOrDefault(p => p.LocationId == locationID);
+            FieldLocation fl = _con.FieldLocations.FirstOrDefault(p => p.LocationId == locationID);
             GamousSample gs = _con.GamousSamples.FirstOrDefault(p => p.Gamous == g.Gamous);
 
             return View(new MummyDetailsViewModel
@@ -187,6 +188,7 @@ namespace Intex_2.Controllers
                 bone = gb,
                 bioSample = gbs,
                 field = fm,
+                fieldLocation = fl,
                 sample = gs
 
             });
@@ -270,13 +272,13 @@ namespace Intex_2.Controllers
         [Authorize]
         public IActionResult OsteologyForm()
         {
-            return View();
+            return View(new MummyDetailsViewModel { });
         }
 
         [Authorize]
         public IActionResult ExhumationForm()
         {
-            return View();
+            return View(new MummyDetailsViewModel { });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
