@@ -3,16 +3,34 @@
     Layout = "~/Views/Shared/_Layout_Index.cshtml";
 }
 
-<div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/css/egypt.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-            height: 800px;">
-    <div style="padding-top:75px; text-align: center; color: white">
-        <h1>Intex2 Group 4-3</h1>
-        <div style="padding-top:10px;margin-left: auto; margin-right: auto; display: block;">
-            <img style="height:350px;width:350px;opacity:0.88;" src="/css/BYU Excavations Logo.jpg" />
+<div class="bg-home">
+    <br /><br /><br /><br />
+    <h1 class="text-center fade-in-text-2 text-white">Welcome to BYU's Fag el-Gamous database</h1>
+    <div class="wthreepvt-pos py-md-5 py-5" id="positions">
+        <div class="container py-lg-5">
+            <div class="wthreepvt-pos-row row  text-center fade-in-text-3">
+                <div class="col-lg-4 col-sm-6 wthreepvt-pos-grids">
+                    <div class="p-md-5 p-sm-3 text-white">
+                        <h4 class="mt-2 mb-3">Learn</h4>
+                        <p>Discover Fag el-Gamous</p>
+                        <a asp-controller="Home" asp-action="About" class="btn btn-light">About</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 wthreepvt-pos-grids  border-left border-right my-sm-0 my-5">
+                    <div class="p-md-5 p-sm-3 text-white">
+                        <h4 class="mt-2 mb-3">Explore</h4>
+                        <p>Dive into data about 1000+ burials</p>
+                        <a asp-controller="Home" asp-action="ListMummies" class="btn btn-light">Database</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 wthreepvt-pos-grids">
+                    <div class="p-md-5 p-sm-3 text-white">
+                        <h4 class="mt-2 mb-3">Tools</h4>
+                        <p>Access the researcher toolkit</p>
+                        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-light">Login</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
