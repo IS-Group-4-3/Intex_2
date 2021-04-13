@@ -31,15 +31,6 @@ button.bg-blue:focus {
     background-color: #ffffff;
 }
 
-.bg-egypt {
-    width:100%;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-}
-
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
     background-color: #0062B8;
@@ -193,7 +184,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 
 .bg-layout {
@@ -341,7 +332,7 @@ button.bg-black:focus {
 /* The grid: Four equal columns that floats next to each other */
 .column-img {
     float: left;
-    width: 25.5vw;
+    width: 18.5vw;
 }
 
 /* Style the images inside the grid */
