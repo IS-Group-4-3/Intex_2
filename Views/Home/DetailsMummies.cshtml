@@ -1,13 +1,13 @@
-﻿@{ ViewData["Title"] = "Mummy Details"; }
+﻿@{ ViewData["Title"] = "Burial Details"; }
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @model MummyDetailsViewModel
 
-<h1>Mummy #@Model.mummy.Gamous</h1>
+<h1>Burial #@Model.mummy.Gamous</h1>
 
 <h4>
-    Mummy Location:
+    Burial Location:
     @Model.location.LowPairNs/@Model.location.HighPairNs
     @Model.location.BurialLocationNs
     @Model.location.LowPairEw/@Model.location.HighPairEw
@@ -19,7 +19,7 @@
 
 <div class="row">
     <div class="col-5">
-        <button type="button" class="collapsible text-light">Main Mummy Information</button>
+        <button type="button" class="collapsible text-light">Main Burial Information</button>
         <div class="content text-dark">
             <table class="table table-bordered table-striped table-hover w-auto">
                 <tbody>
@@ -169,7 +169,7 @@
  }
 else
 {
-<thead><tr><th>This Information is not available for this Mummy</th></tr></thead>
+<thead><tr><th>This Information is not available for this Burial</th></tr></thead>
 }
             </table>
         </div>
@@ -286,7 +286,7 @@ else
     </tbody> }
                 else if (Model.cranialInfo == null && Model.bone == null)
                 {
-    <thead><tr><th>This Information is not available for this Mummy</th></tr></thead>}
+    <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
 
             </table>
         </div>
@@ -365,7 +365,7 @@ else
     </tbody> }
                 else
                 {
-    <thead><tr><th>This Information is not available for this Mummy</th></tr></thead>}
+    <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
             </table>
         </div>
     </div>
@@ -534,7 +534,7 @@ else
  }
 else
 {
-<thead><tr><th>This Information is not available for this Mummy</th></tr></thead>
+<thead><tr><th>This Information is not available for this Burial</th></tr></thead>
 }
 
             </table>
@@ -583,7 +583,7 @@ else
     </tbody> }
                 else
                 {
-    <thead><tr><th>This Information is not available for this Mummy</th></tr></thead>}
+    <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
             </table>
         </div>
     </div>
@@ -623,7 +623,7 @@ else
  }
 else
 {
-<thead><tr><th>This Information is not available for this Mummy</th></tr></thead>
+<thead><tr><th>This Information is not available for this Burial</th></tr></thead>
 }
             </table>
         </div>
@@ -854,7 +854,7 @@ else
     </tbody> }
                 else
                 {
-    <thead><tr><th>This Information is not available for this Mummy</th></tr></thead>}
+    <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
             </table>
         </div>
     </div>
@@ -918,7 +918,7 @@ else
  }
 else
 {
-<thead><tr><th>This Information is not available for this Mummy</th></tr></thead>
+<thead><tr><th>This Information is not available for this Burial</th></tr></thead>
 }
 
             </table>
@@ -954,7 +954,7 @@ else
 } }
 else
 {
-<thead><tr><th>No files available for this Mummy</th></tr></thead>}
+<thead><tr><th>No files available for this Burial</th></tr></thead>}
 
             </table>
         </div>
