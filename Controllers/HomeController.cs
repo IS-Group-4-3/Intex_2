@@ -148,12 +148,22 @@ namespace Intex_2.Controllers
             if (ModelState.IsValid)
             {
                 url = await _s3.AddItem(upload.photo, "test");
+
+                FileRecord File = new FileRecord
+                {
+                    Url = url,
+                    Type = upload.type,
+                    LocationId = upload.LowPairNs + upload.BurialLocationNs + upload.LowPairEw + upload.BurialLocationEw + upload.BurialSubplot + upload.BurialNumber
+                };
+
+                _con.FileRecords.Add(File);
+                _con.SaveChanges();
+                return View("MediaLibrary");
             }
             else
             {
                 return View("UploadMedia");
             }
-            return View();
         }
      
         public IActionResult MediaLibrary()
