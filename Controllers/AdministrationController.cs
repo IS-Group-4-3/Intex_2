@@ -43,7 +43,9 @@ namespace Intex_2.Controllers
                                role = rs.Name
                            }).OrderByDescending(x => x.role).ToList();
 
-            ViewBag.joined_users = results; 
+            ViewBag.joined_users = results;
+
+            ViewBag.alert = "";
 
             return View();
         }
@@ -55,7 +57,26 @@ namespace Intex_2.Controllers
             var user = _con.Users.Where(x => x.Id == id).FirstOrDefault();
             _con.Users.Remove(user);
             _con.SaveChanges();
-            return RedirectToAction("ManageUsers");
+
+            ViewBag.users = _con.Users;
+
+            var results = (from u in _con.Users
+                           from urs in _con.UserRoles
+                           .Where(ur => u.Id == ur.UserId).DefaultIfEmpty()
+                           from rs in _con.Roles
+                           .Where(r => r.Id == urs.RoleId).DefaultIfEmpty()
+                           select new UserViewModel()
+                           {
+                               id = u.Id,
+                               email = u.Email,
+                               role = rs.Name
+                           }).OrderByDescending(x => x.role).ToList();
+
+            ViewBag.joined_users = results;
+
+            ViewBag.alert = "User successfully deleted";
+
+            return View("ManageUsers");
         }
 
         [Authorize(Roles = "Admin")]
@@ -90,7 +111,25 @@ namespace Intex_2.Controllers
                 _con.SaveChanges();
             }
 
-            return RedirectToAction("ManageUsers");
+            ViewBag.users = _con.Users;
+
+            var results = (from u in _con.Users
+                           from urs in _con.UserRoles
+                           .Where(ur => u.Id == ur.UserId).DefaultIfEmpty()
+                           from rs in _con.Roles
+                           .Where(r => r.Id == urs.RoleId).DefaultIfEmpty()
+                           select new UserViewModel()
+                           {
+                               id = u.Id,
+                               email = u.Email,
+                               role = rs.Name
+                           }).OrderByDescending(x => x.role).ToList();
+
+            ViewBag.joined_users = results;
+
+            ViewBag.alert = "User permissions successfully updated";
+
+            return View("ManageUsers");
         }
     }
 }
