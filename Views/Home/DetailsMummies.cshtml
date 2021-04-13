@@ -71,6 +71,17 @@
                         <th>Date Found</th>
                         <td>@Model.mummy.DateFound</td>
                     </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                <tr>               
+                    <td colspan="2">
+                        <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                           asp-route-locationID="@Model.mummy.LocationId">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -133,6 +144,17 @@
                         <th>Head Direction</th>
                         <td>@Model.location.HeadDirection</td>
                     </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -147,25 +169,36 @@
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.dentalInfo != null)
                 {
-    <tbody>
-        <tr>
-            <th>Tooth Attrition</th>
-            <td>@Model.dentalInfo.ToothAttrition</td>
-        </tr>
-        <tr>
-            <th>Tooth Eruption</th>
-            <td>@Model.dentalInfo.ToothEruption</td>
-        </tr>
-        <tr>
-            <th>Pathology Anomalies</th>
-            <td>@Model.dentalInfo.PathologyAnomalies</td>
-        </tr>
-        <tr>
-            <th>Epiphyseal Union</th>
-            <td>@Model.dentalInfo.EpiphysealUnion</td>
-        </tr>
+                <tbody>
+                    <tr>
+                        <th>Tooth Attrition</th>
+                        <td>@Model.dentalInfo.ToothAttrition</td>
+                    </tr>
+                    <tr>
+                        <th>Tooth Eruption</th>
+                        <td>@Model.dentalInfo.ToothEruption</td>
+                    </tr>
+                    <tr>
+                        <th>Pathology Anomalies</th>
+                        <td>@Model.dentalInfo.PathologyAnomalies</td>
+                    </tr>
+                    <tr>
+                        <th>Epiphyseal Union</th>
+                        <td>@Model.dentalInfo.EpiphysealUnion</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
 
-    </tbody>
+                </tbody>
  }
 else
 {
@@ -181,109 +214,131 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.cranialInfo != null)
                 {
-    <tbody>
-        <tr>
-            <th>SampleNumber</th>
-            <td>@Model.cranialInfo.SampleNumber</td>
-        </tr>
-        <tr>
-            <th>MaximumCranialLength</th>
-            <td>@Model.cranialInfo.MaximumCranialLength</td>
-        </tr>
-        <tr>
-            <th>MaximumCranialBreadth</th>
-            <td>@Model.cranialInfo.MaximumCranialBreadth</td>
-        </tr>
-        <tr>
-            <th>BasionbregmaHeight</th>
-            <td>@Model.cranialInfo.BasionbregmaHeight</td>
-        </tr>
-        <tr>
-            <th>Basionnasion</th>
-            <td>@Model.cranialInfo.Basionnasion</td>
-        </tr>
-        <tr>
-            <th>BasionprosthionLength</th>
-            <td>@Model.cranialInfo.BasionprosthionLength</td>
-        </tr>
-        <tr>
-            <th>BizygomaticDiameter</th>
-            <td>@Model.cranialInfo.BizygomaticDiameter</td>
-        </tr>
-        <tr>
-            <th>Nasionprosthion</th>
-            <td>@Model.cranialInfo.Nasionprosthion</td>
-        </tr>
-        <tr>
-            <th>MaximumNasalBreadth</th>
-            <td>@Model.cranialInfo.MaximumNasalBreadth</td>
-        </tr>
-        <tr>
-            <th>InterorbitalBreadth</th>
-            <td>@Model.cranialInfo.InterorbitalBreadth</td>
-        </tr>
-        <tr>
-            <th>BurialSubplotDirection</th>
-            <td>@Model.cranialInfo.BurialSubplotDirection</td>
-        </tr>
-        <tr>
-            <th>BurialArtifactDescription</th>
-            <td>@Model.cranialInfo.BurialArtifactDescription</td>
-        </tr>
-        <tr>
-            <th>BuriedWithArtifacts</th>
-            <td>@Model.cranialInfo.BuriedWithArtifacts</td>
-        </tr>
-        <tr>
-            <th>Gilesgender</th>
-            <td>@Model.cranialInfo.Gilesgender</td>
-        </tr>
-        <tr>
-            <th>Bodygender</th>
-            <td>@Model.cranialInfo.Bodygender</td>
-        </tr>
+                <tbody>
+                    <tr>
+                        <th>SampleNumber</th>
+                        <td>@Model.cranialInfo.SampleNumber</td>
+                    </tr>
+                    <tr>
+                        <th>MaximumCranialLength</th>
+                        <td>@Model.cranialInfo.MaximumCranialLength</td>
+                    </tr>
+                    <tr>
+                        <th>MaximumCranialBreadth</th>
+                        <td>@Model.cranialInfo.MaximumCranialBreadth</td>
+                    </tr>
+                    <tr>
+                        <th>BasionbregmaHeight</th>
+                        <td>@Model.cranialInfo.BasionbregmaHeight</td>
+                    </tr>
+                    <tr>
+                        <th>Basionnasion</th>
+                        <td>@Model.cranialInfo.Basionnasion</td>
+                    </tr>
+                    <tr>
+                        <th>BasionprosthionLength</th>
+                        <td>@Model.cranialInfo.BasionprosthionLength</td>
+                    </tr>
+                    <tr>
+                        <th>BizygomaticDiameter</th>
+                        <td>@Model.cranialInfo.BizygomaticDiameter</td>
+                    </tr>
+                    <tr>
+                        <th>Nasionprosthion</th>
+                        <td>@Model.cranialInfo.Nasionprosthion</td>
+                    </tr>
+                    <tr>
+                        <th>MaximumNasalBreadth</th>
+                        <td>@Model.cranialInfo.MaximumNasalBreadth</td>
+                    </tr>
+                    <tr>
+                        <th>InterorbitalBreadth</th>
+                        <td>@Model.cranialInfo.InterorbitalBreadth</td>
+                    </tr>
+                    <tr>
+                        <th>BurialSubplotDirection</th>
+                        <td>@Model.cranialInfo.BurialSubplotDirection</td>
+                    </tr>
+                    <tr>
+                        <th>BurialArtifactDescription</th>
+                        <td>@Model.cranialInfo.BurialArtifactDescription</td>
+                    </tr>
+                    <tr>
+                        <th>BuriedWithArtifacts</th>
+                        <td>@Model.cranialInfo.BuriedWithArtifacts</td>
+                    </tr>
+                    <tr>
+                        <th>Gilesgender</th>
+                        <td>@Model.cranialInfo.Gilesgender</td>
+                    </tr>
+                    <tr>
+                        <th>Bodygender</th>
+                        <td>@Model.cranialInfo.Bodygender</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
 
-    </tbody> }
+                </tbody> }
                 else if (Model.cranialInfo == null && Model.bone != null)
                 {
-    <tbody>
-        <tr>
-            <th>MaximumCranialLength</th>
-            <td>@Model.bone.MaximumCranialLength</td>
-        </tr>
-        <tr>
-            <th>MaximumCranialBreadth</th>
-            <td>@Model.bone.MaximumCranialBreadth</td>
-        </tr>
-        <tr>
-            <th>BasionBregmaHeight</th>
-            <td>@Model.bone.BasionBregmaHeight</td>
-        </tr>
-        <tr>
-            <th>BasionNasion</th>
-            <td>@Model.bone.BasionNasion</td>
-        </tr>
-        <tr>
-            <th>BasionProsthionLength</th>
-            <td>@Model.bone.BasionProsthionLength</td>
-        </tr>
-        <tr>
-            <th>BizygomaticDiameter</th>
-            <td>@Model.bone.BizygomaticDiameter</td>
-        </tr>
-        <tr>
-            <th>NasionProsthion</th>
-            <td>@Model.bone.NasionProsthion</td>
-        </tr>
-        <tr>
-            <th>MaximumNasalBreadth</th>
-            <td>@Model.bone.MaximumNasalBreadth</td>
-        </tr>
-        <tr>
-            <th>InterorbitalBreadth</th>
-            <td>@Model.bone.InterorbitalBreadth</td>
-        </tr>
-    </tbody> }
+            <tbody>
+                <tr>
+                    <th>MaximumCranialLength</th>
+                    <td>@Model.bone.MaximumCranialLength</td>
+                </tr>
+                <tr>
+                    <th>MaximumCranialBreadth</th>
+                    <td>@Model.bone.MaximumCranialBreadth</td>
+                </tr>
+                <tr>
+                    <th>BasionBregmaHeight</th>
+                    <td>@Model.bone.BasionBregmaHeight</td>
+                </tr>
+                <tr>
+                    <th>BasionNasion</th>
+                    <td>@Model.bone.BasionNasion</td>
+                </tr>
+                <tr>
+                    <th>BasionProsthionLength</th>
+                    <td>@Model.bone.BasionProsthionLength</td>
+                </tr>
+                <tr>
+                    <th>BizygomaticDiameter</th>
+                    <td>@Model.bone.BizygomaticDiameter</td>
+                </tr>
+                <tr>
+                    <th>NasionProsthion</th>
+                    <td>@Model.bone.NasionProsthion</td>
+                </tr>
+                <tr>
+                    <th>MaximumNasalBreadth</th>
+                    <td>@Model.bone.MaximumNasalBreadth</td>
+                </tr>
+                <tr>
+                    <th>InterorbitalBreadth</th>
+                    <td>@Model.bone.InterorbitalBreadth</td>
+                </tr>
+                @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                {
+                    <tr>
+                        <td colspan="2">
+                            <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                               asp-route-locationID="@Model.mummy.LocationId">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody> }
                 else if (Model.cranialInfo == null && Model.bone == null)
                 {
     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
@@ -301,68 +356,79 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.carbonDating != null)
                 {
-    <tbody>
-        <tr>
-            <th>Rack</th>
-            <td>@Model.carbonDating.Rack</td>
-        </tr>
-        <tr>
-            <th>Tube</th>
-            <td>@Model.carbonDating.Tube</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>@Model.carbonDating.Description</td>
-        </tr>
-        <tr>
-            <th>Size</th>
-            <td>@Model.carbonDating.SizeMl</td>
-        </tr>
-        <tr>
-            <th>Foci</th>
-            <td>@Model.carbonDating.Foci</td>
-        </tr>
-        <tr>
-            <th>C14Sample2017</th>
-            <td>@Model.carbonDating.C14Sample2017</td>
-        </tr>
-        <tr>
-            <th>Questions</th>
-            <td>@Model.carbonDating.Questions</td>
-        </tr>
-        <tr>
-            <th>Conventional C14 Age BP</th>
-            <td>@Model.carbonDating.Conventional14cAgeBp</td>
-        </tr>
-        <tr>
-            <th>C14 Calendar Date</th>
-            <td>@Model.carbonDating.C14CalendarDate</td>
-        </tr>
-        <tr>
-            <th>Calibrated 95 Calendar Date Max</th>
-            <td>@Model.carbonDating.Calibrated95CalendarDateMax</td>
-        </tr>
-        <tr>
-            <th>Calibrated 95 Calendar Date Min</th>
-            <td>@Model.carbonDating.Calibrated95CalendarDateMin</td>
-        </tr>
-        <tr>
-            <th>Calibrated 95 Calendar Date Span</th>
-            <td>@Model.carbonDating.Calibrated95CalendarDateSpan</td>
-        </tr>
-        <tr>
-            <th>Calibrated 95 Calendar Date AVG</th>
-            <td>@Model.carbonDating.Calibrated95CalendarDateAvg</td>
-        </tr>
-        <tr>
-            <th>Category</th>
-            <td>@Model.carbonDating.Category</td>
-        </tr>
-        <tr>
-            <th>Notes</th>
-            <td>@Model.carbonDating.Notes</td>
-        </tr>
-    </tbody> }
+                <tbody>
+                    <tr>
+                        <th>Rack</th>
+                        <td>@Model.carbonDating.Rack</td>
+                    </tr>
+                    <tr>
+                        <th>Tube</th>
+                        <td>@Model.carbonDating.Tube</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>@Model.carbonDating.Description</td>
+                    </tr>
+                    <tr>
+                        <th>Size</th>
+                        <td>@Model.carbonDating.SizeMl</td>
+                    </tr>
+                    <tr>
+                        <th>Foci</th>
+                        <td>@Model.carbonDating.Foci</td>
+                    </tr>
+                    <tr>
+                        <th>C14Sample2017</th>
+                        <td>@Model.carbonDating.C14Sample2017</td>
+                    </tr>
+                    <tr>
+                        <th>Questions</th>
+                        <td>@Model.carbonDating.Questions</td>
+                    </tr>
+                    <tr>
+                        <th>Conventional C14 Age BP</th>
+                        <td>@Model.carbonDating.Conventional14cAgeBp</td>
+                    </tr>
+                    <tr>
+                        <th>C14 Calendar Date</th>
+                        <td>@Model.carbonDating.C14CalendarDate</td>
+                    </tr>
+                    <tr>
+                        <th>Calibrated 95 Calendar Date Max</th>
+                        <td>@Model.carbonDating.Calibrated95CalendarDateMax</td>
+                    </tr>
+                    <tr>
+                        <th>Calibrated 95 Calendar Date Min</th>
+                        <td>@Model.carbonDating.Calibrated95CalendarDateMin</td>
+                    </tr>
+                    <tr>
+                        <th>Calibrated 95 Calendar Date Span</th>
+                        <td>@Model.carbonDating.Calibrated95CalendarDateSpan</td>
+                    </tr>
+                    <tr>
+                        <th>Calibrated 95 Calendar Date AVG</th>
+                        <td>@Model.carbonDating.Calibrated95CalendarDateAvg</td>
+                    </tr>
+                    <tr>
+                        <th>Category</th>
+                        <td>@Model.carbonDating.Category</td>
+                    </tr>
+                    <tr>
+                        <th>Notes</th>
+                        <td>@Model.carbonDating.Notes</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody> }
                 else
                 {
     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
@@ -376,161 +442,172 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.bone != null)
                 {
-    <tbody>
-        <tr>
-            <th>BasilarSuture</th>
-            <td>@Model.bone.BasilarSuture</td>
-        </tr>
-        <tr>
-            <th>VentralArc</th>
-            <td>@Model.bone.VentralArc</td>
-        </tr>
-        <tr>
-            <th>SubpubicAngle</th>
-            <td>@Model.bone.SubpubicAngle</td>
-        </tr>
-        <tr>
-            <th>SciaticNotch</th>
-            <td>@Model.bone.SciaticNotch</td>
-        </tr>
-        <tr>
-            <th>PubicBone</th>
-            <td>@Model.bone.PubicBone</td>
-        </tr>
-        <tr>
-            <th>PreaurSulcus</th>
-            <td>@Model.bone.PreaurSulcus</td>
-        </tr>
-        <tr>
-            <th>MedialIpRamus</th>
-            <td>@Model.bone.MedialIpRamus</td>
-        </tr>
-        <tr>
-            <th>DorsalPitting</th>
-            <td>@Model.bone.DorsalPitting</td>
-        </tr>
-        <tr>
-            <th>ForemanMagnum</th>
-            <td>@Model.bone.ForemanMagnum</td>
-        </tr>
-        <tr>
-            <th>FemurHead</th>
-            <td>@Model.bone.FemurHead</td>
-        </tr>
-        <tr>
-            <th>HumerusHead</th>
-            <td>@Model.bone.HumerusHead</td>
-        </tr>
-        <tr>
-            <th>Osteophytosis</th>
-            <td>@Model.bone.Osteophytosis</td>
-        </tr>
-        <tr>
-            <th>PubicSymphysis</th>
-            <td>@Model.bone.PubicSymphysis</td>
-        </tr>
-        <tr>
-            <th>BoneLength</th>
-            <td>@Model.bone.BoneLength</td>
-        </tr>
-        <tr>
-            <th>MedialClavicle</th>
-            <td>@Model.bone.MedialClavicle</td>
-        </tr>
-        <tr>
-            <th>IliacCrest</th>
-            <td>@Model.bone.IliacCrest</td>
-        </tr>
-        <tr>
-            <th>FemurDiameter</th>
-            <td>@Model.bone.FemurDiameter</td>
-        </tr>
-        <tr>
-            <th>Humerus</th>
-            <td>@Model.bone.Humerus</td>
-        </tr>
-        <tr>
-            <th>FemurLength</th>
-            <td>@Model.bone.FemurLength</td>
-        </tr>
-        <tr>
-            <th>HumerusLength</th>
-            <td>@Model.bone.HumerusLength</td>
-        </tr>
-        <tr>
-            <th>TibiaLength</th>
-            <td>@Model.bone.TibiaLength</td>
-        </tr>
-        <tr>
-            <th>Robust</th>
-            <td>@Model.bone.Robust</td>
-        </tr>
-        <tr>
-            <th>SupraorbitalRidges</th>
-            <td>@Model.bone.SupraorbitalRidges</td>
-        </tr>
-        <tr>
-            <th>OrbitEdge</th>
-            <td>@Model.bone.OrbitEdge</td>
-        </tr>
-        <tr>
-            <th>ParietalBossing</th>
-            <td>@Model.bone.ParietalBossing</td>
-        </tr>
-        <tr>
-            <th>Gonian</th>
-            <td>@Model.bone.Gonian</td>
-        </tr>
-        <tr>
-            <th>NuchalCrest</th>
-            <td>@Model.bone.NuchalCrest</td>
-        </tr>
-        <tr>
-            <th>ZygomaticCrest</th>
-            <td>@Model.bone.ZygomaticCrest</td>
-        </tr>
-        <tr>
-            <th>CranialSuture</th>
-            <td>@Model.bone.CranialSuture</td>
-        </tr>
-        <tr>
-            <th>MaximumCranialLength</th>
-            <td>@Model.bone.MaximumCranialLength</td>
-        </tr>
-        <tr>
-            <th>MaximumCranialBreadth</th>
-            <td>@Model.bone.MaximumCranialBreadth</td>
-        </tr>
-        <tr>
-            <th>BasionBregmaHeight</th>
-            <td>@Model.bone.BasionBregmaHeight</td>
-        </tr>
-        <tr>
-            <th>BasionNasion</th>
-            <td>@Model.bone.BasionNasion</td>
-        </tr>
-        <tr>
-            <th>BasionProsthionLength</th>
-            <td>@Model.bone.BasionProsthionLength</td>
-        </tr>
-        <tr>
-            <th>BizygomaticDiameter</th>
-            <td>@Model.bone.BizygomaticDiameter</td>
-        </tr>
-        <tr>
-            <th>NasionProsthion</th>
-            <td>@Model.bone.NasionProsthion</td>
-        </tr>
-        <tr>
-            <th>MaximumNasalBreadth</th>
-            <td>@Model.bone.MaximumNasalBreadth</td>
-        </tr>
-        <tr>
-            <th>InterorbitalBreadth</th>
-            <td>@Model.bone.InterorbitalBreadth</td>
-        </tr>
+                <tbody>
+                    <tr>
+                        <th>BasilarSuture</th>
+                        <td>@Model.bone.BasilarSuture</td>
+                    </tr>
+                    <tr>
+                        <th>VentralArc</th>
+                        <td>@Model.bone.VentralArc</td>
+                    </tr>
+                    <tr>
+                        <th>SubpubicAngle</th>
+                        <td>@Model.bone.SubpubicAngle</td>
+                    </tr>
+                    <tr>
+                        <th>SciaticNotch</th>
+                        <td>@Model.bone.SciaticNotch</td>
+                    </tr>
+                    <tr>
+                        <th>PubicBone</th>
+                        <td>@Model.bone.PubicBone</td>
+                    </tr>
+                    <tr>
+                        <th>PreaurSulcus</th>
+                        <td>@Model.bone.PreaurSulcus</td>
+                    </tr>
+                    <tr>
+                        <th>MedialIpRamus</th>
+                        <td>@Model.bone.MedialIpRamus</td>
+                    </tr>
+                    <tr>
+                        <th>DorsalPitting</th>
+                        <td>@Model.bone.DorsalPitting</td>
+                    </tr>
+                    <tr>
+                        <th>ForemanMagnum</th>
+                        <td>@Model.bone.ForemanMagnum</td>
+                    </tr>
+                    <tr>
+                        <th>FemurHead</th>
+                        <td>@Model.bone.FemurHead</td>
+                    </tr>
+                    <tr>
+                        <th>HumerusHead</th>
+                        <td>@Model.bone.HumerusHead</td>
+                    </tr>
+                    <tr>
+                        <th>Osteophytosis</th>
+                        <td>@Model.bone.Osteophytosis</td>
+                    </tr>
+                    <tr>
+                        <th>PubicSymphysis</th>
+                        <td>@Model.bone.PubicSymphysis</td>
+                    </tr>
+                    <tr>
+                        <th>BoneLength</th>
+                        <td>@Model.bone.BoneLength</td>
+                    </tr>
+                    <tr>
+                        <th>MedialClavicle</th>
+                        <td>@Model.bone.MedialClavicle</td>
+                    </tr>
+                    <tr>
+                        <th>IliacCrest</th>
+                        <td>@Model.bone.IliacCrest</td>
+                    </tr>
+                    <tr>
+                        <th>FemurDiameter</th>
+                        <td>@Model.bone.FemurDiameter</td>
+                    </tr>
+                    <tr>
+                        <th>Humerus</th>
+                        <td>@Model.bone.Humerus</td>
+                    </tr>
+                    <tr>
+                        <th>FemurLength</th>
+                        <td>@Model.bone.FemurLength</td>
+                    </tr>
+                    <tr>
+                        <th>HumerusLength</th>
+                        <td>@Model.bone.HumerusLength</td>
+                    </tr>
+                    <tr>
+                        <th>TibiaLength</th>
+                        <td>@Model.bone.TibiaLength</td>
+                    </tr>
+                    <tr>
+                        <th>Robust</th>
+                        <td>@Model.bone.Robust</td>
+                    </tr>
+                    <tr>
+                        <th>SupraorbitalRidges</th>
+                        <td>@Model.bone.SupraorbitalRidges</td>
+                    </tr>
+                    <tr>
+                        <th>OrbitEdge</th>
+                        <td>@Model.bone.OrbitEdge</td>
+                    </tr>
+                    <tr>
+                        <th>ParietalBossing</th>
+                        <td>@Model.bone.ParietalBossing</td>
+                    </tr>
+                    <tr>
+                        <th>Gonian</th>
+                        <td>@Model.bone.Gonian</td>
+                    </tr>
+                    <tr>
+                        <th>NuchalCrest</th>
+                        <td>@Model.bone.NuchalCrest</td>
+                    </tr>
+                    <tr>
+                        <th>ZygomaticCrest</th>
+                        <td>@Model.bone.ZygomaticCrest</td>
+                    </tr>
+                    <tr>
+                        <th>CranialSuture</th>
+                        <td>@Model.bone.CranialSuture</td>
+                    </tr>
+                    <tr>
+                        <th>MaximumCranialLength</th>
+                        <td>@Model.bone.MaximumCranialLength</td>
+                    </tr>
+                    <tr>
+                        <th>MaximumCranialBreadth</th>
+                        <td>@Model.bone.MaximumCranialBreadth</td>
+                    </tr>
+                    <tr>
+                        <th>BasionBregmaHeight</th>
+                        <td>@Model.bone.BasionBregmaHeight</td>
+                    </tr>
+                    <tr>
+                        <th>BasionNasion</th>
+                        <td>@Model.bone.BasionNasion</td>
+                    </tr>
+                    <tr>
+                        <th>BasionProsthionLength</th>
+                        <td>@Model.bone.BasionProsthionLength</td>
+                    </tr>
+                    <tr>
+                        <th>BizygomaticDiameter</th>
+                        <td>@Model.bone.BizygomaticDiameter</td>
+                    </tr>
+                    <tr>
+                        <th>NasionProsthion</th>
+                        <td>@Model.bone.NasionProsthion</td>
+                    </tr>
+                    <tr>
+                        <th>MaximumNasalBreadth</th>
+                        <td>@Model.bone.MaximumNasalBreadth</td>
+                    </tr>
+                    <tr>
+                        <th>InterorbitalBreadth</th>
+                        <td>@Model.bone.InterorbitalBreadth</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
 
-    </tbody>
+                </tbody>
  }
 else
 {
@@ -550,37 +627,48 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.bioSample != null)
                 {
-    <tbody>
-        <tr>
-            <th>Rack Number</th>
-            <td>@Model.location.LowPairNs</td>
-        </tr>
-        <tr>
-            <th>Bag Number</th>
-            <td>@Model.location.HighPairNs</td>
-        </tr>
-        <tr>
-            <th>Cluster Number</th>
-            <td>@Model.location.BurialLocationNs</td>
+                <tbody>
+                    <tr>
+                        <th>Rack Number</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Bag Number</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Cluster Number</th>
+                        <td>@Model.location.BurialLocationNs</td>
 
-        </tr>
-        <tr>
-            <th>Date</th>
-            <td>@Model.location.LowPairNs</td>
-        </tr>
-        <tr>
-            <th>PreviouslySampled</th>
-            <td>@Model.location.HighPairNs</td>
-        </tr>
-        <tr>
-            <th>Notes</th>
-            <td>@Model.location.BurialLocationNs</td>
-        </tr>
-        <tr>
-            <th>Initials</th>
-            <td>@Model.location.BurialLocationNs</td>
-        </tr>
-    </tbody> }
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>@Model.location.LowPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>PreviouslySampled</th>
+                        <td>@Model.location.HighPairNs</td>
+                    </tr>
+                    <tr>
+                        <th>Notes</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+                    <tr>
+                        <th>Initials</th>
+                        <td>@Model.location.BurialLocationNs</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody> }
                 else
                 {
     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
@@ -594,32 +682,43 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.sample != null)
                 {
-    <tbody>
-        <tr>
-            <th>HairTaken</th>
-            <td>@Model.sample.HairTaken</td>
-        </tr>
-        <tr>
-            <th>SoftTissueTaken</th>
-            <td>@Model.sample.SoftTissueTaken</td>
-        </tr>
-        <tr>
-            <th>BoneTaken</th>
-            <td>@Model.sample.BoneTaken</td>
-        </tr>
-        <tr>
-            <th>ToothTaken</th>
-            <td>@Model.sample.ToothTaken</td>
-        </tr>
-        <tr>
-            <th>TextileTaken</th>
-            <td>@Model.sample.TextileTaken</td>
-        </tr>
-        <tr>
-            <th>DescriptionOfTaken</th>
-            <td>@Model.sample.DescriptionOfTaken</td>
-        </tr>
-    </tbody>
+                <tbody>
+                    <tr>
+                        <th>HairTaken</th>
+                        <td>@Model.sample.HairTaken</td>
+                    </tr>
+                    <tr>
+                        <th>SoftTissueTaken</th>
+                        <td>@Model.sample.SoftTissueTaken</td>
+                    </tr>
+                    <tr>
+                        <th>BoneTaken</th>
+                        <td>@Model.sample.BoneTaken</td>
+                    </tr>
+                    <tr>
+                        <th>ToothTaken</th>
+                        <td>@Model.sample.ToothTaken</td>
+                    </tr>
+                    <tr>
+                        <th>TextileTaken</th>
+                        <td>@Model.sample.TextileTaken</td>
+                    </tr>
+                    <tr>
+                        <th>DescriptionOfTaken</th>
+                        <td>@Model.sample.DescriptionOfTaken</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
  }
 else
 {
@@ -638,220 +737,231 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.field != null)
                 {
-    <tbody>
-        <tr>
-            <th>YearOnSkull</th>
-            <td>@Model.field.YearOnSkull</td>
-        </tr>
-        <tr>
-            <th>MonthOnSkull</th>
-            <td>@Model.field.MonthOnSkull</td>
-        </tr>
-        <tr>
-            <th>DateOnSkull</th>
-            <td>@Model.field.DateOnSkull</td>
-        </tr>
-        <tr>
-            <th>FieldBook</th>
-            <td>@Model.field.FieldBook</td>
-        </tr>
-        <tr>
-            <th>FieldBookPageNumber</th>
-            <td>@Model.field.FieldBookPageNumber</td>
-        </tr>
-        <tr>
-            <th>InitialsOfDataEntryExpert</th>
-            <td>@Model.field.InitialsOfDataEntryExpert</td>
-        </tr>
-        <tr>
-            <th>InitialsOfDataEntryChecker</th>
-            <td>@Model.field.InitialsOfDataEntryChecker</td>
-        </tr>
-        <tr>
-            <th>ByuSample</th>
-            <td>@Model.field.ByuSample</td>
-        </tr>
-        <tr>
-            <th>BodyAnalysisYear</th>
-            <td>@Model.field.BodyAnalysisYear</td>
-        </tr>
-        <tr>
-            <th>SkullAtMagazine</th>
-            <td>@Model.field.SkullAtMagazine</td>
-        </tr>
-        <tr>
-            <th>PostcraniaAtMagazine</th>
-            <td>@Model.field.PostcraniaAtMagazine</td>
-        </tr>
-        <tr>
-            <th>SexSkull2018</th>
-            <td>@Model.field.SexSkull2018</td>
-        </tr>
-        <tr>
-            <th>AgeSkull2018</th>
-            <td>@Model.field.AgeSkull2018</td>
-        </tr>
-        <tr>
-            <th>Rack</th>
-            <td>@Model.field.Rack</td>
-        </tr>
-        <tr>
-            <th>Shelf</th>
-            <td>@Model.field.Shelf</td>
-        </tr>
-        <tr>
-            <th>RackAndShelf</th>
-            <td>@Model.field.RackAndShelf</td>
-        </tr>
-        <tr>
-            <th>ToBeConfirmed</th>
-            <td>@Model.field.ToBeConfirmed</td>
-        </tr>
-        <tr>
-            <th>SkullTrauma</th>
-            <td>@Model.field.SkullTrauma</td>
-        </tr>
-        <tr>
-            <th>PostcraniaTrauma</th>
-            <td>@Model.field.PostcraniaTrauma</td>
-        </tr>
-        <tr>
-            <th>CribraOrbitala</th>
-            <td>@Model.field.CribraOrbitala</td>
-        </tr>
-        <tr>
-            <th>PoroticHyperostosis</th>
-            <td>@Model.field.PoroticHyperostosis</td>
-        </tr>
-        <tr>
-            <th>PoroticHyperostosisLocations</th>
-            <td>@Model.field.PoroticHyperostosisLocations</td>
-        </tr>
-        <tr>
-            <th>MetopicSuture</th>
-            <td>@Model.field.MetopicSuture</td>
-        </tr>
-        <tr>
-            <th>ButtonOsteoma</th>
-            <td>@Model.field.ButtonOsteoma</td>
-        </tr>
-        <tr>
-            <th>PostcraniaTrauma1</th>
-            <td>@Model.field.PostcraniaTrauma1</td>
-        </tr>
-        <tr>
-            <th>OsteologyUnknownComment</th>
-            <td>@Model.field.OsteologyUnknownComment</td>
-        </tr>
-        <tr>
-            <th>TemporalMandibular<br />JoOsteoarthritisTmjOa</th>
-            <td>@Model.field.TemporalMandibularJointOsteoarthritisTmjOa</td>
-        </tr>
-        <tr>
-            <th>LinearHypoplasiaEnamel</th>
-            <td>@Model.field.LinearHypoplasiaEnamel</td>
-        </tr>
-        <tr>
-            <th>AreaHillBurials</th>
-            <td>@Model.field.AreaHillBurials</td>
-        </tr>
-        <tr>
-            <th>Tomb</th>
-            <td>@Model.field.Tomb</td>
-        </tr>
-        <tr>
-            <th>LocationId</th>
-            <td>@Model.field.LocationId</td>
-        </tr>
-        <tr>
-            <th>BurialDepth</th>
-            <td>@Model.field.BurialDepth</td>
-        </tr>
-        <tr>
-            <th>LengthOfRemains</th>
-            <td>@Model.field.LengthOfRemains</td>
-        </tr>
-        <tr>
-            <th>YearExcavated</th>
-            <td>@Model.field.YearExcavated</td>
-        </tr>
-        <tr>
-            <th>MonthExcavated</th>
-            <td>@Model.field.MonthExcavated</td>
-        </tr>
-        <tr>
-            <th>DateExcavated</th>
-            <td>@Model.field.DateExcavated</td>
-        </tr>
-        <tr>
-            <th>BurialPreservation</th>
-            <td>@Model.field.BurialPreservation</td>
-        </tr>
-        <tr>
-            <th>BurialWrapping</th>
-            <td>@Model.field.BurialWrapping</td>
-        </tr>
-        <tr>
-            <th>BurialAdultChild</th>
-            <td>@Model.field.BurialAdultChild</td>
-        </tr>
-        <tr>
-            <th>GenderCode</th>
-            <td>@Model.field.GenderCode</td>
-        </tr>
-        <tr>
-            <th>BurialGenderMethod</th>
-            <td>@Model.field.BurialGenderMethod</td>
-        </tr>
-        <tr>
-            <th>AgeCode</th>
-            <td>@Model.field.AgeCode</td>
-        </tr>
-        <tr>
-            <th>BurialAgeAtDeath</th>
-            <td>@Model.field.BurialAgeAtDeath</td>
-        </tr>
-        <tr>
-            <th>BurialAgeMethod</th>
-            <td>@Model.field.BurialAgeMethod</td>
-        </tr>
-        <tr>
-            <th>HairColorCode</th>
-            <td>@Model.field.HairColorCode</td>
-        </tr>
-        <tr>
-            <th>BurialHairColorText</th>
-            <td>@Model.field.BurialHairColorText</td>
-        </tr>
-        <tr>
-            <th>BurialSampleTaken</th>
-            <td>@Model.field.BurialSampleTaken</td>
-        </tr>
-        <tr>
-            <th>LengthM</th>
-            <td>@Model.field.LengthM</td>
-        </tr>
-        <tr>
-            <th>Goods</th>
-            <td>@Model.field.Goods</td>
-        </tr>
-        <tr>
-            <th>ClusterNum</th>
-            <td>@Model.field.ClusterNum</td>
-        </tr>
-        <tr>
-            <th>FaceBundle</th>
-            <td>@Model.field.FaceBundle</td>
-        </tr>
-        <tr>
-            <th>OsteologyNotes</th>
-            <td>@Model.field.OsteologyNotes</td>
-        </tr>
-        <tr>
-            <th>FieldNotes</th>
-            <td>@Model.field.FieldNotes</td>
-        </tr>
-    </tbody> }
+                <tbody>
+                    <tr>
+                        <th>YearOnSkull</th>
+                        <td>@Model.field.YearOnSkull</td>
+                    </tr>
+                    <tr>
+                        <th>MonthOnSkull</th>
+                        <td>@Model.field.MonthOnSkull</td>
+                    </tr>
+                    <tr>
+                        <th>DateOnSkull</th>
+                        <td>@Model.field.DateOnSkull</td>
+                    </tr>
+                    <tr>
+                        <th>FieldBook</th>
+                        <td>@Model.field.FieldBook</td>
+                    </tr>
+                    <tr>
+                        <th>FieldBookPageNumber</th>
+                        <td>@Model.field.FieldBookPageNumber</td>
+                    </tr>
+                    <tr>
+                        <th>InitialsOfDataEntryExpert</th>
+                        <td>@Model.field.InitialsOfDataEntryExpert</td>
+                    </tr>
+                    <tr>
+                        <th>InitialsOfDataEntryChecker</th>
+                        <td>@Model.field.InitialsOfDataEntryChecker</td>
+                    </tr>
+                    <tr>
+                        <th>ByuSample</th>
+                        <td>@Model.field.ByuSample</td>
+                    </tr>
+                    <tr>
+                        <th>BodyAnalysisYear</th>
+                        <td>@Model.field.BodyAnalysisYear</td>
+                    </tr>
+                    <tr>
+                        <th>SkullAtMagazine</th>
+                        <td>@Model.field.SkullAtMagazine</td>
+                    </tr>
+                    <tr>
+                        <th>PostcraniaAtMagazine</th>
+                        <td>@Model.field.PostcraniaAtMagazine</td>
+                    </tr>
+                    <tr>
+                        <th>SexSkull2018</th>
+                        <td>@Model.field.SexSkull2018</td>
+                    </tr>
+                    <tr>
+                        <th>AgeSkull2018</th>
+                        <td>@Model.field.AgeSkull2018</td>
+                    </tr>
+                    <tr>
+                        <th>Rack</th>
+                        <td>@Model.field.Rack</td>
+                    </tr>
+                    <tr>
+                        <th>Shelf</th>
+                        <td>@Model.field.Shelf</td>
+                    </tr>
+                    <tr>
+                        <th>RackAndShelf</th>
+                        <td>@Model.field.RackAndShelf</td>
+                    </tr>
+                    <tr>
+                        <th>ToBeConfirmed</th>
+                        <td>@Model.field.ToBeConfirmed</td>
+                    </tr>
+                    <tr>
+                        <th>SkullTrauma</th>
+                        <td>@Model.field.SkullTrauma</td>
+                    </tr>
+                    <tr>
+                        <th>PostcraniaTrauma</th>
+                        <td>@Model.field.PostcraniaTrauma</td>
+                    </tr>
+                    <tr>
+                        <th>CribraOrbitala</th>
+                        <td>@Model.field.CribraOrbitala</td>
+                    </tr>
+                    <tr>
+                        <th>PoroticHyperostosis</th>
+                        <td>@Model.field.PoroticHyperostosis</td>
+                    </tr>
+                    <tr>
+                        <th>PoroticHyperostosisLocations</th>
+                        <td>@Model.field.PoroticHyperostosisLocations</td>
+                    </tr>
+                    <tr>
+                        <th>MetopicSuture</th>
+                        <td>@Model.field.MetopicSuture</td>
+                    </tr>
+                    <tr>
+                        <th>ButtonOsteoma</th>
+                        <td>@Model.field.ButtonOsteoma</td>
+                    </tr>
+                    <tr>
+                        <th>PostcraniaTrauma1</th>
+                        <td>@Model.field.PostcraniaTrauma1</td>
+                    </tr>
+                    <tr>
+                        <th>OsteologyUnknownComment</th>
+                        <td>@Model.field.OsteologyUnknownComment</td>
+                    </tr>
+                    <tr>
+                        <th>TemporalMandibular<br />JoOsteoarthritisTmjOa</th>
+                        <td>@Model.field.TemporalMandibularJointOsteoarthritisTmjOa</td>
+                    </tr>
+                    <tr>
+                        <th>LinearHypoplasiaEnamel</th>
+                        <td>@Model.field.LinearHypoplasiaEnamel</td>
+                    </tr>
+                    <tr>
+                        <th>AreaHillBurials</th>
+                        <td>@Model.field.AreaHillBurials</td>
+                    </tr>
+                    <tr>
+                        <th>Tomb</th>
+                        <td>@Model.field.Tomb</td>
+                    </tr>
+                    <tr>
+                        <th>LocationId</th>
+                        <td>@Model.field.LocationId</td>
+                    </tr>
+                    <tr>
+                        <th>BurialDepth</th>
+                        <td>@Model.field.BurialDepth</td>
+                    </tr>
+                    <tr>
+                        <th>LengthOfRemains</th>
+                        <td>@Model.field.LengthOfRemains</td>
+                    </tr>
+                    <tr>
+                        <th>YearExcavated</th>
+                        <td>@Model.field.YearExcavated</td>
+                    </tr>
+                    <tr>
+                        <th>MonthExcavated</th>
+                        <td>@Model.field.MonthExcavated</td>
+                    </tr>
+                    <tr>
+                        <th>DateExcavated</th>
+                        <td>@Model.field.DateExcavated</td>
+                    </tr>
+                    <tr>
+                        <th>BurialPreservation</th>
+                        <td>@Model.field.BurialPreservation</td>
+                    </tr>
+                    <tr>
+                        <th>BurialWrapping</th>
+                        <td>@Model.field.BurialWrapping</td>
+                    </tr>
+                    <tr>
+                        <th>BurialAdultChild</th>
+                        <td>@Model.field.BurialAdultChild</td>
+                    </tr>
+                    <tr>
+                        <th>GenderCode</th>
+                        <td>@Model.field.GenderCode</td>
+                    </tr>
+                    <tr>
+                        <th>BurialGenderMethod</th>
+                        <td>@Model.field.BurialGenderMethod</td>
+                    </tr>
+                    <tr>
+                        <th>AgeCode</th>
+                        <td>@Model.field.AgeCode</td>
+                    </tr>
+                    <tr>
+                        <th>BurialAgeAtDeath</th>
+                        <td>@Model.field.BurialAgeAtDeath</td>
+                    </tr>
+                    <tr>
+                        <th>BurialAgeMethod</th>
+                        <td>@Model.field.BurialAgeMethod</td>
+                    </tr>
+                    <tr>
+                        <th>HairColorCode</th>
+                        <td>@Model.field.HairColorCode</td>
+                    </tr>
+                    <tr>
+                        <th>BurialHairColorText</th>
+                        <td>@Model.field.BurialHairColorText</td>
+                    </tr>
+                    <tr>
+                        <th>BurialSampleTaken</th>
+                        <td>@Model.field.BurialSampleTaken</td>
+                    </tr>
+                    <tr>
+                        <th>LengthM</th>
+                        <td>@Model.field.LengthM</td>
+                    </tr>
+                    <tr>
+                        <th>Goods</th>
+                        <td>@Model.field.Goods</td>
+                    </tr>
+                    <tr>
+                        <th>ClusterNum</th>
+                        <td>@Model.field.ClusterNum</td>
+                    </tr>
+                    <tr>
+                        <th>FaceBundle</th>
+                        <td>@Model.field.FaceBundle</td>
+                    </tr>
+                    <tr>
+                        <th>OsteologyNotes</th>
+                        <td>@Model.field.OsteologyNotes</td>
+                    </tr>
+                    <tr>
+                        <th>FieldNotes</th>
+                        <td>@Model.field.FieldNotes</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody> }
                 else
                 {
     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>}
@@ -865,56 +975,67 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.fieldLocation != null)
                 {
-    <tbody>
-        <tr>
-            <th>BurialAreaNorthOrSouth</th>
-            <td>@Model.fieldLocation.BurialAreaNorthOrSouth</td>
-        </tr>
-        <tr>
-            <th>Burialnors</th>
-            <td>@Model.fieldLocation.Burialnors</td>
-        </tr>
-        <tr>
-            <th>BurialAreaEastOrWest</th>
-            <td>@Model.fieldLocation.BurialAreaEastOrWest</td>
-        </tr>
-        <tr>
-            <th>Burialxeorw</th>
-            <td>@Model.fieldLocation.Burialxeorw</td>
-        </tr>
-        <tr>
-            <th>Square</th>
-            <td>@Model.fieldLocation.Square</td>
-        </tr>
-        <tr>
-            <th>BurialNumber</th>
-            <td>@Model.fieldLocation.BurialNumber</td>
-        </tr>
-        <tr>
-            <th>BurialWestToHead</th>
-            <td>@Model.fieldLocation.BurialWestToHead</td>
-        </tr>
-        <tr>
-            <th>BurialWestToFeet</th>
-            <td>@Model.fieldLocation.BurialWestToFeet</td>
-        </tr>
-        <tr>
-            <th>BurialSouthToHead</th>
-            <td>@Model.fieldLocation.BurialSouthToHead</td>
-        </tr>
-        <tr>
-            <th>BurialSouthToFeet</th>
-            <td>@Model.fieldLocation.BurialSouthToFeet</td>
-        </tr>
-        <tr>
-            <th>BurialDepth</th>
-            <td>@Model.fieldLocation.BurialDepth</td>
-        </tr>
-        <tr>
-            <th>BurialDirection</th>
-            <td>@Model.fieldLocation.BurialDirection</td>
-        </tr>
-    </tbody>
+                <tbody>
+                    <tr>
+                        <th>BurialAreaNorthOrSouth</th>
+                        <td>@Model.fieldLocation.BurialAreaNorthOrSouth</td>
+                    </tr>
+                    <tr>
+                        <th>Burialnors</th>
+                        <td>@Model.fieldLocation.Burialnors</td>
+                    </tr>
+                    <tr>
+                        <th>BurialAreaEastOrWest</th>
+                        <td>@Model.fieldLocation.BurialAreaEastOrWest</td>
+                    </tr>
+                    <tr>
+                        <th>Burialxeorw</th>
+                        <td>@Model.fieldLocation.Burialxeorw</td>
+                    </tr>
+                    <tr>
+                        <th>Square</th>
+                        <td>@Model.fieldLocation.Square</td>
+                    </tr>
+                    <tr>
+                        <th>BurialNumber</th>
+                        <td>@Model.fieldLocation.BurialNumber</td>
+                    </tr>
+                    <tr>
+                        <th>BurialWestToHead</th>
+                        <td>@Model.fieldLocation.BurialWestToHead</td>
+                    </tr>
+                    <tr>
+                        <th>BurialWestToFeet</th>
+                        <td>@Model.fieldLocation.BurialWestToFeet</td>
+                    </tr>
+                    <tr>
+                        <th>BurialSouthToHead</th>
+                        <td>@Model.fieldLocation.BurialSouthToHead</td>
+                    </tr>
+                    <tr>
+                        <th>BurialSouthToFeet</th>
+                        <td>@Model.fieldLocation.BurialSouthToFeet</td>
+                    </tr>
+                    <tr>
+                        <th>BurialDepth</th>
+                        <td>@Model.fieldLocation.BurialDepth</td>
+                    </tr>
+                    <tr>
+                        <th>BurialDirection</th>
+                        <td>@Model.fieldLocation.BurialDirection</td>
+                    </tr>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action=""
+                                   asp-route-locationID="@Model.mummy.LocationId">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
  }
 else
 {
@@ -934,27 +1055,28 @@ else
             <table class="table table-bordered table-striped table-hover w-auto">
                 @if (Model.files.Any())
                 {
-    @foreach (var x in Model.files)
-    {
+                    @foreach (var x in Model.files)
+                    {
 
-<tr>
-    <td>
-        @x.Type
-    </td>
-    <td>
+                        <tr>
+                            <td>
+                                @x.Type
+                            </td>
+                            <td>
 
 
-        <img src="@x.Url" style="width:150px" />
+                                <img src="@x.Url" style="width:150px" />
 
-    </td>
-    <td>
-        @x.LocationId
-    </td>
-</tr>
-} }
-else
-{
-<thead><tr><th>No files available for this Burial</th></tr></thead>}
+                            </td>
+                            <td>
+                                @x.LocationId
+                            </td>
+                        </tr>
+                    } }
+                else
+                {
+                    <thead><tr><th>No files available for this Burial</th></tr></thead>
+}
 
             </table>
         </div>
