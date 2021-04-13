@@ -3,12 +3,59 @@
 *@
 @{
 }
+
+@model MediaViewModel
+
 <div class="container">
     <table class="table table-bordered table-striped table-hover">
-        <tr>
-            <th>
-                <img />
-            </th>
-        </tr>
+        <thead>
+            <tr>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Image
+                </th>
+                <th>
+                    LocationID
+                </th>
+                <th>
+                    
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.files)
+            {
+                if (Model.files != null)
+                {
+            <tr>
+                <td>
+                    @x.Type
+                </td>
+                <td>
+                    <img src="@x.Url" style="width:150px" />
+                </td>
+                <td>
+                    @x.LocationId
+                </td>
+                <td>
+                    <div>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteMedia"
+                           asp-route-url="@x.Url">Delete</a>
+                    </div>
+                </td>
+            </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>
+                            No Media Available
+                        </th>
+                    </tr>
+                }
+            }
+        </tbody>
     </table>
 </div>

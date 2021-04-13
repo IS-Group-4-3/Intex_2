@@ -158,7 +158,7 @@ namespace Intex_2.Controllers
 
                 _con.FileRecords.Add(File);
                 _con.SaveChanges();
-                return View("MediaLibrary");
+                return Redirect("MediaLibrary");
             }
             else
             {
@@ -168,9 +168,20 @@ namespace Intex_2.Controllers
      
         public IActionResult MediaLibrary()
         {
-            
+            return View(new MediaViewModel
+            {
+                files = _con.FileRecords
+            });
+        }
 
-            return View();
+        public IActionResult DeleteMedia(string url)
+        {
+            var image = _con.FileRecords.FirstOrDefault(p => p.Url == url);
+
+            _con.Remove(image);
+            _con.SaveChanges();
+
+            return View("MediaLibrary");
         }
 
         public IActionResult DetailsMummies(string locationID)
