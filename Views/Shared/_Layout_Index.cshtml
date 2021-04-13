@@ -29,16 +29,10 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ListMummies">Mummies List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Map">Map</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Test">Test</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <span class="nav-link dropdown-toggle text-light" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Media
-                            </span>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MediaLibrary">Media Library</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="UploadMedia">Upload Files</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Map">Map</a>
                         </li>
                         @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
                         {
@@ -65,11 +59,7 @@
         </nav>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-         </main>
-    </div>
+    @RenderBody()
 
 
     <footer class="border-top footer bg-blue text-light">
