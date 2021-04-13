@@ -123,8 +123,6 @@ namespace Intex_2.Controllers
                     TotalNumItems = query.Count()
                 },
 
-
-
             }); ;
         }
 
@@ -146,7 +144,7 @@ namespace Intex_2.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadMedia(UploadFileViewModel upload)
         {
-            string url = null;
+            string url;
             if (ModelState.IsValid)
             {
                 url = await _s3.AddItem(upload.photo, "test");
@@ -155,13 +153,13 @@ namespace Intex_2.Controllers
             {
                 return View("UploadMedia");
             }
-
-            return View("MediaLibrary", url);
+            return View();
         }
-
-        public IActionResult MediaLibrary(string url)
+     
+        public IActionResult MediaLibrary()
         {
-            ViewBag.url = url;
+            
+
             return View();
         }
 
