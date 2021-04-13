@@ -63,7 +63,7 @@
 <h3 class="text-center">Gallery</h3><br />
 <div class="row-img row justify-content-center no-gutters">
     <div class="column-img">
-        <img class="img-fluid" src="../img/gallery2.jpg" alt="" onclick="myFunction(this);">
+        <img class="img-fluid" src="../img/gallery2.jpg" alt="" href="#expandImg" onclick="myFunction(this);">
     </div>
     <div class="column-img">
         <img class="img-fluid" src="../img/gallery3.jpg" alt="" onclick="myFunction(this);">
@@ -104,6 +104,13 @@
 </div>
 
 <script>
+
+    function scroll(expandImg) {
+
+        expandImg.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+
+    }
+
     function myFunction(imgs) {
         // Get the expanded image
         var expandImg = document.getElementById("expandedImg");
@@ -115,5 +122,8 @@
         imgText.innerHTML = imgs.alt;
         // Show the container element (hidden with CSS)
         expandImg.parentElement.style.display = "block";
+
+        scroll(expandImg);
+
     }
 </script>

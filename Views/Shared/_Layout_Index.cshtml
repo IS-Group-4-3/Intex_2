@@ -27,12 +27,14 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ListMummies">Database</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Map">Map</a>
+                        <li class="nav-item dropdown">
+                            <span class="nav-link dropdown-toggle text-light" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Data
+                            </span>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Map">Map</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListMummies">Database</a>
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <span class="nav-link dropdown-toggle text-light" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,7 +53,7 @@
                                 </span>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="GamousLocations" asp-action="Create">Osteology Form</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ExhumationForm">Exhumation Form</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="FieldLocations" asp-action="Create">Exhumation Form</a>
                                 </div>
                             </li>
                         }
@@ -71,7 +73,7 @@
     @RenderBody()
 
 
-    <footer class="border-top footer bg-blue text-light">
+    <footer class="footer bg-blue text-light">
         <div class="container">
             &copy; 2021 - BYU Fag el-Gamous - Group 4.3
         </div>
