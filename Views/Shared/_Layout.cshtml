@@ -42,8 +42,11 @@
                             </span>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MediaLibrary">Media Library</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="UploadMedia">Upload Files</a>
-                            </div>
+                                @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="UploadMedia">Upload Files</a>
+                                }
+                                </div>
                         </li>
                         @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
                         {

@@ -9,22 +9,22 @@ using Intex_2.Models;
 
 namespace Intex_2.Controllers
 {
-    public class GamousMainsController : Controller
+    public class GamousCranialsController : Controller
     {
         private readonly postgresContext _context;
 
-        public GamousMainsController(postgresContext context)
+        public GamousCranialsController(postgresContext context)
         {
             _context = context;
         }
 
-        // GET: GamousMains
+        // GET: GamousCranials
         public async Task<IActionResult> Index()
         {
-            return View(await _context.GamousMains.ToListAsync());
+            return View(await _context.GamousCranials.ToListAsync());
         }
 
-        // GET: GamousMains/Details/5
+        // GET: GamousCranials/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,41 +32,39 @@ namespace Intex_2.Controllers
                 return NotFound();
             }
 
-            var gamousMain = await _context.GamousMains
+            var gamousCranial = await _context.GamousCranials
                 .FirstOrDefaultAsync(m => m.LocationId == id);
-            if (gamousMain == null)
+            if (gamousCranial == null)
             {
                 return NotFound();
             }
 
-            return View(gamousMain);
+            return View(gamousCranial);
         }
 
-        // GET: GamousMains/Create
+        // GET: GamousCranials/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: GamousMains/Create
+        // POST: GamousCranials/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
+        public async Task<IActionResult> Create([Bind("LocationId,SampleNumber,MaximumCranialLength,MaximumCranialBreadth,BasionbregmaHeight,Basionnasion,BasionprosthionLength,BizygomaticDiameter,Nasionprosthion,MaximumNasalBreadth,InterorbitalBreadth,BurialPositioningNorthsouthNumber,BurialPositioningNorthsouthDirection,BurialPositioningEastwestNumber,BurialPositioningEastwestDirection,BurialNumber,BurialDepth,BurialSubplotDirection,BurialArtifactDescription,BuriedWithArtifacts,Gilesgender,Bodygender")] GamousCranial gamousCranial)
         {
             if (ModelState.IsValid)
             {
-                gamousMain.Gamous = _context.GamousMains.Select(x => x.Gamous).Max() + 1;
-                _context.Add(gamousMain);
+                _context.Add(gamousCranial);
                 await _context.SaveChangesAsync();
-                TempData["gamous"] = gamousMain.Gamous;
-                return RedirectToAction("Create", "GamousBones");
+                return RedirectToAction(nameof(Index));
             }
-            return View(gamousMain);
+            return View(gamousCranial);
         }
 
-        // GET: GamousMains/Edit/5
+        // GET: GamousCranials/Edit/5
         public async Task<IActionResult> Edit(string locationID)
         {
             if (locationID == null)
@@ -74,22 +72,22 @@ namespace Intex_2.Controllers
                 return NotFound();
             }
 
-            var gamousMain = await _context.GamousMains.FindAsync(locationID);
-            if (gamousMain == null)
+            var gamousCranial = await _context.GamousCranials.FindAsync(locationID);
+            if (gamousCranial == null)
             {
                 return NotFound();
             }
-            return View(gamousMain);
+            return View(gamousCranial);
         }
 
-        // POST: GamousMains/Edit/5
+        // POST: GamousCranials/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string locationID, [Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
+        public async Task<IActionResult> Edit(string locationID, [Bind("LocationId,SampleNumber,MaximumCranialLength,MaximumCranialBreadth,BasionbregmaHeight,Basionnasion,BasionprosthionLength,BizygomaticDiameter,Nasionprosthion,MaximumNasalBreadth,InterorbitalBreadth,BurialPositioningNorthsouthNumber,BurialPositioningNorthsouthDirection,BurialPositioningEastwestNumber,BurialPositioningEastwestDirection,BurialNumber,BurialDepth,BurialSubplotDirection,BurialArtifactDescription,BuriedWithArtifacts,Gilesgender,Bodygender")] GamousCranial gamousCranial)
         {
-            if (locationID != gamousMain.LocationId)
+            if (locationID != gamousCranial.LocationId)
             {
                 return NotFound();
             }
@@ -98,12 +96,12 @@ namespace Intex_2.Controllers
             {
                 try
                 {
-                    _context.Update(gamousMain);
+                    _context.Update(gamousCranial);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GamousMainExists(gamousMain.LocationId))
+                    if (!GamousCranialExists(gamousCranial.LocationId))
                     {
                         return NotFound();
                     }
@@ -114,10 +112,10 @@ namespace Intex_2.Controllers
                 }
                 return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
-            return View(gamousMain);
+            return View(gamousCranial);
         }
 
-        // GET: GamousMains/Delete/5
+        // GET: GamousCranials/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -125,30 +123,30 @@ namespace Intex_2.Controllers
                 return NotFound();
             }
 
-            var gamousMain = await _context.GamousMains
+            var gamousCranial = await _context.GamousCranials
                 .FirstOrDefaultAsync(m => m.LocationId == id);
-            if (gamousMain == null)
+            if (gamousCranial == null)
             {
                 return NotFound();
             }
 
-            return View(gamousMain);
+            return View(gamousCranial);
         }
 
-        // POST: GamousMains/Delete/5
+        // POST: GamousCranials/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var gamousMain = await _context.GamousMains.FindAsync(id);
-            _context.GamousMains.Remove(gamousMain);
+            var gamousCranial = await _context.GamousCranials.FindAsync(id);
+            _context.GamousCranials.Remove(gamousCranial);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GamousMainExists(string id)
+        private bool GamousCranialExists(string id)
         {
-            return _context.GamousMains.Any(e => e.LocationId == id);
+            return _context.GamousCranials.Any(e => e.LocationId == id);
         }
     }
 }

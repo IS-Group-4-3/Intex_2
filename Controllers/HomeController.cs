@@ -121,12 +121,6 @@ namespace Intex_2.Controllers
 
             }); ;
         }
-
-        public IActionResult Test()
-        {
-            return View(new MummyDetailsViewModel { });
-        }
-
         public IActionResult Map()
         {
             return View();
@@ -301,6 +295,19 @@ namespace Intex_2.Controllers
         {
             return View();
         }
+
+        public IActionResult CreateCranial(string locationID)
+        {
+
+            GamousCranial gc = new GamousCranial() { };
+            gc.LocationId = locationID;
+            _con.GamousCranials.Add(gc);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousCranials", new { locationId = locationID });
+
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
