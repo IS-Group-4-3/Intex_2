@@ -161,6 +161,7 @@ namespace Intex_2.Controllers
 
         public IActionResult MediaLibrary(string url)
         {
+            ViewBag.url = url;
             return View();
         }
 
