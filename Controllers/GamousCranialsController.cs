@@ -53,7 +53,7 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationId,SampleNumber,MaximumCranialLength,MaximumCranialBreadth,BasionbregmaHeight,Basionnasion,BasionprosthionLength,BizygomaticDiameter,Nasionprosthion,MaximumNasalBreadth,InterorbitalBreadth,BurialPositioningNorthsouthNumber,BurialPositioningNorthsouthDirection,BurialPositioningEastwestNumber,BurialPositioningEastwestDirection,BurialNumber,BurialDepth,BurialSubplotDirection,BurialArtifactDescription,BuriedWithArtifacts,Gilesgender,Bodygender")] GamousCranial gamousCranial)
+        public async Task<IActionResult> CreateGamousCranials([Bind("LocationId,SampleNumber,MaximumCranialLength,MaximumCranialBreadth,BasionbregmaHeight,Basionnasion,BasionprosthionLength,BizygomaticDiameter,Nasionprosthion,MaximumNasalBreadth,InterorbitalBreadth,BurialPositioningNorthsouthNumber,BurialPositioningNorthsouthDirection,BurialPositioningEastwestNumber,BurialPositioningEastwestDirection,BurialNumber,BurialDepth,BurialSubplotDirection,BurialArtifactDescription,BuriedWithArtifacts,Gilesgender,Bodygender")] GamousCranial gamousCranial)
         {
             if (ModelState.IsValid)
             {

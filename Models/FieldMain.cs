@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -37,6 +38,7 @@ namespace Intex_2.Models
         public bool? LinearHypoplasiaEnamel { get; set; }
         public int? AreaHillBurials { get; set; }
         public int? Tomb { get; set; }
+        [Key]
         public string LocationId { get; set; }
         public string BurialDepth { get; set; }
         public string LengthOfRemains { get; set; }

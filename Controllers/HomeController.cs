@@ -60,16 +60,6 @@ namespace Intex_2.Controllers
             });
         }
 
-        public IActionResult Test()
-        {
-            return View(new MummyDetailsViewModel { });
-        }
-
-        public IActionResult Test2()
-        {
-            return View(new MummyDetailsViewModel { });
-        }
-
         public IActionResult Map()
         {
             return View();
@@ -202,13 +192,13 @@ namespace Intex_2.Controllers
         [Authorize]
         public IActionResult OsteologyForm()
         {
-            return View();
+            return View(new MummyDetailsViewModel { });
         }
 
         [Authorize]
         public IActionResult ExhumationForm()
         {
-            return View();
+            return View(new MummyDetailsViewModel { });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -53,7 +53,7 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationId,BurialAreaNorthOrSouth,Burialnors,BurialAreaEastOrWest,Burialxeorw,Square,BurialNumber,BurialWestToHead,BurialWestToFeet,BurialSouthToHead,BurialSouthToFeet,BurialDepth,BurialDirection")] FieldLocation fieldLocation)
+        public async Task<IActionResult> CreateFieldLocations([Bind("LocationId,BurialAreaNorthOrSouth,Burialnors,BurialAreaEastOrWest,Burialxeorw,Square,BurialNumber,BurialWestToHead,BurialWestToFeet,BurialSouthToHead,BurialSouthToFeet,BurialDepth,BurialDirection")] FieldLocation fieldLocation)
         {
             if (ModelState.IsValid)
             {
