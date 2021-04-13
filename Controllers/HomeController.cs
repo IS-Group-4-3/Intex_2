@@ -154,7 +154,7 @@ namespace Intex_2.Controllers
 
                 _con.FileRecords.Add(File);
                 _con.SaveChanges();
-                return Redirect("MediaLibrary");
+                return View("MediaLibrary");
             }
             else
             {
@@ -312,10 +312,37 @@ namespace Intex_2.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public IActionResult OsteologyForm(GamousLocation location, GamousMain mummy, GamousBone bones, GamousDental dental, GamousSample sample)
+        {
+           string id = location.LowPairNs + location.BurialLocationNs + location.LowPairEw + location.BurialLocationEw + location.BurialSubplot + location.BurialNumber;
+            int gid = (int)(_con.GamousMains.Select(x => x.Gamous).Max() + 1);
+
+            location.LocationId = id;
+            mummy.LocationId = id;
+            mummy.Gamous = gid;
+            bones.Gamous = gid;
+            dental.Gamous = gid;
+            sample.Gamous = gid;
+            
+
+            _con.GamousLocations.Add(location);
+            _con.GamousMains.Add(mummy);
+            _con.GamousBones.Add(bones);
+            _con.GamousDentals.Add(dental);
+            _con.GamousSamples.Add(sample);
+            _con.SaveChanges();
+
+            return RedirectToAction("OsteologyForm");
+        }
+
+        [Authorize]
         public IActionResult ExhumationForm()
         {
             return View(new MummyDetailsViewModel { });
         }
+
+
 
         public IActionResult About()
         {
