@@ -5,7 +5,8 @@
 <br />
 <h2 class="text-center">About</h2>
 
-<br /><br />
+<br />
+<br />
 <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
     <div class="col-lg-6"><img class="img-fluid" src="../img/skull.jpg" alt="" /></div>
     <div class="col-lg-6">
@@ -54,4 +55,65 @@
             </div>
         </div>
     </div>
-</div><br /><br />
+</div>
+<br />
+<br />
+<br />
+<br />
+<h3 class="text-center">Gallery</h3><br />
+<div class="row-img">
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery2.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery3.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery4.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery5.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery6.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery7.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery8.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery9.jpg" alt="" onclick="myFunction(this);">
+    </div>
+    <div class="column-img">
+        <img class="img-fluid" src="../img/gallery10.jpg" alt="" onclick="myFunction(this);">
+    </div>
+</div><br />
+
+<!-- The expanding image container -->
+<div class="container-img">
+    <!-- Close the image -->
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+
+    <!-- Expanded image -->
+    <img id="expandedImg" style="width:100%">
+
+    <!-- Image text -->
+    <div id="imgtext"></div>
+</div>
+
+<script>
+    function myFunction(imgs) {
+        // Get the expanded image
+        var expandImg = document.getElementById("expandedImg");
+        // Get the image text
+        var imgText = document.getElementById("imgtext");
+        // Use the same src in the expanded image as the image being clicked on from the grid
+        expandImg.src = imgs.src;
+        // Use the value of the alt attribute of the clickable image as text inside the expanded image
+        imgText.innerHTML = imgs.alt;
+        // Show the container element (hidden with CSS)
+        expandImg.parentElement.style.display = "block";
+    }
+</script>
