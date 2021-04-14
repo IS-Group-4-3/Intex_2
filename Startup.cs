@@ -74,6 +74,10 @@ namespace Intex_2
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("list",
+                    "BurialsList/",
+                    new { controller = "Home", action = "ListMummies" });
+
                 endpoints.MapControllerRoute("details",
                     "Details/{locationId}",
                     new { controller = "Home", action = "DetailsMummies" });

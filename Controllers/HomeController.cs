@@ -230,17 +230,17 @@ namespace Intex_2.Controllers
         public IActionResult DetailsMummies(string locationID)
         {
             GamousMain g = _con.GamousMains.FirstOrDefault(p => p.LocationId == locationID);
-            GamousLocation gl = _con.GamousLocations.FirstOrDefault(p => p.LocationId == locationID);
-            GamousDental gd = _con.GamousDentals.FirstOrDefault(p => p.Gamous == g.Gamous);
-            GamousCranial gc = _con.GamousCranials.FirstOrDefault(p => p.LocationId == locationID);
-            GamousC14 gc14 = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == locationID);
-            GamousBone gb = _con.GamousBones.FirstOrDefault(p => p.Gamous == g.Gamous);
-            GamousBiologicalSample gbs = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == locationID);
-            FieldMain fm = _con.FieldMains.FirstOrDefault(p => p.LocationId == locationID);
-            FieldLocation fl = _con.FieldLocations.FirstOrDefault(p => p.LocationId == locationID);
-            GamousSample gs = _con.GamousSamples.FirstOrDefault(p => p.Gamous == g.Gamous);
-            IEnumerable<FileRecord> fr = _con.FileRecords.Where(p => p.LocationId == locationID);
-
+                GamousLocation gl = _con.GamousLocations.FirstOrDefault(p => p.LocationId == locationID);
+                GamousDental gd = _con.GamousDentals.FirstOrDefault(p => p.Gamous == g.Gamous);
+                GamousCranial gc = _con.GamousCranials.FirstOrDefault(p => p.LocationId == locationID);
+                GamousC14 gc14 = _con.GamousC14s.FirstOrDefault(p => p.LoctionId == locationID);
+                GamousBone gb = _con.GamousBones.FirstOrDefault(p => p.Gamous == g.Gamous);
+                GamousBiologicalSample gbs = _con.GamousBiologicalSamples.FirstOrDefault(p => p.LocationId == locationID);
+                FieldMain fm = _con.FieldMains.FirstOrDefault(p => p.LocationId == locationID);
+                FieldLocation fl = _con.FieldLocations.FirstOrDefault(p => p.LocationId == locationID);
+                GamousSample gs = _con.GamousSamples.FirstOrDefault(p => p.Gamous == g.Gamous);
+                IEnumerable<FileRecord> fr = _con.FileRecords.Where(p => p.LocationId == locationID);
+            
             return View(new MummyDetailsViewModel
             {
                 mummy = g,
