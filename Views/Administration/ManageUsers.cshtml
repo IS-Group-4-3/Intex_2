@@ -15,7 +15,9 @@
         </button>
     </div>
 }
-
+<br />
+<h2>Manage Permissions</h2>
+<br />
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -82,7 +84,7 @@
     </tbody>
 </table>
 
-<a asp-action="AddRole" asp-controller="Administration" class="btn btn-outline-primary">Add a user role</a>
+@*<a asp-action="AddRole" asp-controller="Administration" class="btn btn-outline-primary">Add a user role</a>*@
 
 <script>function RouteRole(id, userid) {
         var route_id = "submit+" + id.id.substring(7, 8);

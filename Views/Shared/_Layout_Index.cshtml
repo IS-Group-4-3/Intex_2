@@ -64,7 +64,7 @@
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
                             <li>
-                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Admin">Admin</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Administration" asp-action="ManageUsers">Admin</a>
                             </li>
                         }
                     </ul>
