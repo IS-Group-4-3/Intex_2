@@ -3,7 +3,10 @@
 @inject UserManager<IdentityUser> UserManager
 
 @model MediaViewModel
-
+@{ 
+    var url = "ListMummies/?locationID=";
+    ViewData["Title"] = "Media Library";
+}
 <div class="container">
     <div class="row">
         <div class="col-2">
@@ -17,6 +20,7 @@
         </div>
 
         <div class="col-9">
+            <br />
             <h1>Media Library</h1>
             <br />
             @if (!Model.files.Any())
@@ -40,9 +44,6 @@
                         <th>
                             LocationID
                         </th>
-                        <th>
-                            Download Link
-                        </th>
                         @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
                         {
             <th></th>}
@@ -59,13 +60,17 @@
                 @x.Type
             </td>
             <td>
-                <img src="@x.Url" style="width:150px" />
+                @if (x.Type == "Photo")
+                {
+                <img src="@x.Url" style="width:150px" />                 }
+                    else
+                    {
+                    <a href="@x.Url"><i class="fa fa-file-pdf-o fa-5x" aria-hidden="true"></i></a>
+                    <a href="@x.Url" >Click to View Document</a>
+                    }
             </td>
             <td>
-                <a href="'https://localhost:44342/Details/?locationID=' + @x.LocationId" >LocationID</a>
-            </td>
-            <td>
-                <button type="submit">Download</button>
+                <a href="@url@x.LocationId">@x.LocationId</a>
             </td>
             @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
             {

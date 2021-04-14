@@ -74,14 +74,62 @@ namespace Intex_2
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("list",
-                    "BurialsList/",
-                    new { controller = "Home", action = "ListMummies" });
+                endpoints.MapControllerRoute("listboth",
+                    "BurialsList/{locationID}/{pageNum}",
+                    new { controller = "Home", action = "ListMummies", pageNum = 1 });
+
+                endpoints.MapControllerRoute("listlocation",
+                    "BurialsList/{locationID}",
+                    new { controller = "Home", action = "ListMummies", pageNum = 1 });
+
+                endpoints.MapControllerRoute("listlocation",
+                    "BurialsList",
+                    new { controller = "Home", action = "ListMummies", pageNum = 1 });
 
                 endpoints.MapControllerRoute("details",
                     "Details/{locationId}",
                     new { controller = "Home", action = "DetailsMummies" });
 
+                endpoints.MapControllerRoute("about",
+                    "About",
+                    new { controller = "Home", action = "About" });
+
+                endpoints.MapControllerRoute("map",
+                    "LocationMap",
+                    new { controller = "Home", action = "Map" });
+
+                endpoints.MapControllerRoute("medialibrary",
+                    "MediaLibrary",
+                    new { controller = "Home", action = "MediaLibary" });
+
+                endpoints.MapControllerRoute("uploadMedia",
+                    "UploadMedia",
+                    new { controller = "Home", action = "UploadMedia" });
+
+                endpoints.MapControllerRoute("huploadMedia",
+                    "UploadMedia",
+                    new { controller = "Home", action = "HiddenUploadMedia" });
+
+                endpoints.MapControllerRoute("admin",
+                    "Admin",
+                    new { controller = "Home", action = "Admin" });
+
+                endpoints.MapControllerRoute("manageusers",
+                    "Admin/ManageUsers",
+                    new { controller = "Administration", action = "ManageUsers" });
+
+                endpoints.MapControllerRoute("addrole",
+                    "Admin/AddRole",
+                    new { controller = "Administration", action = "AddRole" });
+
+
+                endpoints.MapControllerRoute("medialibrary",
+                    "OsteologyFormPage1",
+                    new { controller = "GamousLocations", action = "Create" });
+
+                endpoints.MapControllerRoute("medialibrary",
+                    "OsteologyFormPage2",
+                    new { controller = "GamousMains", action = "Create" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

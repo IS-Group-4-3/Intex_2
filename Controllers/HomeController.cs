@@ -41,35 +41,43 @@ namespace Intex_2.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListMummies(int pageNum = 1)
+        public IActionResult ListMummies(string locationID, int pageNum = 1)
         {
             ViewBag.gender_filter = _con.GamousMains.Select(x => x.GenderGe).Distinct().ToList();
             ViewBag.hair_filter = _con.GamousMains.Select(x => x.HairColor).Distinct().ToList();
             ViewBag.date_min = _con.GamousMains.Select(x => x.DateFound).Min();
             ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
-
-            return View(new MummyListViewModel
-            {
-                mummies = _con.GamousMains
+            IEnumerable<GamousMain> mummyList = _con.GamousMains;
+            PagingInfo PageInfo = new PagingInfo();
+            if (locationID != null) {
+                mummyList = _con.GamousMains
+                    .Where(x => x.LocationId == locationID)
                     .OrderBy(b => b.Gamous)
                     .Skip((pageNum - 1) * PageSize)
-                    .Take(PageSize),
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = pageNum,
-                    ItemsPerPage = PageSize,
-                    TotalNumItems = _con.GamousMains.Count()
+                    .Take(PageSize);
+                PageInfo.CurrentPage = pageNum;
+                PageInfo.ItemsPerPage = PageSize;
+                PageInfo.TotalNumItems = mummyList.Count();
 
+            }
+            else
+            {
+                mummyList = _con.GamousMains
+                    .OrderBy(b => b.Gamous)
+                    .Skip((pageNum - 1) * PageSize)
+                    .Take(PageSize);
 
+                PageInfo.CurrentPage = pageNum;
+                PageInfo.ItemsPerPage = PageSize;
+                PageInfo.TotalNumItems = _con.GamousMains.Count();
+            }
 
-                },
-
-
-
+            return View(new MummyListViewModel
+            { 
+                mummies = mummyList,
+                PagingInfo = PageInfo
             });
         }
-
-
 
         [HttpPost]
         public IActionResult ListMummies(List<string> gender_filter, List<string> hair_filter, string artifact, int pageNum = 1)
@@ -80,15 +88,13 @@ namespace Intex_2.Controllers
             ViewBag.date_max = _con.GamousMains.Select(x => x.DateFound).Max();
 
 
-
             var query = from b in _con.GamousMains select b;
-
 
 
             if (gender_filter.Count() > 0)
             {
                 //gender_query = "gender_filter.Contains(b.GenderGe)";
-                query = query.Where(b => gender_filter.Contains(b.GenderGe));
+                query = query.Where(b => gender_filter.Contains(b.GenderGe)); 
             }
             if (hair_filter.Count() > 0)
             {
@@ -99,7 +105,7 @@ namespace Intex_2.Controllers
                 query = query.Where(b => b.ArtifactFound == artifact);
             }
 
-
+            var items = query.Count();
 
             query = query
                 .OrderBy(b => b.Gamous)
@@ -116,7 +122,7 @@ namespace Intex_2.Controllers
                     CurrentPage = pageNum,
                     ItemsPerPage = PageSize,
                     //TotalNumItems = _con.GamousMains.Count()
-                    TotalNumItems = query.Count()
+                    TotalNumItems = items
                 },
 
             }); ;

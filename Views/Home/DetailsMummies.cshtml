@@ -4,6 +4,7 @@
 @inject UserManager<IdentityUser> UserManager
 @model MummyDetailsViewModel
 
+<br />
 <h1>Burial #@Model.mummy.Gamous</h1>
 
 <h4>
@@ -745,7 +746,7 @@
 <br />
 <div class="row">
     <div class="col-5">
-        <button type="button" class="collapsible text-light">Field Information</button>
+        <button type="button" class="collapsible text-light">Main Field Information</button>
         <div class="content text-dark">
             <table class="table table-bordered table-striped table-hover w-100">
                 @if (Model.field != null)

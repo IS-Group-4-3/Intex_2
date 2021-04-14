@@ -5,9 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br />
 <h1>Edit</h1>
 
-<h4>GamousMain</h4>
+<h4>Main Burial Information</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,9 +26,9 @@
                 <span asp-validation-for="BurialSituationNotes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LengthOfRemains" class="control-label"></label>
-                <input asp-for="LengthOfRemains" class="form-control" />
-                <span asp-validation-for="LengthOfRemains" class="text-danger"></span>
+                <label asp-for="LengthOfRemainsM" class="control-label"></label>
+                <input asp-for="LengthOfRemainsM" class="form-control" />
+                <span asp-validation-for="LengthOfRemainsM" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SampleNumber" class="control-label"></label>
@@ -85,11 +86,6 @@
                 <span asp-validation-for="DateFound" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LengthOfRemainsM" class="control-label"></label>
-                <input asp-for="LengthOfRemainsM" class="form-control" />
-                <span asp-validation-for="LengthOfRemainsM" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="EstimateLivingStatureM" class="control-label"></label>
                 <input asp-for="EstimateLivingStatureM" class="form-control" />
                 <span asp-validation-for="EstimateLivingStatureM" class="text-danger"></span>
@@ -99,10 +95,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
