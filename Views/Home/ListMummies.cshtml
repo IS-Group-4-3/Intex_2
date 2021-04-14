@@ -8,7 +8,22 @@
 <br />
 <h2 class="text-center">Burial database</h2>
 <br />
-<div class="container">
+<div class="container justify-content-center">
+    <div class="row align-items-center">
+        <form name="single" id="single" asp-controller="Home" asp-action="DetailsMummies" method="post">
+        </form>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="locationID">Search for a burial by location id</label>
+            </div>
+            <div class="col-auto">
+                <input form="single" name="locationID" type="text" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <button form="single" type="submit" class="btn btn-outline-dark">Search</button>
+            </div>
+        </div>
+    </div><br />
     <div class="row">
         <div class="col">
             <section>
