@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace Intex_2.Models
 	{
 		public static string GetPgConnectionString()
 		{
-			var appConfig = ConfigurationManager.AppSettings;
+			NameValueCollection appConfig = ConfigurationManager.AppSettings;
 
 			string pg_conn = appConfig["PG_CONNECTION"];
 
@@ -22,7 +23,7 @@ namespace Intex_2.Models
 
 		public static string GetSqlConnectionString()
 		{
-			var appConfig = ConfigurationManager.AppSettings;
+			NameValueCollection appConfig = ConfigurationManager.AppSettings;
 
 			string sql_conn = appConfig["SQL_CONNECTION"];
 
