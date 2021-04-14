@@ -196,13 +196,24 @@ namespace Intex_2.Controllers
             }
         }
 
-        public IActionResult MediaLibrary()
+        public IActionResult MediaLibrary(string type,int pageNum = 1)
         {
             var files = _con.FileRecords;
 
             return View(new MediaViewModel
             {
                 files = files
+                    .Where(p => type == null || p.Type == type)
+                    .Skip((pageNum - 1) * PageSize)
+                    .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = type == null ? _con.FileRecords.Count() :
+                        _con.FileRecords.Where(x => x.Type == type).Count()
+                },
+                CurrentType = type
             });
         }
 
@@ -341,7 +352,6 @@ namespace Intex_2.Controllers
 
         public IActionResult CreateBone(int gamous)
         {
-
             GamousBone g = new GamousBone() { };
             g.Gamous = gamous;
             _con.GamousBones.Add(g);
