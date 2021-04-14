@@ -35,9 +35,9 @@ namespace Intex_2
             services.AddAWSService<IAmazonS3>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                //options.UseSqlServer(
-                //    Configuration.GetConnectionString("DefaultConnection")));
-                options.UseSqlServer(Helpers.GetSqlConnectionString()));
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddIdentity<IdentityUser, IdentityRole> //add roles to services 
                 (options => options.SignIn.RequireConfirmedAccount = true)
                  .AddDefaultUI()
@@ -45,8 +45,7 @@ namespace Intex_2
                  .AddDefaultTokenProviders();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDbContext<postgresContext>(options =>
-               //options.UseNpgsql(Configuration["ConnectionStrings:DB"]));
-               options.UseNpgsql(Helpers.GetPgConnectionString()));
+            options.UseNpgsql(Configuration["ConnectionStrings:DB"]));
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
