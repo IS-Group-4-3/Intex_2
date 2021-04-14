@@ -1128,6 +1128,19 @@
                                 @x.LocationId
                             </td>
                         </tr>
+                        @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                        {
+                            
+                                <tr>
+                                    <td colspan="2">
+                                        <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="HiddenUploadMedia"
+                                           asp-route-locationID="@Model.location.LocationId">
+                                            Upload Media
+                                        </a>
+                                    </td>
+                                </tr>
+                            
+                        }
                     } }
                 else
                 {
@@ -1144,10 +1157,10 @@
                                 </td>
                             </tr>
                         </tbody>
-                        }
                     }
+                }
 
-                </table>
+            </table>
         </div>
     </div>
 
