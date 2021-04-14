@@ -9,22 +9,22 @@ using Intex_2.Models;
 
 namespace Intex_2.Controllers
 {
-    public class GamousMainsController : Controller
+    public class GamousBiologicalSamplesController : Controller
     {
         private readonly postgresContext _context;
 
-        public GamousMainsController(postgresContext context)
+        public GamousBiologicalSamplesController(postgresContext context)
         {
             _context = context;
         }
 
-        // GET: GamousMains
+        // GET: GamousBiologicalSamples
         public async Task<IActionResult> Index()
         {
-            return View(await _context.GamousMains.ToListAsync());
+            return View(await _context.GamousBiologicalSamples.ToListAsync());
         }
 
-        // GET: GamousMains/Details/5
+        // GET: GamousBiologicalSamples/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,41 +32,39 @@ namespace Intex_2.Controllers
                 return NotFound();
             }
 
-            var gamousMain = await _context.GamousMains
+            var gamousBiologicalSample = await _context.GamousBiologicalSamples
                 .FirstOrDefaultAsync(m => m.LocationId == id);
-            if (gamousMain == null)
+            if (gamousBiologicalSample == null)
             {
                 return NotFound();
             }
 
-            return View(gamousMain);
+            return View(gamousBiologicalSample);
         }
 
-        // GET: GamousMains/Create
+        // GET: GamousBiologicalSamples/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: GamousMains/Create
+        // POST: GamousBiologicalSamples/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
+        public async Task<IActionResult> Create([Bind("LocationId,RackNumber,BagNumber,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,ClusterNumber,Date,PreviouslySampled,Notes,Initials")] GamousBiologicalSample gamousBiologicalSample)
         {
             if (ModelState.IsValid)
             {
-                gamousMain.Gamous = _context.GamousMains.Select(x => x.Gamous).Max() + 1;
-                _context.Add(gamousMain);
+                _context.Add(gamousBiologicalSample);
                 await _context.SaveChangesAsync();
-                TempData["gamous"] = gamousMain.Gamous;
-                return RedirectToAction("Create", "GamousBones");
+                return RedirectToAction(nameof(Index));
             }
-            return View(gamousMain);
+            return View(gamousBiologicalSample);
         }
 
-        // GET: GamousMains/Edit/5
+        // GET: GamousBiologicalSamples/Edit/5
         public async Task<IActionResult> Edit(string locationID)
         {
             if (locationID == null)
@@ -74,22 +72,22 @@ namespace Intex_2.Controllers
                 return NotFound();
             }
 
-            var gamousMain = await _context.GamousMains.FindAsync(locationID);
-            if (gamousMain == null)
+            var gamousBiologicalSample = await _context.GamousBiologicalSamples.FindAsync(locationID);
+            if (gamousBiologicalSample == null)
             {
                 return NotFound();
             }
-            return View(gamousMain);
+            return View(gamousBiologicalSample);
         }
 
-        // POST: GamousMains/Edit/5
+        // POST: GamousBiologicalSamples/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string locationID, [Bind("Gamous,LocationId,BurialSituationNotes,LengthOfRemains,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,ArtifactsDescription,HairColor,PreservationIndex,ArtifactFound,EstimateAge,EstimateLivingStature,DateFound,LengthOfRemainsM,EstimateLivingStatureM")] GamousMain gamousMain)
+        public async Task<IActionResult> Edit(string locationID, [Bind("LocationId,RackNumber,BagNumber,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,ClusterNumber,Date,PreviouslySampled,Notes,Initials")] GamousBiologicalSample gamousBiologicalSample)
         {
-            if (locationID != gamousMain.LocationId)
+            if (locationID != gamousBiologicalSample.LocationId)
             {
                 return NotFound();
             }
@@ -98,12 +96,12 @@ namespace Intex_2.Controllers
             {
                 try
                 {
-                    _context.Update(gamousMain);
+                    _context.Update(gamousBiologicalSample);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GamousMainExists(gamousMain.LocationId))
+                    if (!GamousBiologicalSampleExists(gamousBiologicalSample.LocationId))
                     {
                         return NotFound();
                     }
@@ -114,10 +112,10 @@ namespace Intex_2.Controllers
                 }
                 return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
-            return View(gamousMain);
+            return View(gamousBiologicalSample);
         }
 
-        // GET: GamousMains/Delete/5
+        // GET: GamousBiologicalSamples/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -125,30 +123,30 @@ namespace Intex_2.Controllers
                 return NotFound();
             }
 
-            var gamousMain = await _context.GamousMains
+            var gamousBiologicalSample = await _context.GamousBiologicalSamples
                 .FirstOrDefaultAsync(m => m.LocationId == id);
-            if (gamousMain == null)
+            if (gamousBiologicalSample == null)
             {
                 return NotFound();
             }
 
-            return View(gamousMain);
+            return View(gamousBiologicalSample);
         }
 
-        // POST: GamousMains/Delete/5
+        // POST: GamousBiologicalSamples/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var gamousMain = await _context.GamousMains.FindAsync(id);
-            _context.GamousMains.Remove(gamousMain);
+            var gamousBiologicalSample = await _context.GamousBiologicalSamples.FindAsync(id);
+            _context.GamousBiologicalSamples.Remove(gamousBiologicalSample);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GamousMainExists(string id)
+        private bool GamousBiologicalSampleExists(string id)
         {
-            return _context.GamousMains.Any(e => e.LocationId == id);
+            return _context.GamousBiologicalSamples.Any(e => e.LocationId == id);
         }
     }
 }

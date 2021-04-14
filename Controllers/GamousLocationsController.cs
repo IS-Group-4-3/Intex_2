@@ -67,14 +67,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousLocations/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string locationID)
         {
-            if (id == null)
+            if (locationID == null)
             {
                 return NotFound();
             }
 
-            var gamousLocation = await _context.GamousLocations.FindAsync(id);
+            var gamousLocation = await _context.GamousLocations.FindAsync(locationID);
             if (gamousLocation == null)
             {
                 return NotFound();
@@ -87,9 +87,9 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("LocationId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,SouthToHead,SouthToFeet,EastToHead,EastToFeet,HeadDirection")] GamousLocation gamousLocation)
+        public async Task<IActionResult> Edit(string locationID, [Bind("LocationId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,SouthToHead,SouthToFeet,EastToHead,EastToFeet,HeadDirection")] GamousLocation gamousLocation)
         {
-            if (id != gamousLocation.LocationId)
+            if (locationID != gamousLocation.LocationId)
             {
                 return NotFound();
             }
@@ -97,7 +97,7 @@ namespace Intex_2.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {
+                { 
                     _context.Update(gamousLocation);
                     await _context.SaveChangesAsync();
                 }
@@ -112,7 +112,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
             return View(gamousLocation);
         }

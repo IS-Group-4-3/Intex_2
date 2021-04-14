@@ -66,14 +66,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousDentals/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? gamous)
         {
-            if (id == null)
+            if (gamous == null)
             {
                 return NotFound();
             }
 
-            var gamousDental = await _context.GamousDentals.FindAsync(id);
+            var gamousDental = await _context.GamousDentals.FindAsync(gamous);
             if (gamousDental == null)
             {
                 return NotFound();
@@ -86,19 +86,21 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Gamous,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion")] GamousDental gamousDental)
+        public async Task<IActionResult> Edit(int gamous, [Bind("Gamous,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion")] GamousDental gamousDental)
         {
-            if (id != gamousDental.Gamous)
+            if (gamous != gamousDental.Gamous)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                var locationID = _context.GamousMains.Where(x => x.Gamous == gamousDental.Gamous).FirstOrDefault().LocationId.ToString();
                 try
                 {
                     _context.Update(gamousDental);
                     await _context.SaveChangesAsync();
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -111,7 +113,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
             return View(gamousDental);
         }

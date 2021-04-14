@@ -2,37 +2,37 @@
 
 @{ ViewData["Title"] = "Create";
                 Layout = "~/Views/Shared/_Layout.cshtml"; }
-
+<br />
 <h1>Exhumation Form</h1>
-
-<!--<h4>FieldLocation testing</h4>-->
-<hr />
+<br />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <h4>Field Location</h4>
+            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
                 <label asp-for="BurialAreaNorthOrSouth" class="control-label">Burial Area North/South</label>
-                <input asp-for="BurialAreaNorthOrSouth" class="form-control" />
+                <input required asp-for="BurialAreaNorthOrSouth" class="form-control" />
                 <span asp-validation-for="BurialAreaNorthOrSouth" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Burialnors" class="control-label">North or South?</label>
-                <select asp-for="Burialnors" class="form-control">
+                <select required asp-for="Burialnors" class="form-control">
                     <option value="N" class="form-control">North</option>
                     <option value="S" class="form-control">South</option>
                 </select>
                 <span asp-validation-for="Burialnors" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BurialAreaEastOrWest" class="control-label">Burial Area East/West</label>
+                <label required asp-for="BurialAreaEastOrWest" class="control-label">Burial Area East/West</label>
                 <input asp-for="BurialAreaEastOrWest" class="form-control" />
                 <span asp-validation-for="BurialAreaEastOrWest" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Burialxeorw" class="control-label">East or West?</label>
-                <select asp-for="Burialxeorw" class="form-control">
+                <select required asp-for="Burialxeorw" class="form-control">
                     <option value="E" class="form-control">East</option>
                     <option value="W" class="form-control">West</option>
                 </select>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Square" class="control-label">Area</label>
-                <select asp-for="Square" class="form-control">
+                <select required asp-for="Square" class="form-control">
                     <option value="NE" class="form-control">NE</option>
                     <option value="NW" class="form-control">NW</option>
                     <option value="SE" class="form-control">SE</option>
@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="BurialNumber" class="control-label">Burial Number</label>
-                <input asp-for="BurialNumber" class="form-control" />
+                <input required asp-for="BurialNumber" class="form-control" />
                 <span asp-validation-for="BurialNumber" class="text-danger"></span>
             </div>
             <br />

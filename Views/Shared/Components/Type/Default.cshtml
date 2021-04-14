@@ -1,0 +1,20 @@
+﻿@model IEnumerable<string>
+
+<br />
+<a asp-action="MediaLibrary" asp-controller="Home"
+   asp-route-category="">
+    View All
+</a>
+
+<div>
+    @foreach (string type in Model)
+    {
+        <a asp-action="MediaLibrary" asp-controller="Home"
+           asp-route-type="@type">
+            @type
+        </a>
+        <br />
+    }
+</div>
+
+@*class="@(type == ViewBag.SelectedType ? "btn-primary" : "btn-outline-secondary")"*@

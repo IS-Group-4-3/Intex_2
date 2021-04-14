@@ -67,14 +67,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: FieldLocations/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string locationID)
         {
-            if (id == null)
+            if (locationID == null)
             {
                 return NotFound();
             }
 
-            var fieldLocation = await _context.FieldLocations.FindAsync(id);
+            var fieldLocation = await _context.FieldLocations.FindAsync(locationID);
             if (fieldLocation == null)
             {
                 return NotFound();
@@ -87,9 +87,9 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("LocationId,BurialAreaNorthOrSouth,Burialnors,BurialAreaEastOrWest,Burialxeorw,Square,BurialNumber,BurialWestToHead,BurialWestToFeet,BurialSouthToHead,BurialSouthToFeet,BurialDepth,BurialDirection")] FieldLocation fieldLocation)
+        public async Task<IActionResult> Edit(string locationID, [Bind("LocationId,BurialAreaNorthOrSouth,Burialnors,BurialAreaEastOrWest,Burialxeorw,Square,BurialNumber,BurialWestToHead,BurialWestToFeet,BurialSouthToHead,BurialSouthToFeet,BurialDepth,BurialDirection")] FieldLocation fieldLocation)
         {
-            if (id != fieldLocation.LocationId)
+            if (locationID != fieldLocation.LocationId)
             {
                 return NotFound();
             }
@@ -112,7 +112,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
             return View(fieldLocation);
         }

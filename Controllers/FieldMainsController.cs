@@ -66,14 +66,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: FieldMains/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string locationID)
         {
-            if (id == null)
+            if (locationID == null)
             {
                 return NotFound();
             }
 
-            var fieldMain = await _context.FieldMains.FindAsync(id);
+            var fieldMain = await _context.FieldMains.FindAsync(locationID);
             if (fieldMain == null)
             {
                 return NotFound();
@@ -86,9 +86,9 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("YearOnSkull,MonthOnSkull,DateOnSkull,FieldBook,FieldBookPageNumber,InitialsOfDataEntryExpert,InitialsOfDataEntryChecker,ByuSample,BodyAnalysisYear,SkullAtMagazine,PostcraniaAtMagazine,SexSkull2018,AgeSkull2018,Rack,Shelf,RackAndShelf,ToBeConfirmed,SkullTrauma,PostcraniaTrauma,CribraOrbitala,PoroticHyperostosis,PoroticHyperostosisLocations,MetopicSuture,ButtonOsteoma,PostcraniaTrauma1,OsteologyUnknownComment,TemporalMandibularJointOsteoarthritisTmjOa,LinearHypoplasiaEnamel,AreaHillBurials,Tomb,LocationId,BurialDepth,LengthOfRemains,YearExcavated,MonthExcavated,DateExcavated,BurialPreservation,BurialWrapping,BurialAdultChild,GenderCode,BurialGenderMethod,AgeCode,BurialAgeAtDeath,BurialAgeMethod,HairColorCode,BurialHairColorText,BurialSampleTaken,LengthM,Goods,ClusterNum,FaceBundle,OsteologyNotes,FieldNotes,Picture")] FieldMain fieldMain)
+        public async Task<IActionResult> Edit(string locationID, [Bind("YearOnSkull,MonthOnSkull,DateOnSkull,FieldBook,FieldBookPageNumber,InitialsOfDataEntryExpert,InitialsOfDataEntryChecker,ByuSample,BodyAnalysisYear,SkullAtMagazine,PostcraniaAtMagazine,SexSkull2018,AgeSkull2018,Rack,Shelf,RackAndShelf,ToBeConfirmed,SkullTrauma,PostcraniaTrauma,CribraOrbitala,PoroticHyperostosis,PoroticHyperostosisLocations,MetopicSuture,ButtonOsteoma,PostcraniaTrauma1,OsteologyUnknownComment,TemporalMandibularJointOsteoarthritisTmjOa,LinearHypoplasiaEnamel,AreaHillBurials,Tomb,LocationId,BurialDepth,LengthOfRemains,YearExcavated,MonthExcavated,DateExcavated,BurialPreservation,BurialWrapping,BurialAdultChild,GenderCode,BurialGenderMethod,AgeCode,BurialAgeAtDeath,BurialAgeMethod,HairColorCode,BurialHairColorText,BurialSampleTaken,LengthM,Goods,ClusterNum,FaceBundle,OsteologyNotes,FieldNotes,Picture")] FieldMain fieldMain)
         {
-            if (id != fieldMain.LocationId)
+            if (locationID != fieldMain.LocationId)
             {
                 return NotFound();
             }
@@ -111,7 +111,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
             return View(fieldMain);
         }

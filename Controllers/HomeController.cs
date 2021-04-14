@@ -121,12 +121,6 @@ namespace Intex_2.Controllers
 
             }); ;
         }
-
-        public IActionResult Test()
-        {
-            return View(new MummyDetailsViewModel { });
-        }
-
         public IActionResult Map()
         {
             return View();
@@ -136,6 +130,8 @@ namespace Intex_2.Controllers
         {
             return View();
         }
+
+        
 
         [HttpPost]
         public async Task<IActionResult> UploadMedia(UploadFileViewModel upload)
@@ -154,22 +150,71 @@ namespace Intex_2.Controllers
 
                 _con.FileRecords.Add(File);
                 _con.SaveChanges();
-                return View("MediaLibrary");
+                return Redirect("MediaLibrary");
             }
             else
             {
                 return View("UploadMedia");
             }
         }
-     
-        public IActionResult MediaLibrary()
+
+        public IActionResult HiddenUploadMedia(string locationID)
+        {
+            GamousLocation l = _con.GamousLocations.Where(x => x.LocationId == locationID).FirstOrDefault();
+            ViewBag.lowpairNs = l.LowPairNs;
+            ViewBag.BurialLocationNs = l.BurialLocationNs;
+            ViewBag.LowPairEw =l.LowPairEw;
+            ViewBag.BurialLocationEw = l.BurialLocationEw;
+            ViewBag.BurialSubplot = l.BurialSubplot;
+            ViewBag.BurialNumber = l.BurialNumber;
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> HiddenUploadMedia(UploadFileViewModel upload)
+        {
+            string url;
+            if (ModelState.IsValid)
+            {
+                url = await _s3.AddItem(upload.photo, "test");
+
+                FileRecord File = new FileRecord
+                {
+                    Url = url,
+                    Type = upload.type,
+                    LocationId = upload.LowPairNs + upload.BurialLocationNs + upload.LowPairEw + upload.BurialLocationEw + upload.BurialSubplot + upload.BurialNumber
+                };
+
+                _con.FileRecords.Add(File);
+                _con.SaveChanges();
+                return Redirect("MediaLibrary");
+            }
+            else
+            {
+                return View("UploadMedia");
+            }
+        }
+
+        public IActionResult MediaLibrary(string type,int pageNum = 1)
         {
             var files = _con.FileRecords;
-           
-                return View(new MediaViewModel
+
+            return View(new MediaViewModel
+            {
+                files = files
+                    .Where(p => type == null || p.Type == type)
+                    .Skip((pageNum - 1) * PageSize)
+                    .Take(PageSize),
+                PagingInfo = new PagingInfo
                 {
-                    files = files
-                });
+                    CurrentPage = pageNum,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = type == null ? _con.FileRecords.Count() :
+                        _con.FileRecords.Where(x => x.Type == type).Count()
+                },
+                CurrentType = type
+            });
         }
 
         public IActionResult DeleteMedia(string url)
@@ -259,48 +304,112 @@ namespace Intex_2.Controllers
         }
 
         [Authorize]
-        public IActionResult OsteologyForm()
-        {
-            return View(new MummyDetailsViewModel { });
-        }
-
-        [Authorize]
-        [HttpPost]
-        public IActionResult OsteologyForm(GamousLocation location, GamousMain mummy, GamousBone bones, GamousDental dental, GamousSample sample)
-        {
-           string id = location.LowPairNs + location.BurialLocationNs + location.LowPairEw + location.BurialLocationEw + location.BurialSubplot + location.BurialNumber;
-            int gid = (int)(_con.GamousMains.Select(x => x.Gamous).Max() + 1);
-
-            location.LocationId = id;
-            mummy.LocationId = id;
-            mummy.Gamous = gid;
-            bones.Gamous = gid;
-            dental.Gamous = gid;
-            sample.Gamous = gid;
-            
-
-            _con.GamousLocations.Add(location);
-            _con.GamousMains.Add(mummy);
-            _con.GamousBones.Add(bones);
-            _con.GamousDentals.Add(dental);
-            _con.GamousSamples.Add(sample);
-            _con.SaveChanges();
-
-            return RedirectToAction("OsteologyForm");
-        }
-
-        [Authorize]
         public IActionResult ExhumationForm()
         {
             return View(new MummyDetailsViewModel { });
         }
 
-
-
         public IActionResult About()
         {
             return View();
         }
+
+        public IActionResult CreateDental(int gamous)
+        {
+
+            GamousDental g = new GamousDental() { };
+            g.Gamous = gamous;
+            _con.GamousDentals.Add(g);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousDentals", new { gamous = gamous });
+
+        }
+
+        public IActionResult CreateCranial(string locationID)
+        {
+
+            GamousCranial gc = new GamousCranial() { };
+            gc.LocationId = locationID;
+            _con.GamousCranials.Add(gc);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousCranials", new { locationId = locationID });
+
+        }
+
+        public IActionResult CreateC14(string loctionID)
+        {
+
+            GamousC14 gc = new GamousC14() { };
+            gc.LoctionId = loctionID;
+            _con.GamousC14s.Add(gc);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousC14", new { locationId = loctionID });
+
+        }
+
+        public IActionResult CreateBone(int gamous)
+        {
+            GamousBone g = new GamousBone() { };
+            g.Gamous = gamous;
+            _con.GamousBones.Add(g);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousBones", new { gamous = gamous });
+
+        }
+
+        public IActionResult CreateBioSample(string locationID)
+        {
+
+            GamousBiologicalSample gc = new GamousBiologicalSample() { };
+            gc.LocationId = locationID;
+            _con.GamousBiologicalSamples.Add(gc);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousBiologicalSamples", new { locationId = locationID });
+
+        }
+
+        public IActionResult CreateSamples(int gamous)
+        {
+
+            GamousSample g = new GamousSample() { };
+            g.Gamous = gamous;
+            _con.GamousSamples.Add(g);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "GamousSamples", new { gamous = gamous });
+
+        }
+
+        public IActionResult CreateFieldMains(string locationID)
+        {
+
+            FieldMain gc = new FieldMain() { };
+            gc.LocationId = locationID;
+            _con.FieldMains.Add(gc);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "FieldMains", new { locationId = locationID });
+
+        }
+
+
+        public IActionResult CreateFLocation(string locationID)
+        {
+
+            FieldLocation gc = new FieldLocation() { };
+            gc.LocationId = locationID;
+            _con.FieldLocations.Add(gc);
+            _con.SaveChanges();
+
+            return RedirectToAction("Edit", "FieldLocations", new { locationId = locationID });
+
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
