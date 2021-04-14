@@ -95,7 +95,7 @@ namespace Intex_2
                     new { controller = "Home", action = "About" });
 
                 endpoints.MapControllerRoute("map",
-                    "LocationMap",
+                    "BurialMap",
                     new { controller = "Home", action = "Map" });
 
                 endpoints.MapControllerRoute("medialibrary",
