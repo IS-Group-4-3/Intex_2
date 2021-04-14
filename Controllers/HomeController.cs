@@ -1,6 +1,7 @@
 ﻿using Intex_2.Models;
 using Intex_2.Models.ViewModels;
 using Intex_2.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -38,6 +39,19 @@ namespace Intex_2.Controllers
         public IActionResult Admin()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        [Route("CasLogin")]
+        public async Task CASLogin(string returnUrl)
+        {
+            if (returnUrl == null)
+            {
+                returnUrl = "/Home/Index";
+            }
+
+            var props = new AuthenticationProperties { RedirectUri = returnUrl };
+            await HttpContext.ChallengeAsync("CAS", props);
         }
 
         [HttpGet]

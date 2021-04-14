@@ -1,9 +1,12 @@
 using Amazon.S3;
+using AspNetCore.Security.CAS;
 using Intex_2.Data;
 using Intex_2.Models;
 using Intex_2.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -49,6 +52,36 @@ namespace Intex_2
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new PathString("/CASlogin");
+                    options.Events = new CookieAuthenticationEvents
+                    {
+
+                        // Add user roles to the existing identity.  
+                        // This example is giving every user "User" and "Admin" roles.
+                        // You can use services or other logic here to determine actual roles for your users.
+                        OnSigningIn = async context =>
+                        {
+
+                            string baseUrl = string.Empty;
+                            var username = context.Principal.Identity.Name;
+                            //var userSvc = context.HttpContext.RequestServices.GetRequiredService<iUserService>();
+                            //var ticket_val = context.HttpContext.Request.Query["ticket"].ToString();
+                            //var state_val = context.HttpContext.Request.Query["state"].ToString();
+
+
+                            await Task.Delay(100);
+                            return;// Task.FromResult(0);
+                        }
+                    };
+                })
+                .AddCAS(options =>
+                {
+                    options.CasServerUrlBase = Configuration["CasBaseUrl"];   // Set in `appsettings.json` file.
+                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -123,6 +156,9 @@ namespace Intex_2
                     "Admin/AddRole",
                     new { controller = "Administration", action = "AddRole" });
 
+                endpoints.MapControllerRoute("CASLogin",
+                    "CASLogin",
+                    new { controller = "Home", action = "CASLogin" });
 
                 endpoints.MapControllerRoute("medialibrary",
                     "OsteologyFormPage1",
