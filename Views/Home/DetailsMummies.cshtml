@@ -201,18 +201,21 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousDentals" asp-action="Create"
-                                   asp-route-gamous="@Model.dentalInfo.Gamous">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
-            </table>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousDentals" asp-action="Create"
+                                       asp-route-gamous="@Model.dentalInfo.Gamous">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
+                </table>
         </div>
     </div>
 
@@ -301,19 +304,22 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateCranial"
-                                   asp-route-locationID="@Model.location.LocationId">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateCranial"
+                                       asp-route-locationID="@Model.location.LocationId">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
 
-            </table>
+                </table>
         </div>
     </div>
 </div>
@@ -403,18 +409,21 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateC14"
-                                   asp-route-loctionID="@Model.location.LocationId">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
-            </table>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateC14"
+                                       asp-route-loctionID="@Model.location.LocationId">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
+                </table>
         </div>
     </div>
 
@@ -594,19 +603,22 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateBone"
-                                   asp-route-gamous="@Model.bone.Gamous">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateBone"
+                                       asp-route-gamous="@Model.bone.Gamous">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
 
-            </table>
+                </table>
         </div>
     </div>
 </div>
@@ -665,18 +677,21 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateBioSample"
-                                   asp-route-locationID="@Model.location.LocationId">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
-            </table>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateBioSample"
+                                       asp-route-locationID="@Model.location.LocationId">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
+                </table>
         </div>
     </div>
 
@@ -727,18 +742,21 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateSamples"
-                                   asp-route-gamous="@Model.sample.Gamous">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
-            </table>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateSamples"
+                                       asp-route-gamous="@Model.sample.Gamous">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
+                </table>
         </div>
     </div>
 </div>
@@ -976,18 +994,21 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateFieldMains"
-                                   asp-route-locationID="@Model.location.LocationId">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
-            </table>
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateFieldMains"
+                                       asp-route-locationID="@Model.location.LocationId">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
+                </table>
         </div>
     </div>
 
@@ -1062,19 +1083,22 @@
                 else
                 {
                     <thead><tr><th>This Information is not available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateFLocation"
-                                   asp-route-locationID="@Model.location.LocationId">
-                                    Add
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateFLocation"
+                                       asp-route-locationID="@Model.location.LocationId">
+                                        Add
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
 
-            </table>
+                </table>
         </div>
     </div>
 </div>
@@ -1108,19 +1132,22 @@
                 else
                 {
                     <thead><tr><th>No files available for this Burial</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="HiddenUploadMedia"
-                                   asp-route-locationID="@Model.location.LocationId">
-                                    Upload Media
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                }
+                    @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                    {
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="HiddenUploadMedia"
+                                       asp-route-locationID="@Model.location.LocationId">
+                                        Upload Media
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        }
+                    }
 
-            </table>
+                </table>
         </div>
     </div>
 
