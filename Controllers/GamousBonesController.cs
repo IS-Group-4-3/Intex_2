@@ -66,14 +66,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousBones/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? gamous)
         {
-            if (id == null)
+            if (gamous == null)
             {
                 return NotFound();
             }
 
-            var gamousBone = await _context.GamousBones.FindAsync(id);
+            var gamousBone = await _context.GamousBones.FindAsync(gamous);
             if (gamousBone == null)
             {
                 return NotFound();
@@ -86,13 +86,13 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Gamous,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForemanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,BoneLength,MedialClavicle,IliacCrest,FemurDiameter,Humerus,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth")] GamousBone gamousBone)
+        public async Task<IActionResult> Edit(int gamous, [Bind("Gamous,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForemanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,BoneLength,MedialClavicle,IliacCrest,FemurDiameter,Humerus,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth")] GamousBone gamousBone)
         {
-            if (id != gamousBone.Gamous)
+            if (gamous != gamousBone.Gamous)
             {
                 return NotFound();
             }
-
+            var locationID = _context.GamousMains.Where(x => x.Gamous == gamousBone.Gamous).FirstOrDefault().LocationId.ToString();
             if (ModelState.IsValid)
             {
                 try
@@ -111,7 +111,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
             return View(gamousBone);
         }

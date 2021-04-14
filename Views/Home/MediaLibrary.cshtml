@@ -32,10 +32,12 @@
                 <th>
                     LocationID
                 </th>
+                <th>
+                    Download Link
+                </th>
                 @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
                 {
-                    <th></th>
-                }
+            <th></th>}
             </tr>
         </thead>
         <tbody>
@@ -44,27 +46,28 @@
                 @foreach (var x in Model.files)
                 {
 
-                    <tr>
-                        <td>
-                            @x.Type
-                        </td>
-                        <td>
-                            <img src="@x.Url" style="width:150px" />
-                        </td>
-                        <td>
-                            <a asp-controller="Home" asp-action="DetailsMummies"
-                               asp-route-locationID="@x.LocationId">@x.LocationId</a>
-                        </td>
-                        @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
-                        {
-                            <td>
-                                <div>
-                                    <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteMedia"
-                                       asp-route-url="@x.Url">Delete</a>
-                                </div>
-                            </td>
-                        }
-                    </tr>
+            <tr>
+                <td>
+                    @x.Type
+                </td>
+                <td>
+                    <img src="@x.Url" style="width:150px" />
+                </td>
+                <td>
+                    @x.LocationId
+                </td>
+                <td>
+                        <button type="submit">Download</button>
+                </td>
+                @if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Researcher")))
+                {
+            <td>
+                <div>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteMedia"
+                       asp-route-url="@x.Url">Delete</a>
+                </div>
+            </td>}
+            </tr>
                 }
             }
 

@@ -65,14 +65,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousC14/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string loctionID)
         {
-            if (id == null)
+            if (loctionID == null)
             {
                 return NotFound();
             }
 
-            var gamousC14 = await _context.GamousC14s.FindAsync(id);
+            var gamousC14 = await _context.GamousC14s.FindAsync(loctionID);
             if (gamousC14 == null)
             {
                 return NotFound();
@@ -85,9 +85,9 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("LoctionId,Rack,Ns,LocationNs,Ew,LocationEw,Square,Area,Burial,Tube,Description,SizeMl,Foci,C14Sample2017,Location,Questions,SomeNumber,Conventional14cAgeBp,C14CalendarDate,Calibrated95CalendarDateMax,Calibrated95CalendarDateMin,Calibrated95CalendarDateSpan,Calibrated95CalendarDateAvg,Category,Notes")] GamousC14 gamousC14)
+        public async Task<IActionResult> Edit(string loctionID, [Bind("LoctionId,Rack,Ns,LocationNs,Ew,LocationEw,Square,Area,Burial,Tube,Description,SizeMl,Foci,C14Sample2017,Location,Questions,SomeNumber,Conventional14cAgeBp,C14CalendarDate,Calibrated95CalendarDateMax,Calibrated95CalendarDateMin,Calibrated95CalendarDateSpan,Calibrated95CalendarDateAvg,Category,Notes")] GamousC14 gamousC14)
         {
-            if (id != gamousC14.LoctionId)
+            if (loctionID != gamousC14.LoctionId)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = loctionID });
             }
             return View(gamousC14);
         }

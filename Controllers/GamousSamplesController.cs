@@ -67,14 +67,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousSamples/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? gamous)
         {
-            if (id == null)
+            if (gamous == null)
             {
                 return NotFound();
             }
 
-            var gamousSample = await _context.GamousSamples.FindAsync(id);
+            var gamousSample = await _context.GamousSamples.FindAsync(gamous);
             if (gamousSample == null)
             {
                 return NotFound();
@@ -87,13 +87,13 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Gamous,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken")] GamousSample gamousSample)
+        public async Task<IActionResult> Edit(int gamous, [Bind("Gamous,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken")] GamousSample gamousSample)
         {
-            if (id != gamousSample.Gamous)
+            if (gamous != gamousSample.Gamous)
             {
                 return NotFound();
             }
-
+            var locationID = _context.GamousMains.Where(x => x.Gamous == gamousSample.Gamous).FirstOrDefault().LocationId.ToString();
             if (ModelState.IsValid)
             {
                 try
@@ -112,7 +112,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
             return View(gamousSample);
         }

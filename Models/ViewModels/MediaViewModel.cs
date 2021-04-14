@@ -9,5 +9,9 @@ namespace Intex_2.Models.ViewModels
     {
         public IEnumerable<FileRecord> files { get; set; }
 
+        public PagingInfo PagingInfo { get; set; }
+        public string CurrentType { get; set; }
+
+
     }
 }

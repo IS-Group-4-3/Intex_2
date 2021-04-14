@@ -279,7 +279,7 @@
                             <tr>
                                 <td colspan="2">
                                     <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Edit"
-                                       asp-route-locationID="@Model.cranialInfo.LocationId">
+                                       asp-route-locationID="@Model.location.LocationId">
                                         Edit
                                     </a>
                                 </td>
@@ -383,7 +383,7 @@
                             <tr>
                                 <td colspan="2">
                                     <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousC14" asp-action="Edit"
-                                       asp-route-locationID="@Model.carbonDating.LoctionId">
+                                       asp-route-loctionID="@Model.location.LocationId">
                                         Edit
                                     </a>
                                 </td>
@@ -397,8 +397,8 @@
                     <tbody>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Create"
-                                   asp-route-locationID="@Model.location.LocationId">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateC14"
+                                   asp-route-loctionID="@Model.location.LocationId">
                                     Add
                                 </a>
                             </td>
@@ -572,7 +572,7 @@
                         {
                             <tr>
                                 <td colspan="2">
-                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GmaousBone" asp-action="Edit"
+                                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousBones" asp-action="Edit"
                                        asp-route-gamous="@Model.bone.Gamous">
                                         Edit
                                     </a>
@@ -588,8 +588,8 @@
                     <tbody>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Create"
-                                   asp-route-locationID="@Model.location.LocationId">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateBone"
+                                   asp-route-gamous="@Model.bone.Gamous">
                                     Add
                                 </a>
                             </td>
@@ -645,7 +645,7 @@
                             <tr>
                                 <td colspan="2">
                                     <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousBiologicalSamples" asp-action="Edit"
-                                       asp-route-locationID="@Model.bioSample.LocationId">
+                                       asp-route-locationID="@Model.location.LocationId">
                                         Edit
                                     </a>
                                 </td>
@@ -659,7 +659,7 @@
                     <tbody>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Create"
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateBioSample"
                                    asp-route-locationID="@Model.location.LocationId">
                                     Add
                                 </a>
@@ -721,8 +721,8 @@
                     <tbody>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Create"
-                                   asp-route-locationID="@Model.location.LocationId">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateSamples"
+                                   asp-route-gamous="@Model.sample.Gamous">
                                     Add
                                 </a>
                             </td>
@@ -970,7 +970,7 @@
                     <tbody>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Create"
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateFieldMains"
                                    asp-route-locationID="@Model.location.LocationId">
                                     Add
                                 </a>
@@ -1056,8 +1056,8 @@
                     <tbody>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Create"
-                                   asp-route-locationID="@Model.location.LocationId">
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="CreateFLocation"
+                                   asp-route-locationID="@Model.fieldLocation.LocationId">
                                     Add
                                 </a>
                             </td>
@@ -1102,9 +1102,9 @@
                     <tbody>
                         <tr>
                             <td colspan="2">
-                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="GamousCranials" asp-action="Create"
+                                <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Home" asp-action="HiddenUploadMedia"
                                    asp-route-locationID="@Model.location.LocationId">
-                                    Add
+                                    Upload Media
                                 </a>
                             </td>
                         </tr>

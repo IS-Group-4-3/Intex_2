@@ -65,14 +65,14 @@ namespace Intex_2.Controllers
         }
 
         // GET: GamousBiologicalSamples/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string locationID)
         {
-            if (id == null)
+            if (locationID == null)
             {
                 return NotFound();
             }
 
-            var gamousBiologicalSample = await _context.GamousBiologicalSamples.FindAsync(id);
+            var gamousBiologicalSample = await _context.GamousBiologicalSamples.FindAsync(locationID);
             if (gamousBiologicalSample == null)
             {
                 return NotFound();
@@ -85,9 +85,9 @@ namespace Intex_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("LocationId,RackNumber,BagNumber,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,ClusterNumber,Date,PreviouslySampled,Notes,Initials")] GamousBiologicalSample gamousBiologicalSample)
+        public async Task<IActionResult> Edit(string locationID, [Bind("LocationId,RackNumber,BagNumber,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,ClusterNumber,Date,PreviouslySampled,Notes,Initials")] GamousBiologicalSample gamousBiologicalSample)
         {
-            if (id != gamousBiologicalSample.LocationId)
+            if (locationID != gamousBiologicalSample.LocationId)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace Intex_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DetailsMummies", "Home", new { locationId = locationID });
             }
             return View(gamousBiologicalSample);
         }

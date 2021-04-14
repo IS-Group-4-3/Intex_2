@@ -1,0 +1,65 @@
+﻿@{
+
+   
+}
+
+
+@model UploadFileViewModel
+
+<h2> Upload Media</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <form method="post" asp-controller="Home"
+              asp-action="HiddenUploadMedia" enctype="multipart/form-data">
+
+            <label asp-for="photo">Upload File</label>
+            <br />
+            <input type="file" asp-for="photo" />
+            <span class="text-danger" asp-validation-for="photo"></span>
+            <br />
+            <br />
+            <label asp-for="type">File Type</label>
+            <select asp-for="type" class="form-control">
+                <option value="Photo" selected class="form-control">Photo</option>
+                <option value="Bone Book" class="form-control">Bone Book</option>
+                <option value="Field Notes" class="form-control">Field Notes</option>
+            </select>
+            <span class="text-danger" asp-validation-for="photo"></span>
+            <br />
+            <div class="form-group">
+                <label asp-for="LowPairNs" class="control-label">Low Pair (North/South):</label>
+                <input asp-for="LowPairNs" class="form-control" value="@ViewBag.lowpairNs" readonly/>
+                <span asp-validation-for="LowPairNs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialLocationNs" class="control-label">North or South?:</label>
+                <input asp-for="BurialLocationNs" class="form-control" value="@ViewBag.BurialLocationNs" readonly />
+                <span asp-validation-for="BurialLocationNs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LowPairEw" class="control-label">Low Pair (East/West)</label>
+                <input asp-for="LowPairEw" class="form-control" value="@ViewBag.LowPairEw" readonly/>
+                <span asp-validation-for="LowPairEw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialLocationEw" class="control-label">East or West?</label>
+                <input asp-for="BurialLocationEw" class="form-control" value="@ViewBag.BurialLocationEw" readonly/>
+                <span asp-validation-for="BurialLocationEw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialSubplot" class="control-label">Area</label>
+                <input asp-for="BurialSubplot" class="form-control" value="@ViewBag.BurialSubplot" readonly/>
+                <span asp-validation-for="BurialSubplot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialNumber" class="control-label">Burial #</label>
+                <input asp-for="BurialNumber" class="form-control" value="@ViewBag.BurialNumber" readonly/>
+                <span asp-validation-for="BurialNumber" class="text-danger"></span>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
