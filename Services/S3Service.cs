@@ -24,7 +24,7 @@ namespace Intex_2.Services
             {
                 RegionEndpoint = RegionEndpoint.USEast2
             };
-            var credentials = new BasicAWSCredentials("AKIAUOWDHQLJLA7BNGFS", "4YXhHi/X+/MlTcIUjj2KXObvEVI1/eSmEgC5p6T4");
+            var credentials = new BasicAWSCredentials("", "");
             AmazonS3Client client = new AmazonS3Client(credentials, amazonS3Config);
             s3Client = client;
         }
